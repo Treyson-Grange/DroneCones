@@ -48,6 +48,7 @@ Managers should be able to do the following things:
 *   Keep track of number of each cone, toppings, and other stock (that automatically updates on page refresh)
 *   Have data consistency (i.e., make sure that the customer doesn't accidentally order 1000 drone cones, that the employer doesn't get paid 4 times the amount they were supposed to, or that the number of available toppings is always accurate from user to user)
 *   Have good operational latency (i.e., when an order is placed, it shouldn't take 30 seconds or more for the app to say it has made the order)
+*   Keep track of available drones for cone pickup
 
 ### App Security:
 *   Have logins and user authentication (email and password)
