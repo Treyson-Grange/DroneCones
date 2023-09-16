@@ -95,8 +95,8 @@ Managers should be able to do the following things:
 * Should be able to see orders place, as in the ones that are ready for pick up and their size
 * Set drone size
     * Small - can take one cone
-    * Medium - can take two cones
-    * Large - can take four cones
+    * Medium - can take four cones
+    * Large - can take eight cones
 * register drone, and the ability to take them off of lease for recreatinal use
 * Mark cone(s) as picked up
 * mark cone(s) as delivered
