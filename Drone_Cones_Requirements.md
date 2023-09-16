@@ -52,7 +52,7 @@ Managers should be able to do the following things:
 
 ### App Security:
 *   Have logins and user authentication (email and password)
-*   Save login information for sending email about marking stuff for customers company
+*   Save login information for sending email about marketing stuff for customers company
 
 ## Business requirements:
 *   Must be able to stock/keey track of toppings, ice cream, cones
