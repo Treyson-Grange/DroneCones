@@ -94,12 +94,12 @@ Managers should be able to do the following things:
 ### Drone Pilot 
 * Be able to clock in clock out (set availability)
 * Set a drone radius
+* Should be able to see orders place, as in the ones that are ready for pick up and their size
 * Set drone size
     * Small - can take one cone
     * Medium - can take two cones
     * Large - can take four cones
 * register drone, and the ability to take them off of lease for recreatinal use
-* Should be able to see orders place, as in the ones that are ready for pick up
 * Mark cone(s) as picked up
 * mark cone(s) as delivered
 
