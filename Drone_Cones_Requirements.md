@@ -67,4 +67,51 @@ Managers should be able to do the following things:
 *   Must have a payment button, management/drone leasers should get notification of payment received. 
 *   Must have notifications for when order is almost there/when it is there/when it is being prepared/drone on their way.
 
+## Functional Requirements
+### General
+* Login screen
+    * Ability to login or create an account
+        * When creating, there should be the option of what account to make
+
+### Customer
+* Place orders
+    * name 
+    * address
+    * order
+* View orders
+    * List status and maybe notify status?
+        * Placed
+        * Ready
+        * Out for dilivery
+        * Delivered
+    * count down clock just on the page
+* Pay for orders
+* Enter address or get location pinged
+* customer contact support form
+    * report incedent
+
+
+### Drone Pilot 
+* Be able to clock in clock out (set availability)
+* Set a drone radius
+* Set drone size
+    * Small - can take one cone
+    * Medium - can take two cones
+    * Large - can take four cones
+* register drone, and the ability to take them off of lease for recreatinal use
+* Should be able to see orders place, as in the ones that are ready for pick up
+* Mark cone(s) as picked up
+* mark cone(s) as delivered
+
+
+## Manager ##
+* Ability to add products, including icecream flavers, cones, and possibly toppings
+    * Be able to keep track or those things and be able to mark them as unavailable
+* Ability to see orders placed and to mark them as ready for pickup
+
+
+## Admin ##
+* can also delegate things to the manager, and do things that a manager would be able to do.
+* be able to see all incedent reports
+
 ![Use-Case-Diagram](Use-Case-Diagram.png)
