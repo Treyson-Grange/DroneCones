@@ -111,3 +111,17 @@ There will likely be only one admin account, which will either be a Drone Cones 
 
 
 ![Use-Case-Diagram](Use-Case-Diagram.png)
+
+
+# High-Level Design #
+
+## Security ##
+- 
+## Hardware Platform ##
+- 
+## User Interface ##
+- 
+## Internal Interfaces ##
+- 
+## External Interfaces ##
+- 
