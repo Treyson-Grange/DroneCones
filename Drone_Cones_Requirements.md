@@ -118,7 +118,7 @@ There will likely be only one admin account, which will either be a Drone Cones 
 ## Security ##
 - 
 ## Hardware Platform ##
-- 
+* Web
 ## User Interface ##
 - 
 ## Internal Interfaces ##
