@@ -116,7 +116,15 @@ There will likely be only one admin account, which will either be a Drone Cones 
 # High-Level Design #
 
 ## Security ##
-- 
+* An algorithm that encrypts the data, provided by the database.
+* A way to create accounts such that they are independent of eachother, keeping private information separate from other information also provided by the database.
+    * Some things are shared amongst drone pilots, managers and customers. Things like orders.
+    * Share data about flavors, toppings and availablity of these items between managers and customers.
+    * Share order details between all three user types.
+        * Keep address and billing info to managers and customers.
+* Admin access only to Administer and maybe certain things to Managers.
+* Customers and Drone pilots would get user permissions.
+
 ## Hardware Platform ##
 * Web
 ## User Interface ##
