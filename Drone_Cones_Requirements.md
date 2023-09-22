@@ -127,9 +127,21 @@ There will likely be only one admin account, which will either be a Drone Cones 
 
 ## Hardware Platform ##
 * Web
+  * The application should be able to be viewed on the web and look good 
+  on both computer (* or phone *).
+  * We want our application to be readily available to any
+  person whether they are on a computer or phone via Chrome/Safari or other web browser.
+
 ## User Interface ##
-- 
+*
 ## Internal Interfaces ##
-- 
+* 
+* 
+* Q3) Defining distinct communication channels eases maintenance and debugging burdens later
+  * By defining distinct communication channels early on, this will 
+  make it easier to have a vision of how our application should be ordered,
+  what pieces communicate with other pieces, what kind of data is being transferred 
+  from one component to another. This will allow the application to be easier to maintain
+  and debug because we will have a clear understanding of what components and how components communicate with another.
 ## External Interfaces ##
-- 
+*
