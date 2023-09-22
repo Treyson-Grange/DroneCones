@@ -133,7 +133,13 @@ There will likely be only one admin account, which will either be a Drone Cones 
   person whether they are on a computer or phone via Chrome/Safari or other web browser.
 
 ## User Interface ##
-*
+* The user will be greeted with a home page that overviews the project. 
+* That page and most pages will have a top navigation bar. This bar will be how flow is managed for the user. Everything they will need access to is on this bar, or on one of the pages listed there.
+* Nav bar will include a link to order, a link to the home, and if the user is not logged in, a link to the register and login page.
+* If the user is logged in, the top nav changes based on what account they have. For regular customers, it will be an order centric top nav. For drone leasers, there will be a page for them to access their drone information. For managers there will be a manager portal where they can manage stock.
+* The user while ordering should be shown images of what they are ordering. 
+* The user should be notified in the case of any errors or delivery. 
+* For branding, we will have AI create a logo for us to use as a placeholder. Our branding is revolved around drones and ice cream.
 ## Internal Interfaces ##
 * 
 * 
@@ -144,4 +150,7 @@ There will likely be only one admin account, which will either be a Drone Cones 
   from one component to another. This will allow the application to be easier to maintain
   and debug because we will have a clear understanding of what components and how components communicate with another.
 ## External Interfaces ##
-*
+- 
+
+
+
