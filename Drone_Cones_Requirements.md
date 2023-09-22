@@ -142,8 +142,11 @@ There will likely be only one admin account, which will either be a Drone Cones 
 * For branding, we will have AI create a logo for us to use as a placeholder. Our branding is revolved around drones and ice cream.
 
 ## Internal Interfaces ##
-* 
-* 
+
+The JS will be able to send the data to the different pages after receiving it from the server. The JS will be used to send data between pages, such as order and login info. 
+The ordering page will need to send each item to the cart.
+(STILL A WORK IN PROGRESS. SORRY FOR BEING SLOW ON THIS)
+
 * Q3) Defining distinct communication channels eases maintenance and debugging burdens later
   * By defining distinct communication channels early on, this will 
   make it easier to have a vision of how our application should be ordered,
