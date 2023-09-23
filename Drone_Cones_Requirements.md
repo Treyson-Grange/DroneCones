@@ -144,7 +144,9 @@ There will likely be only one admin account, which will either be a Drone Cones 
 ## Internal Interfaces ##
 
 The JS will be able to send the data to the different pages after receiving it from the server. The JS will be used to send data between pages, such as order and login info. 
-The ordering page will need to send each item to the cart.
+The ordering page will need to send each item to the cart. When the Customer feedback form is filled out, the JS will pull that information from the webpage to send to the database.
+When the customer orders, the JS will grab that information as well. After sending the login info from the login page to the server and receving the account info back, it will 
+tell whatever page is up the proper tabs to have on the nav bar.
 (STILL A WORK IN PROGRESS. SORRY FOR BEING SLOW ON THIS)
 
 * Q3) Defining distinct communication channels eases maintenance and debugging burdens later
