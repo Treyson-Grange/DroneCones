@@ -143,11 +143,41 @@ There will likely be only one admin account, which will either be a Drone Cones 
 
 ## Internal Interfaces ##
 
-The JS will be able to send the data to the different pages after receiving it from the server. The JS will be used to send data between pages, such as order and login info. 
-The ordering page will need to send each item to the cart. When the Customer feedback form is filled out, the JS will pull that information from the webpage to send to the database.
-When the customer orders, the JS will grab that information as well. After sending the login info from the login page to the server and receving the account info back, it will 
-tell whatever page is up the proper tabs to have on the nav bar.
-(STILL A WORK IN PROGRESS. SORRY FOR BEING SLOW ON THIS)
+The JS will receive all data from server to send to the pages, as well as receive data from the pages to send to the server
+
+The login/signup page will:
+* be able to send new account information out to create it 
+* or send out sign in to validate information and receive account type
+
+It will receive the account type from the server to send to the page to properly set the nav bar
+
+For a customer  
+The ordering page will
+* receive data for how much Ice cream is in stock as well as information about the stock (name, pictures, nutrition info)
+* will send data out to tell the cart what is added to the order
+* Update the stocking numbers locally during order to avoid overselling
+The cart will
+* send out how much ice cream has been ordered once the order has gone through
+After ordering, the order update page will:
+* receive any errors to display
+* receive updates on location/delivery
+The account page will
+* receive profile information to allow user to see it
+* If changes are made to profile(name, address, payment), it will send out the new updated info
+
+For a drone owner  
+The drone management will
+* receive information about drones on account
+* If drone is removed or disabled, it will send that out
+
+For a manager  
+The stock page will
+* receive all current stocking information
+* Be able to update stock and send out new numbers
+The feedback page will
+* receive feedback form answers to display
+
+
 
 * Q3) Defining distinct communication channels eases maintenance and debugging burdens later
   * By defining distinct communication channels early on, this will 
