@@ -93,13 +93,13 @@ There will likely be only one admin account, which will either be a Drone Cones 
 *   Keep track of available drones for cone pickup
 
 ### Performance
-*    Database
-    *    Quickly obtain stored information
-*    Server
-    *    Handle light traffic
-    *    Optimized to run on lower end laptop
-*    App
-    *    Load pages quickly
+*   Database
+    *   Quickly obtain stored information
+*   Server
+    *   Handle light traffic
+    *   Optimized to run on lower end laptop
+*   App
+    *   Load pages quickly
 
 ### App Security:
 *   Have logins and user authentication (email and password)
