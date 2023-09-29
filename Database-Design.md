@@ -18,7 +18,6 @@ Users:
 *   Email
 *   Saved Address
 *   Banned
-*   Phone number?
 
 | UserID | UserType | FirstName | LastName | Email                   | Address | Banned |
 | -----  | -------  | -----     | -----    | -----                   | ----    | ------ |
@@ -49,18 +48,19 @@ Addresses:
 Transactions:
 *   TransactionID (primary)
 *   UserID
-*   Price
+*   Price Breakdown
 *   ItemCount
 *   Time of order
 *   Date of order
+*   Completed
 *   Time delivered?
 *   Delivered boolean?
 *   More detailed Price columns?
 
-| TransactionID | UserID | Price | ItemCount | OrderTime | OrderDate |
-| ------------- | ------ | ----- | --------- | --------- | --------- |
-| 0             | 0      | 9.14  | 2         | 23:59.59  | 9-29-2023 |
-| 1             | 0      | 4.56  | 1         | 10:30.00  | 9-30-2023 |
+| TransactionID | UserID | Price | ItemCount | OrderTime | OrderDate | Completed |
+| ------------- | ------ | ----- | --------- | --------- | --------- | --------- | 
+| 0             | 0      | 9.14  | 2         | 23:59.59  | 9-29-2023 | True      |
+| 1             | 0      | 4.56  | 1         | 10:30.00  | 9-30-2023 | True      |
 
 
 Sold Items:
@@ -134,8 +134,6 @@ Drones:
 *   Name
 *   Size (small, medium, large)
 *   Available
-*   Drone model?
-*   Drone radius?
 
 | DroneID | Owner | Name         | DroneSize | Available |
 | ------- | ----- | -----------  | --------- | --------- |
@@ -145,27 +143,15 @@ Drones:
 
 ## Support forms
 
-?????
-Do:
-    Users be logged in to submit form, just connect UserID
-or
-    Not logged in, store name and email entered in fields
-
 Support forms:
 *   formID (primary)
-*   Name
-*   Email
 *   UserID 
 *   formField
+*   Resolved
 
-| FormID | UserID | FormField                 |
-| ------ | ------ | ------------------------- |
-| 0      | 0      | The ice cream was late :( |
-
-or
-| FormID | FirstName | LastName | Email             | FormField                 |
-| ------ | --------- | -------- | ----------------- | ------------------------- |
-| 0      | Lane      | Weaver   | lweaver@gmail.com | The ice cream was late :( |
+| FormID | UserID | FormField                 | Resolved |
+| ------ | ------ | ------------------------- | -------- |
+| 0      | 0      | The ice cream was late :( | True     |
 
 
 
