@@ -68,6 +68,7 @@
   * information:
     * flavor: string
     * pricePerScoop: number
+    * number of scoops: number
     * amount: number
     * available: boolean
   * Used in components:
