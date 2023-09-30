@@ -20,7 +20,7 @@ Users:
 *   Banned
 
 | UserID | UserType | FirstName | LastName | Email                   | Address | Banned |
-| -----  | -------  | -----     | -----    | -----                   | ----    | ------ |
+| ------ | -------- | --------- | -------- | ----------------------- | ------- | ------ |
 | 0      | 0        | James     | Buchanan | jamesbuchanan@gmail.com | 0       | False  |
 | 1      | 2        | Erik      | Falor    | erikfalor@hotmail.com   | NULL    | False  |
 | 2      | 1        | Amanda    | Brown    | abcdefg@hotmail.com     | 1       | False  |
@@ -35,10 +35,9 @@ Addresses:
 *   Zip Code
 *   Street Address
 *   Apartment Number
-*   Name?
 
 | AddressID | Country | City       | State | ZipCode | StreetAddress | AptNum |
-| --------- | ------- | ----       | ----- | ------- | ------------- | ------ |
+| --------- | ------- | ---------- | ----- | ------- | ------------- | ------ |
 | 0         | U.S.    | Logan      | UT    | 84321   | 123 E 456 N   | 4      |
 | 1         | U.S.    | Smithfield | UT    | 84335   | 999 S 200 E   | NULL   |
 
@@ -48,35 +47,34 @@ Addresses:
 Transactions:
 *   TransactionID (primary)
 *   UserID
-*   Price Breakdown
+*   Price before tax
+*   Tax
+*   Final price
 *   ItemCount
 *   Time of order
 *   Date of order
 *   Completed
-*   Time delivered?
-*   Delivered boolean?
-*   More detailed Price columns?
 
-| TransactionID | UserID | Price | ItemCount | OrderTime | OrderDate | Completed |
-| ------------- | ------ | ----- | --------- | --------- | --------- | --------- | 
-| 0             | 0      | 9.14  | 2         | 23:59.59  | 9-29-2023 | True      |
-| 1             | 0      | 4.56  | 1         | 10:30.00  | 9-30-2023 | True      |
+| TransactionID | UserID | InitialPrice | Tax  | FinalPrice | ItemCount | OrderTime | OrderDate | Completed |
+| ------------- | ------ | ------------ | ---- | ---------- | --------- | --------- | --------- | --------- | 
+| 0             | 0      | 9.14         | 1.13 | 10.27      | 2         | 23:59.59  | 9-29-2023 | True      |
+| 1             | 0      | 4.56         | 0.33 | 4.89       | 1         | 10:30.00  | 9-30-2023 | True      |
 
 
-Sold Items:
+OrderItem:
 *   ID (primary)
 *   TransactionID
 *   Cone Type
 *   Ice cream flavor
 *   Topping
 *   Scoop count
-*   Price?
+*   Price
 
-| ID | TransactionID | DroneDelivery | Cone | Flavor | Topping | Scoops |
-| -- | ------------- | ------------- | ---- | ------ | ------- | ------ |
-| 0  | 0             | 0             | 0    | 1      | 1       | 2      |
-| 1  | 0             | 0             | 1    | 1      | NULL    | 1      |
-| 2  | 1             | 1             | 0    | 0      | 0       | 2      |
+| ID | TransactionID | DroneDelivery | Cone | Flavor | Topping | Scoops | Price |
+| -- | ------------- | ------------- | ---- | ------ | ------- | ------ | ----- |
+| 0  | 0             | 0             | 0    | 1      | 1       | 2      | 5.25  |
+| 1  | 0             | 0             | 1    | 1      | NULL    | 1      | 3.89  |
+| 2  | 1             | 1             | 0    | 0      | 0       | 2      | 4.56  |
 
 DroneDelivery:
 *   ID (primary)
@@ -134,11 +132,12 @@ Drones:
 *   Name
 *   Size (small, medium, large)
 *   Available
+*   In Use
 
-| DroneID | Owner | Name         | DroneSize | Available |
-| ------- | ----- | -----------  | --------- | --------- |
-| 0       | 2     | MySmallDrone | 0         | True      |
-| 1       | 2     | MyLargeDrone | 2         | True      |
+| DroneID | Owner | Name         | DroneSize | Available | InUse |
+| ------- | ----- | -----------  | --------- | --------- | ----- |
+| 0       | 2     | MySmallDrone | 0         | True      | False |
+| 1       | 2     | MyLargeDrone | 2         | True      | True  |
 
 
 ## Support forms
@@ -159,21 +158,26 @@ Support forms:
 # Intermediary functions
 
 ## Users
-addUser()
+addUser(UserType: Int, FirstName: Str, LastName: Str, Email: Str, Address: Int)
+*   adds a new row to user database
 
-getUser()
+getUser(UserID: Int)
+*   returns the row with given UserID as a user object
 
-updateUser()
+updateUser(UserID: Int, UserType: Int = None, FirstName: Str = None, LastName: Str = None, Email: Str = None, Address: Int = None)
+*   updates the row of user database with given UserID, changing the columns of any arguments that aren't None
 
-toggleUserBan()
+toggleUserBan(UserID: Int)
+*   toggles the banned column of the user with UserID
 
 getUsers(UserType: Int = None)
+*   returns a list of all user in database as user objects. If a UserType is specified, it only returns those types of users
 
-addAddress()
+addAddress(Country: Str, City: Str, State: Str, ZipCode: Str, StreetAddress: Str, Apartment: Str)
+*   Adds a row into address database with given information
 
-getAddress()
-
-updateAddress()
+getAddress(AddressID: Int)
+*   returns the row from address database with given AddressID
 
 ## Transactions
 addTransaction(UserID: Int, Price: Int, Items: List<??>, dateTime: DateTime, DroneIDs: List<Int>)
@@ -189,8 +193,6 @@ getTransactions()
 
 getUserOrderHistory(UserID: Int)
 *   returns all transactions tied to given UserID.
-
-
 
 addSoldItem(TransactionID: Int, Cone: Int, Flavor: Int, Topping: Int, Scoops: Int)
 *   adds a new row in Sold Items database with given information
