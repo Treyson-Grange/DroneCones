@@ -53,8 +53,78 @@
 * order placed, time estimate page
   * time reduction component
     * notifies user when order is placed, order is on its way, order is there
-    * 
+* Shopping cart page
+  * cart component
+    * displays cart
+  * user card info component
+    * user enters card info
 
 ### Managers
 
 ### Drone Providers
+
+## Classes
+* ice cream class
+  * information:
+    * flavor: string
+    * pricePerScoop: number
+    * amount: number
+    * available: boolean
+  * Used in components:
+    * view menu component
+    * order component
+    * shopping cart component
+* topping class
+  * information:
+    * topping: string
+    * price: number
+    * amount: number
+    * available: boolean
+  * Used in components:
+    * view menu component
+    * order component
+    * shopping cart component
+* cone class
+  * information:
+    * cone: string
+    * price: number
+    * amount: number
+    * available: boolean
+  * Used in components:
+    * view menu component
+    * order component
+    * shopping cart component
+* ice cream cone class:
+  * information:
+    * cone: cone
+    * ice cream: ice cream
+    * topping?: topping *optional
+    * ice cream cone price: number
+  * Used in components:
+    * order component
+    * shopping cart component
+* shopping cart class:
+  * information:
+    * ice cream cones: ice cream cone[]
+    * all ice cream cones price: number
+  * Used in components:
+    * shopping cart component
+* order class:
+  * information:
+    * shopping cart: shopping cart
+    * address: address/string
+    * card information: card info/string
+    * user info: user info
+    * timer: time
+  * Used in component:
+    * order place/timer component
+    * card info component
+* drone class:
+  * information:
+    * size: number
+    * owner: string
+    * available (owner allows to be used or not): boolean
+    * in use (order is being fulfilled or not): boolean
+    * timer: time
+  * Used in components:
+    * drone management page/add new drone and list all drone components
