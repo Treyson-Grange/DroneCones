@@ -60,8 +60,33 @@
     * user enters card info
 
 ### Managers
+* Support page
+	* Ticket component
+		* See all support tickets
+		* Archive ticket button
+* Stock page
+	* Current stock component
+		* All flavors and how many scoops they have.
+	* Update stock component
+		* All ice cream flavors with text boxes defaulting to 0. 
+		* Submit button, calls to the database ADDing all the new scoops
+* Landing page
 
 ### Drone Providers
+* Drone managment page
+	* Add new drone component
+		* on click, open form and ask for size drone radius and a submit button. 
+	* List of all drone component
+		* Drone class
+		* *** do something like has drop down with enable and delete, save button at b ***
+		* Save button to save drone changes.
+* Account information page
+	* Revenue Component
+	* Bank transfer component
+		* Form with bank info.
+		* Button to transfer.
+		
+
 
 ## Classes
 * ice cream class
