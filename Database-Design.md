@@ -13,17 +13,18 @@ UserType:
 Users:
 *   UserID (primary)
 *   UserType (0,1,2)
+*   Username
 *   First Name
 *   Last Name
 *   Email
 *   Saved Address
 *   Banned
 
-| UserID | UserType | FirstName | LastName | Email                   | Address | Banned |
-| ------ | -------- | --------- | -------- | ----------------------- | ------- | ------ |
-| 0      | 0        | James     | Buchanan | jamesbuchanan@gmail.com | 0       | False  |
-| 1      | 2        | Erik      | Falor    | erikfalor@hotmail.com   | NULL    | False  |
-| 2      | 1        | Amanda    | Brown    | abcdefg@hotmail.com     | 1       | False  |
+| UserID | UserType | Username   | FirstName | LastName | Email                   | Address | Banned |
+| ------ | -------- | ---------  | --------- | -------- | ----------------------- | ------- | ------ |
+| 0      | 0        | jbuchanan  | James     | Buchanan | jamesbuchanan@gmail.com | 0       | False  |
+| 1      | 2        | erik.falor | Erik      | Falor    | erikfalor@hotmail.com   | NULL    | False  |
+| 2      | 1        | ambrown    | Amanda    | Brown    | abcdefg@hotmail.com     | 1       | False  |
 
 
 
