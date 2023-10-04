@@ -1,0 +1,61 @@
+{
+    "icecreamFlavors": [
+        {
+            "flavor": "vanilla",
+            "pricePerScoop": 1.00,
+            "numberOfScoops": 2,
+            "amount": 20,
+            "available": true
+        },
+        {
+            "flavor": "chocolate",
+            "pricePerScoop": 1.00,
+            "numberOfScoops": 2,
+            "amount": 15,
+            "available": true
+        }
+        
+    ],
+    "Cones": [
+        {
+            "cone": "sprinkle cone",
+            "price": 1.50,
+            "amount": 100,
+            "available": true
+        },
+        {
+            "cone": "waffle cone",
+            "price": 1.00,
+            "amount": 50,
+            "available": true
+        },
+        {
+            "cone": "chocolate cone",
+            "price": 1.50,
+            "amount": 20,
+            "available": true
+        }
+        
+    ],
+    "Toppings": [
+        {
+            "topping": "sprinkles",
+            "price": 1.00,
+            "amount": 40,
+            "available": true
+        },
+        {
+            "topping": "chocolate sauce",
+            "price": 1.00,
+            "amount": 80,
+            "available": true
+        },
+        {
+            "topping": "gummy worms",
+            "price": 1.50,
+            "amount": 100,
+            "available": true
+        }
+        
+    ]
+}
