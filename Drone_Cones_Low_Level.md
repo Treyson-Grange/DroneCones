@@ -509,16 +509,18 @@ getCones()
 getCone(ID: Int)
 *   return cone with given ID
 
-addNewCone(Name: Str, Amount: Int, Available: Bool = True)
+addNewCone(Name: Str, Amount: Int, price: number, Available: Bool = True)
 *   add a new row into cone database with given information
 
-updateConeAmount(ID: Int, Amount: Int)
-*   update the amount column of cone with given ID to new amount
+addConeAmount(ID: Int, Amount: Int)
+*   adds the amount given to the amount of the cone with given id
 
 toggleConeAvailability(ID: Int)
 *   update the Available column of cone with given ID to opposite boolean value
 
---Maybe--
+updateConePrice(ID: int, price: int)
+*   update the price of cone with given id
+
 removeCone(ID: Int)
 *   Remove cone with specified Id from database
 
