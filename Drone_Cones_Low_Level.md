@@ -385,25 +385,26 @@ Stock (Cones, Flavors, Toppings):
 *   Name
 *   Amount
 *   Available
+*   Price / Price per Scoop
 
 Cones:
-| ID | Name   | Amount | Available |
-| -- | ----   | ------ | --------- | 
-| 0  | Sugar  | 25     | True      |
-| 1  | Waffle | 13     | True      |
+| ID | Name   | Amount | Available | Price |
+| -- | ----   | ------ | --------- | ----- |
+| 0  | Sugar  | 25     | True      | 100   |
+| 1  | Waffle | 13     | True      | 100   |
 
 Flavors:
-| ID | Name       | Amount | Available |
-| -- | ---------- | ------ | --------- | 
-| 0  | Vanilla    | 98     | True      |
-| 1  | Chocolate  | 56     | True      |
-| 2  | Strawberry | 0      | False     |
+| ID | Name       | Amount | Available | PricePerScoop |
+| -- | ---------- | ------ | --------- | ------------- |
+| 0  | Vanilla    | 98     | True      | 400           |
+| 1  | Chocolate  | 56     | True      | 400           |
+| 2  | Strawberry | 0      | False     | 400           |
 
 Toppings:
-| ID | Name       | Amount | Available |
-| -- | ----       | ------ | --------- | 
-| 0  | Hot Fudge  | 33     | True      |
-| 1  | Caramel    | 12     | True      |
+| ID | Name       | Amount | Available | Price |
+| -- | ----       | ------ | --------- | ----- |
+| 0  | Hot Fudge  | 33     | True      | 100   |
+| 1  | Caramel    | 12     | True      | 100   |
 
 
 ### Drones

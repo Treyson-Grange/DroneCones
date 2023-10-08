@@ -1,4 +1,5 @@
 export type Cone = {
+    id?: number;
     cone: string;
     price: number;
     amount: number;
@@ -6,6 +7,7 @@ export type Cone = {
 }
 
 export type IcecreamFlavor = {
+    id?: number;
     flavor: string;
     pricePerScoop: number;
     numberOfScoops: number;
@@ -14,6 +16,7 @@ export type IcecreamFlavor = {
 }
 
 export type Topping = {
+    id?: number;
     topping: string;
     price: number;
     amount: number;
