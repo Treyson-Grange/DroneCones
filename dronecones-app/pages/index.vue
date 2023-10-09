@@ -2,12 +2,11 @@
 import data from '../content/home.json'
 </script>
 
+<style>
+    @import url('/assets/style.css');
+</style>
+
 <template>
     <SiteHeader />
-    <App />
-    <MenuList
-        :icecream-items="data.icecreamFlavors"
-        :cones="data.Cones"
-        :toppings="data.Toppings"
-    />
+    <LoginComp />
 </template>
