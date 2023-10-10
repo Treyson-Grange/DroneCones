@@ -1,4 +1,3 @@
-import { any } from '0g';
 import { supabase } from '../components/lib/supabaseClient'
 // import type {IcecreamFlavor, Cone, Topping} from "@/types"
 import type { Cone, IcecreamFlavor, Topping } from './databaseTypes'
@@ -142,7 +141,6 @@ export async function updateIcecreamFlavorPrice(id: number, pricePerScoop: numbe
     const { error } = await db.icecreamFlavors()
         .update({ pricePerScoop: pricePerScoop })
         .eq('id', id)
-    console.log(error)
 }
 
 
