@@ -290,6 +290,10 @@
 
 ## Database Design
 
+**Differences between documentation and implementation:**
+*   In the documentation, variable / column names are upper camel case, while in implementation, they are lower camel case.
+*   In the documentation, typing definitions are python-esque, while in implementation, they use typescript typing. They are mostly simple changes though.
+
 
 ### Users
 
@@ -308,19 +312,19 @@ Users:
 *   First Name
 *   Last Name
 *   Email
-*   Saved Address
 *   Banned
 
-| UserID | UserType | Username   | FirstName | LastName | Email                   | Address | Banned |
-| ------ | -------- | ---------  | --------- | -------- | ----------------------- | ------- | ------ |
-| 0      | 0        | jbuchanan  | James     | Buchanan | jamesbuchanan@gmail.com | 0       | False  |
-| 1      | 2        | erik.falor | Erik      | Falor    | erikfalor@hotmail.com   | NULL    | False  |
-| 2      | 1        | ambrown    | Amanda    | Brown    | abcdefg@hotmail.com     | 1       | False  |
+| UserID | UserType | Username   | FirstName | LastName | Email                   | Banned |
+| ------ | -------- | ---------  | --------- | -------- | ----------------------- | ------ |
+| 0      | 0        | jbuchanan  | James     | Buchanan | jamesbuchanan@gmail.com | False  |
+| 1      | 2        | erik.falor | Erik      | Falor    | erikfalor@hotmail.com   | False  |
+| 2      | 1        | ambrown    | Amanda    | Brown    | abcdefg@hotmail.com     | False  |
 
 
 
 Addresses:
 *   AddressID
+*   UserID
 *   Country
 *   City
 *   State
@@ -328,10 +332,10 @@ Addresses:
 *   Street Address
 *   Apartment Number
 
-| AddressID | Country | City       | State | ZipCode | StreetAddress | AptNum |
-| --------- | ------- | ---------- | ----- | ------- | ------------- | ------ |
-| 0         | U.S.    | Logan      | UT    | 84321   | 123 E 456 N   | 4      |
-| 1         | U.S.    | Smithfield | UT    | 84335   | 999 S 200 E   | NULL   |
+| AddressID | Country | City       | State | ZipCode | StreetAddress | AptNum | userID |
+| --------- | ------- | ---------- | ----- | ------- | ------------- | ------ | ------ |
+| 0         | U.S.    | Logan      | UT    | 84321   | 123 E 456 N   | 4      | 1      |
+| 1         | U.S.    | Smithfield | UT    | 84335   | 999 S 200 E   | NULL   | 2      |
 
 
 ### Transactions
@@ -452,13 +456,13 @@ Support forms:
 Here are the function signatures for various functions that will interact with the database system, in order to abstract our use of Supabase as well as standardize our database queries.
 
 ### Users
-addUser(UserType: Int, FirstName: Str, LastName: Str, Email: Str, Address: Int)
+addUser(userID: number, userType: number, firstName: str, lastName: str, email: str)
 *   adds a new row to user database
 
 getUser(UserID: Int)
 *   returns the row with given UserID as a user object
 
-updateUser(UserID: Int, UserType: Int = None, FirstName: Str = None, LastName: Str = None, Email: Str = None, Address: Int = None)
+updateUser(userID: Int, {UserType: Int = None, FirstName: Str = None, LastName: Str = None, Email: Str = None, Address: Int = None})
 *   updates the row of user database with given UserID, changing the columns of any arguments that aren't None
 
 toggleUserBan(UserID: Int)
@@ -467,11 +471,11 @@ toggleUserBan(UserID: Int)
 getUsers(UserType: Int = None)
 *   returns a list of all user in database as user objects. If a UserType is specified, it only returns those types of users
 
-addAddress(Country: Str, City: Str, State: Str, ZipCode: Str, StreetAddress: Str, Apartment: Str)
+addAddress(userID: number, Country: Str, City: Str, State: Str, ZipCode: Str, StreetAddress: Str, Apartment: Str = None)
 *   Adds a row into address database with given information
 
-getAddress(AddressID: Int)
-*   returns the row from address database with given AddressID
+getUsersAddress(userID: number)
+*   returns the row from address database associated with the given userID, currently only returns the first address
 
 ### Transactions
 addTransaction(UserID: Int, Price: Int, Items: List<??>, dateTime: DateTime, DroneIDs: List<Int>)
