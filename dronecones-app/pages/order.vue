@@ -4,9 +4,10 @@ import data from '../content/home.json'
 
 <template>
     <SiteHeader />
-    <MenuList
+    <OrderList
         :icecream-items="data.icecreamFlavors"
         :cones="data.Cones"
         :toppings="data.Toppings"
+        
     />
 </template>
