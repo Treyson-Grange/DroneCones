@@ -1,19 +1,17 @@
 <template>
     <div class="login">
-      
-      <h2>Login</h2>
-      <form>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" />
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" />
-        </div>
-        <button type="submit" @click="attemptLogin">Login</button><br><br>
-        
-      </form>
+        <h2>Login</h2>
+        <form>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" />
+          </div>
+          <button type="submit" @click="attemptLogin">Login</button><br><br>
+        </form>
       <a href="register"><button>Register</button></a>
     </div>
   </template>
