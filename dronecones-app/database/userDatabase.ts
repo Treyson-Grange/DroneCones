@@ -9,12 +9,13 @@ export async function addUser(userID: number, userType: number, username: string
     // adds a new row to user database
     const { data, error } = await db.users()
         .insert({
-            userID: userID,
+            id: userID,
             userType: userType, 
             username: username, 
             firstName: firstName, 
             lastName: lastName, 
-            email: email
+            email: email,
+            banned: false
         })
 }
 
@@ -35,24 +36,18 @@ export async function getUser(userID: number):  Promise<User | null> {
     return user
 }
 
-export async function updateUser(userID: number, userType?: number, username?: string, firstName?: string, lastName?: string, email?: string) {
+export async function updateUser(userID: number, userUpdate: UserUpdate) {
     // updates the row of user database with given UserID, changing the columns of any arguments that are given
-    
-    let toUpdate: UserUpdate = {}
-    if (userType) toUpdate['userType'] = userType
-    if (username) toUpdate['username'] = username
-    if (firstName) toUpdate['firstName'] = firstName
-    if (lastName) toUpdate['lastName'] = lastName
-    if (email) toUpdate['email'] = email
-
-
-    const { data, error } = await db.users()
-        .update(toUpdate)
+    const { error } = await db.users()
+        .update(userUpdate)
         .eq('id', userID)
+    console.log(userUpdate)
 }
 
 export async function toggleUserBan(userID: number) {
     // toggles the banned column of the user with UserID
+    const { error } = await supabase.rpc('toggle_user_ban', {quote_id: userID})
+    console.log(error)
 }
 
 export async function getUsers(userType?: number): Promise<User[] | null> {
@@ -61,19 +56,46 @@ export async function getUsers(userType?: number): Promise<User[] | null> {
         const { data, error } = await db.users()
             .select()
             .eq('userType', userType)
+        console.log(data)
         return data
     } else {
         const { data, error } = await db.users()
             .select()
+        console.log(data)
         return data
     }
     
 }
 
-export async function addAddress(userID: number, country: string, city: string, state: string, zipCode: string, streetAddress: string) {
+export async function addAddress(userID: number, country: string, city: string, state: string, zipCode: string, streetAddress: string, aptNum?: string) {
     // Adds a row into address database with given information
+    const { data, error } = await db.addresses()
+        .insert({
+            userID: userID,
+            country: country, 
+            city: city, 
+            state: state, 
+            zipCode: zipCode, 
+            streetAddress: streetAddress,
+            aptNum: aptNum
+        })
 }
 
-export async function getUsersAddress(userID: number) {
-    // returns the rows from address database with the given userID
+export async function getUsersAddress(userID: number): Promise<Address | null> {
+    /*  returns the rows from address database with the given userID
+        currently only returns the first address if there are multiple,
+        possible future change to implement storing multiple addresses per user */
+    const { data, error } = await db.addresses()
+        .select()
+        .eq('userID', userID);
+
+    let address: Address | null;
+    if (data == null || data?.length == 0) {
+        address = null;
+    } else {
+        address = data?.at(0)
+    }
+    console.log(address)
+
+    return address
 }
