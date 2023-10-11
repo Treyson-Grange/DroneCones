@@ -5,14 +5,16 @@
             "pricePerScoop": 1.00,
             "numberOfScoops": 2,
             "amount": 20,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         },
         {
             "flavor": "chocolate",
             "pricePerScoop": 1.00,
             "numberOfScoops": 2,
             "amount": 15,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         }
         
     ],
@@ -21,19 +23,22 @@
             "cone": "sprinkle cone",
             "price": 1.50,
             "amount": 100,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         },
         {
             "cone": "waffle cone",
             "price": 1.00,
             "amount": 50,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         },
         {
             "cone": "chocolate cone",
             "price": 1.50,
             "amount": 20,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         }
         
     ],
@@ -42,19 +47,22 @@
             "topping": "sprinkles",
             "price": 1.00,
             "amount": 40,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         },
         {
             "topping": "chocolate sauce",
             "price": 1.00,
             "amount": 80,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         },
         {
             "topping": "gummy worms",
             "price": 1.50,
             "amount": 100,
-            "available": true
+            "available": true,
+            "buyingAmount": 0
         }
         
     ]
