@@ -14,7 +14,9 @@
             <button type="submit" @click="attemptLogin">Login</button>
             <button type = "submit" formaction = "register">Register</button>
           </div>
+          
         </form>
+        <br><br>
     </div>
   </template>
 
@@ -22,7 +24,6 @@
   
     //Write a function that validates login, and forwards to corresponding page. 
     function attemptLogin() {
-      console.log("asdf");
       //Grab from database
       //if user is real
         //forward to thing based on user info.
