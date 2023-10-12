@@ -15,8 +15,8 @@
           <label for="password">Password:</label>
           <input type="password" id="password"/>
         </div>
-          <button type="submit">Login</button><br><br>
-          <a href="register"><button>Register</button></a>
+        <button type="submit">Login</button>
+        <button type = "submit" formaction = "register">Register</button>
       </form>
     </div>
   </template>

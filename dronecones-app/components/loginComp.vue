@@ -10,9 +10,11 @@
             <label for="password">Password:</label>
             <input type="password" id="password" />
           </div>
-          <button type="submit" @click="attemptLogin">Login</button><br><br>
+          <div class = "spacer">
+            <button type="submit" @click="attemptLogin">Login</button>
+            <button type = "submit" formaction = "register">Register</button>
+          </div>
         </form>
-      <a href="register"><button>Register</button></a>
     </div>
   </template>
 

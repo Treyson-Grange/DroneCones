@@ -34,7 +34,6 @@ label {
   font-weight: bold;
   margin: 16px 0px 8px 0px;
 }
-
 input {
   border: none;
   width: 418px;
@@ -47,6 +46,10 @@ input {
   padding: 0px 16px 0px 16px
 }
 
+.spacer {
+  display: flex;
+  justify-content: space-between;
+}
 button {
   width: 200px;
   height: 48px;
