@@ -37,7 +37,7 @@ const formData = {
 const submitForm = () => {
     registerUser(formData.email.toString(), formData.password.toString());
     //This 1 needs to be incremented based on return
-    addUser(2, 2, formData.username.toString(), "test" , "last", formData.email.toString());
+    addUser(1, 2, formData.username.toString(), "test" , "last", formData.email.toString());
     console.log("AHFKLJLKFJKSDF:");
 
 };
