@@ -1,5 +1,6 @@
 <template>
-    <div class="login">
+    <div class = "login-page">
+      <div class="login">
         <h2>Login</h2>
         <form>
           <div class="form-group">
@@ -18,8 +19,8 @@
               Login
             </button>
           </div>
-          
         </form>
+      </div>
     </div>
   </template>
 
