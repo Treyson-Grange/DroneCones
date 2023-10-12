@@ -97,12 +97,17 @@
       <div class="form-group">
         <label for="toggle">Drone Owner?:</label>
         <div class="toggle-button">
-        <input type="checkbox" id="toggle" v-model="formData.accountType" class="hidden-input" />
-        <label for="toggle" class="toggle"></label>
+          <input type="checkbox" id="toggle" v-model="formData.accountType" class="hidden-input" />
+          <label for="toggle" class="toggle"></label>
+        </div>
       </div>
-      <br><br>
-</div>
-      <button type="submit">register</button><br><br>
+      <div class = "end">
+        <button 
+        style = "background-color: var(--accent-color); color: var(--font-accent);"
+        type="submit">
+          Register
+      </button>
+      </div>
     </form>
   </div>
 </template>
