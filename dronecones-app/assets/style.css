@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 :root {
   --primary-color: rgba(214, 98, 181, 1);
   --secondary-color: rgba(67, 84, 172, 1);
   --accent-color: rgba(113, 251, 253, 1);
+  --font-primary: #000;
+  --font-secondary: #fff;
+  --font-accent: #000;
 }
 
 
 body {
-  font-family: sans-serif;
+  font-family: Orbitron;
   display: flex;
   justify-content: center;
   background-color: #D662B5;
@@ -16,13 +20,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 500px;
-  height: 750px;
   display: flex;
   border-radius: 16px;
   background: #4354AC;
-  color: #fff;
+  color: var(--font-secondary);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -41,7 +43,8 @@ input {
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   background: #D662B5;
-  color: #fff;
+  color: var(--font-primary);
+  font-family: Orbitron;
   font-size: 16px;
   padding: 0px 16px 0px 16px
 }
@@ -53,12 +56,13 @@ input {
 button {
   width: 200px;
   height: 48px;
-  margin-top: 16px;
+  margin: 16px 0px 16px 0px;
   border: none;
   border-radius: 32px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #D662B5;
-  color: #fff;
+  color: var(--font-secondary);
+  font-family: Orbitron;
   font-size: 16px;
 }
 /* HTML remains the same as in the previous answer */

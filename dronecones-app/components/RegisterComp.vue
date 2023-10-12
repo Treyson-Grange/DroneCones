@@ -100,9 +100,8 @@
         <input type="checkbox" id="toggle" v-model="formData.accountType" class="hidden-input" />
         <label for="toggle" class="toggle"></label>
       </div>
-      <br><br>
 </div>
-      <button type="submit">register</button><br><br>
+      <button type="submit">Register</button>
     </form>
   </div>
 </template>
