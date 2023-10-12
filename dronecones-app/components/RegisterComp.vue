@@ -1,62 +1,62 @@
 <script setup>
-import { addUser } from '../database/userDatabase.ts';
-import { supabase } from '../components/lib/supabaseClient'
-import { db } from '../database/db'
+  import { addUser } from '../database/userDatabase.ts';
+  import { supabase } from '../components/lib/supabaseClient'
+  import { db } from '../database/db'
 
 
-async function signUpExample() {
-    const { data, error } = await supabase.auth.signUp({
-        email: 'matt.rau@usu.edu',
-        password: 'password',
-        options: { 
-            data: {
-                usertype: 1, 
-                username: 'username', 
-                firstname: 'Matt', 
-                lastname: 'Rau', 
-                email: 'matt.rau@usu.edu',
-            }
+  async function signUpExample() {
+      const { data, error } = await supabase.auth.signUp({
+          email: 'matt.rau@usu.edu',
+          password: 'password',
+          options: { 
+              data: {
+                  usertype: 1, 
+                  username: 'username', 
+                  firstname: 'Matt', 
+                  lastname: 'Rau', 
+                  email: 'matt.rau@usu.edu',
+              }
+          }
+      })
+  }; 
+
+
+  async function registerUser(email, password) {
+    console.log("got herer lmao")
+        try {
+          const { user, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+          });
+          if (error) {
+            console.error(error.message);
+          } else {
+            console.log("User registered:", user);
+          }
+        } catch (error) {
+          console.error("Error registering user:", error);
         }
-    })
-}; 
+      };
 
-
-async function registerUser(email, password) {
-  console.log("got herer lmao")
-      try {
-        const { user, error } = await supabase.auth.signUp({
-          email: email,
-          password: password,
-        });
-        if (error) {
-          console.error(error.message);
-        } else {
-          console.log("User registered:", user);
-        }
-      } catch (error) {
-        console.error("Error registering user:", error);
-      }
-    };
-
-const formData = {
-  username: '',
-  email: '',
-  password: '',
-  errors: {
+  const formData = {
     username: '',
     email: '',
     password: '',
-  },
-};
+    errors: {
+      username: '',
+      email: '',
+      password: '',
+    },
+  };
 
 
-const submitForm = () => {
-    registerUser(formData.email.toString(), formData.password.toString());
-    //This 1 needs to be incremented based on return
-    addUser(1, 2, formData.username.toString(), "test" , "last", formData.email.toString());
-    console.log("AHFKLJLKFJKSDF:");
+  const submitForm = () => {
+      registerUser(formData.email.toString(), formData.password.toString());
+      //This 1 needs to be incremented based on return
+      addUser(1, 2, formData.username.toString(), "test" , "last", formData.email.toString());
+      console.log("AHFKLJLKFJKSDF:");
 
-};
+  };
 </script>
 
 <script>
@@ -65,7 +65,7 @@ const submitForm = () => {
 
 <template>
   <div class="login">
-    <h2>Login</h2>
+    <h2>Register</h2>
     <form v-on:submit="submitForm">
       <div class="form-group">
         <label for="username">Username:</label>
