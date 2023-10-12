@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 500px;
-  height: 500px;
+  height: 750px;
   display: flex;
   border-radius: 16px;
   background: #4354AC;
@@ -60,4 +60,50 @@ button {
   background-color: #D662B5;
   color: #fff;
   font-size: 16px;
+}
+/* HTML remains the same as in the previous answer */
+
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 49px;
+  padding-bottom: 5px;
+}
+
+.hidden-input {
+  display: none;
+  
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+.hidden-input:checked + .toggle {
+  background-color: #4CAF50; /* Grecoloren  when toggled on */
+}
+
+.hidden-input:checked + .toggle::before {
+  transform: translateX(30px); /* Moves the knob to the right when toggled on */
 }

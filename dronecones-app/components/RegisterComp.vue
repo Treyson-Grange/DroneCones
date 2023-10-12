@@ -21,27 +21,29 @@
   }; 
 
 
-  async function registerUser(email, password) {
-    console.log("got herer lmao")
-        try {
-          const { user, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-          });
-          if (error) {
-            console.error(error.message);
-          } else {
-            console.log("User registered:", user);
+  async function registerUser(userEmail, userPassword, accountType, userName, firstName, lastName) {
+    const { data, error } = await supabase.auth.signUp({
+          email: userEmail,
+          password: userPassword,
+          options: { 
+              data: {
+                  usertype: accountType, 
+                  username: userName, 
+                  firstname: firstName, 
+                  lastname: lastName, 
+                  email: userEmail,
+              }
           }
-        } catch (error) {
-          console.error("Error registering user:", error);
-        }
+      })
       };
 
   const formData = {
     username: '',
     email: '',
     password: '',
+    last: '',
+    first: '',
+    accountType: '',
     errors: {
       username: '',
       email: '',
@@ -51,10 +53,8 @@
 
 
   const submitForm = () => {
-      registerUser(formData.email.toString(), formData.password.toString());
-      //This 1 needs to be incremented based on return
-      addUser(1, 2, formData.username.toString(), "test" , "last", formData.email.toString());
-      console.log("AHFKLJLKFJKSDF:");
+    const numberValue = Number(formData.accountType) + 1;
+    registerUser(formData.email.toString(), formData.password.toString(), numberValue, formData.username.toString(), formData.first.toString(), formData.last.toString());
 
   };
 </script>
@@ -64,12 +64,24 @@
 </script>
 
 <template>
+  
   <div class="login">
     <h2>Register</h2>
     <form v-on:submit="submitForm">
+      
       <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" id="username" v-model="formData.username" />
+        <span class="error">{{ formData.errors.username }}</span>
+      </div>
+      <div class="form-group">
+        <label for="first">First Name:</label>
+        <input type="text" id="first" v-model="formData.first" />
+        <span class="error">{{ formData.errors.username }}</span>
+      </div>
+      <div class="form-group">
+        <label for="last">Last Name:</label>
+        <input type="text" id="last" v-model="formData.last" />
         <span class="error">{{ formData.errors.username }}</span>
       </div>
       <div class="form-group">
@@ -82,6 +94,14 @@
         <input type="password" id="password" v-model="formData.password" />
         <span class="error">{{ formData.errors.password }}</span>
       </div>
+      <div class="form-group">
+        <label for="toggle">Drone Owner?:</label>
+        <div class="toggle-button">
+        <input type="checkbox" id="toggle" v-model="formData.accountType" class="hidden-input" />
+        <label for="toggle" class="toggle"></label>
+      </div>
+      <br><br>
+</div>
       <button type="submit">register</button><br><br>
     </form>
   </div>
