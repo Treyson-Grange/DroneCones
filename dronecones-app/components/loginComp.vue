@@ -11,8 +11,12 @@
             <input type="password" id="password" />
           </div>
           <div class = "spacer">
-            <button type="submit" @click="attemptLogin">Login</button>
             <button type = "submit" formaction = "register">Register</button>
+            <button 
+            style="background-color: var(--accent-color); color: var(--font-accent)"
+            type="submit" @click="attemptLogin">
+              Login
+            </button>
           </div>
         </form>
     </div>
