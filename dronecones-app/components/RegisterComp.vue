@@ -4,6 +4,22 @@ import { supabase } from '../components/lib/supabaseClient'
 import { db } from '../database/db'
 
 
+async function signUpExample() {
+    const { data, error } = await supabase.auth.signUp({
+        email: 'matt.rau@usu.edu',
+        password: 'password',
+        options: { 
+            data: {
+                usertype: 1, 
+                username: 'username', 
+                firstname: 'Matt', 
+                lastname: 'Rau', 
+                email: 'matt.rau@usu.edu',
+            }
+        }
+    })
+}; 
+
 
 async function registerUser(email, password) {
   console.log("got herer lmao")
