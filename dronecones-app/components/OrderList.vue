@@ -26,21 +26,21 @@ onMounted(() => {
     getFlavors();
     getToppings();
     getCones();
-    // let flavors;
-    // stockDb;
-    // db;
-    // stockDb.getIcecreamFlavors().then( (value) => flavors = value)
-    // flavors = stockDb.getIcecreamFlavors().
-    // return flavors
+    
     
 })
 
+const coneChoice = ref(null);
+const flavor1 = ref(null);
+const flavor2 = ref(null);
+const flavor3 = ref(null);
+const topping = ref(null);
+const scoops = ref(0);
+const price = ref(0);
+// Figure out num scoops
+const numScoopsEach = ref([])
 
-// defineProps<{
-//     icecreamItems: IcecreamFlavor[];
-//     cones: Cone[];
-//     toppings: Topping[];
-// }>();
+
 
 </script>
 
@@ -51,12 +51,14 @@ onMounted(() => {
         <h2>Ice Cream Flavors</h2>
         <div>
             
+            <!-- <p>{{ Flavors.length }}</p> -->
+            
             <div v-for="item in Flavors">
-                <p>{{ item.name }} ${{ item.pricePerScoop }}</p>
-                <!-- <p>{{ item }} ${{ item }}</p>
-                <p>{{  }}</p>
-                <button @click="item.buyingAmount++"></button>
-                <button @click="item.buyingAmount--"></button> -->
+                <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+
+                <button @click="">-</button>
+                <p></p>
+                <button @click="">+</button>
             
             </div>
         </div>
@@ -84,6 +86,7 @@ onMounted(() => {
 
             </div>
         </div>
+        <button>Submit Order</button>
 
     </div>
 </template>
