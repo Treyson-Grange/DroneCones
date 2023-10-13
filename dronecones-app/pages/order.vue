@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import data from '../content/home.json'
+    import data from '../content/home.json'
 </script>
+
+
 
 <template>
     <SiteHeader />
+    <RecentOrderHistory />
     <OrderList
         :icecream-items="data.icecreamFlavors"
         :cones="data.Cones"
@@ -11,3 +14,4 @@ import data from '../content/home.json'
         
     />
 </template>
+
