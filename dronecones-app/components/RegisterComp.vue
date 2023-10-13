@@ -1,8 +1,5 @@
 <script setup>
-  import { addUser } from '../database/userDatabase.ts';
   import { supabase } from '../components/lib/supabaseClient'
-  import { db } from '../database/db'
-
 
   async function signUpExample() {
       const { data, error } = await supabase.auth.signUp({
