@@ -4,6 +4,5 @@
 </style>
 
 <template>
-    <SiteHeader />
     <RegisterComp />
 </template>
