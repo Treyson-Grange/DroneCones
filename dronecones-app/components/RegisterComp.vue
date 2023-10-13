@@ -101,7 +101,8 @@
           <label for="toggle" class="toggle"></label>
         </div>
       </div>
-      <div class = "end">
+      <div class = "spacer">
+        <button type = "submit" formaction = "/">Cancel</button>
         <button 
         style = "background-color: var(--accent-color); color: var(--font-accent);"
         type="submit">
