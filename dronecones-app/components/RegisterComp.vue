@@ -56,10 +56,6 @@
   };
 </script>
 
-<script>
-
-</script>
-
 <template>
   <div class = "page">
     <div class="login">
