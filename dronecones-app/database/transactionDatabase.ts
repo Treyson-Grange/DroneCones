@@ -29,32 +29,60 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
     return transData.id
 }
 
-export async function getTransactions() {
-
+export async function getTransactions(): Promise<Transaction[] | null> {
+    const { data, error } = await db.transactions()
+        .select()
+    console.log(data)
+    return data
 }
 
-export async function getUserOrderHistory() {
+export async function getUserOrderHistory(userID: string) {
+    const { data, error } = await db.transactions()
+        .select(`
+            id,
+            user_id,
+            sales_price,
+            tax,
+            final_price,
+            completed,
+            item_count,
+            order_time,
+            orderItem (
+                id,
+                cone,
+                flavor1,
+                flavor2,
+                flavor3,
+                topping,
+                scoops
+            )
+        `)
+        .eq('user_id',userID)
+
+    console.log(data)
+    console.log(error)
 
 }
 
 async function addSoldItem(transactionID: number, item: OrderItem) {
     // Adds one row to soldItems database with given information
-    // item['transactionID'] = transactionID
+    item['transaction_id'] = transactionID
     
     const { data, error } = await db.orderItem()
         .insert(item)
 }
 
-async function getSoldItems() {
+// async function getSoldItems() {
 
-}
+// }
 
 async function addDroneDelivery(transactionID: number, droneID: number) {
     const { data, error } = await db.droneDelivery()
         .insert({
-            transactionID: transactionID,
-            droneID: droneID
+            transaction_id: transactionID,
+            drone_id: droneID
         })
+
 }
 
 
