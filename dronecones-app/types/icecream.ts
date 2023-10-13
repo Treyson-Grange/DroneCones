@@ -4,6 +4,7 @@ export type Cone = {
     price: number;
     amount: number;
     available: boolean;
+    buyingAmount: number;
 }
 
 export type IcecreamFlavor = {
@@ -13,6 +14,7 @@ export type IcecreamFlavor = {
     numberOfScoops: number;
     amount: number;
     available: boolean;
+    buyingAmount: number;
 }
 
 export type Topping = {
@@ -21,4 +23,5 @@ export type Topping = {
     price: number;
     amount: number;
     available: boolean;
+    buyingAmount: number;
 }

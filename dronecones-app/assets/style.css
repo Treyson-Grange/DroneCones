@@ -1,29 +1,142 @@
-.login {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+:root {
+  --primary-color: rgba(214, 98, 181, 1);
+  --secondary-color: rgba(67, 84, 172, 1);
+  --accent-color: rgba(113, 251, 253, 1);
+  --font-primary: #000;
+  --font-secondary: #fff;
+  --font-accent: #000;
+  --the-font: Orbitron;
 }
+
+
+body {
+  font-family: var(--the-font);
+  display: flex;
+  justify-content: center;
+  background-color: #D662B5;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  border-radius: 16px;
+  padding-bottom: 25px;
+  background: var(--secondary-color);
+  color: var(--font-secondary);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Input form */
 .form-group {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 label {
   font-weight: bold;
+  margin: 16px 0px 8px 0px;
 }
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+/* Text boxes */
+input {
   border: none;
-  border-radius: 3px;
+  width: 418px;
+  height: 48px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  background: var(--primary-color);
+  color: var(--font-primary);
+  font-family: var(--the-font);
+  font-size: 16px;
+  padding: 0px 16px 0px 16px
+}
+input:focus {
+  box-shadow: none;
+  transform: box-shadow 0.4s;
+}
+
+
+
+/* Spacing and alignment */
+.spacer {
+  display: flex;
+  justify-content: space-between;
+}
+.end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+/* Button */
+button {
+  width: 200px;
+  height: 48px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: var(--primary-color);
+  color: var(--font-primary);
+  font-family: var(--the-font);
+  font-size: 16px;
+}
+button:focus {
+  box-shadow: none;
+  transition: box-shadow 0.4s;
+}
+
+
+
+/* Toggle */
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 49px;
+  padding-bottom: 5px;
+}
+.hidden-input {
+  display: none;
+  
+}
+.toggle {
+  position: absolute;
   cursor: pointer;
+  background-color: #ccc;
+  border-radius: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+.toggle::before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+.hidden-input:checked + .toggle {
+  background-color: #4CAF50; /* Grecoloren  when toggled on */
+}
+.hidden-input:checked + .toggle::before {
+  transform: translateX(30px); /* Moves the knob to the right when toggled on */
 }

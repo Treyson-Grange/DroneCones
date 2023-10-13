@@ -501,10 +501,6 @@ getSoldItems(TransactionID)
 addDroneDelivery(TransactionID: Int, DroneID: Int)
 *   adds a new row in DroneDelivery database with given information
 
-getDroneDeliveries(TransactionID: Int = None, DroneID: Int = None)
-*   returns drone deliveries from database
-*   if TransactionId is specified, only return droneDeliveries with that TransactionID
-*   if DroneID is specified, only return droneDeliveries with that DroneID
 
 ### Stock
 getCones()
@@ -552,6 +548,11 @@ getDrones(UserID = None)
 getDeliveryDrones(Count: Int)
 *   returns a list of drone objects to fulfill a delivery of 'Count' number of cones
 *   drones will be selected based on size to optimize the number of drones on a delivery
+
+getDroneDeliveries(TransactionID: Int = None, DroneID: Int = None)
+*   returns drone deliveries from database
+*   if TransactionId is specified, only return droneDeliveries with that TransactionID
+*   if DroneID is specified, only return droneDeliveries with that DroneID
 
 
 ### Support Forms

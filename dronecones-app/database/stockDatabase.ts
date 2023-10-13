@@ -112,7 +112,7 @@ export async function getIcecreamFlavor(id: number): Promise<IcecreamFlavor | nu
 export async function addNewIcecreamFlavor(name: string, amount: number, pricePerScoop: number, available: boolean = true) {
     // add a new row into icecream flavors database with given information
     const { data, error } = await db.icecreamFlavors()
-        .insert({name: name, amount: amount, pricePerScoop: pricePerScoop, available: available})
+        .insert({name: name, amount: amount, price_per_scoop: pricePerScoop, available: available})
         .select()
     // TODO maybe return created cone or id of cone
 }
@@ -139,7 +139,7 @@ export async function toggleIcecreamFlavorAvailability(id: number) {
 export async function updateIcecreamFlavorPrice(id: number, pricePerScoop: number) {
     // update the price per scoop of ice cream flavor with given id
     const { error } = await db.icecreamFlavors()
-        .update({ pricePerScoop: pricePerScoop })
+        .update({ price_per_scoop: pricePerScoop })
         .eq('id', id)
 }
 

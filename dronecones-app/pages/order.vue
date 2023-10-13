@@ -7,7 +7,11 @@
 <template>
     <SiteHeader />
     <RecentOrderHistory />
-    <MenuList :icecream-items="data.icecreamFlavors"
-              :cones="data.Cones"
-              :toppings="data.Toppings" />
+    <OrderList
+        :icecream-items="data.icecreamFlavors"
+        :cones="data.Cones"
+        :toppings="data.Toppings"
+        
+    />
 </template>
+
