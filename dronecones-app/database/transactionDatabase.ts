@@ -2,6 +2,18 @@ import { supabase } from '../components/lib/supabaseClient'
 import { db } from './db'
 import type { Transaction, OrderItem, DroneDelivery } from './databaseTypes'
 
+type Order = {
+    completed: any;
+    final_price: any;
+    id: any;
+    item_count: any;
+    order_time: any;
+    sales_price: any;
+    tax: any;
+    user_id: any;
+    orderItem: OrderItem[];
+}
+
 
 export async function addTransaction(transaction: Transaction, droneIDs: number[], items: OrderItem[]): Promise<number> {
     /*
@@ -36,7 +48,7 @@ export async function getTransactions(): Promise<Transaction[] | null> {
     return data
 }
 
-export async function getUserOrderHistory(userID: string) {
+export async function getUserOrderHistory(userID: string, limit: number = 3) {    
     const { data, error } = await db.transactions()
         .select(`
             id,
@@ -58,9 +70,10 @@ export async function getUserOrderHistory(userID: string) {
             )
         `)
         .eq('user_id',userID)
+        .order('order_time')
+        .limit(limit)
 
-    console.log(data)
-    console.log(error)
+    return data
 
 }
 
