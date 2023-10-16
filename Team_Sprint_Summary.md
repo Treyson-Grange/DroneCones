@@ -1,5 +1,18 @@
 # Flapjack Heros Sprint Summary #
 
+## Sprint 3: Development
+
+### Sprint 1 of Development Phase ###
+For the first two weeks spent on Development, we had an initial meeting to discuss what framework we wanted to use (we decided on using Vue, Nuxt, Supabase, and Typescipt) on October 4th, during that meeting we also had an introduction to the framework we'd be using to get everyone on the same page, and another meeting on October 7th to split up work.
+
+For this Development sprint, each of the team members worked on the following:
+* Emily and Samuel worked on developing the ordering page and functionality
+* Matt worked on setting up the database and creating functions for using accessing, adding, and manipulating data in the database
+* Jordan, Treyson, and Nathan worked on the Login page and adding users to the database.
+
+During this sprint we also met up on each of the work days during class for the week of October 9th through 13th to work on the project together as a group.
+
+
 ## Sprint 2: Design ##
 
 ### High-Level Design ###
