@@ -47,7 +47,6 @@ export async function updateUser(userID: string, userUpdate: UserUpdate) {
 export async function toggleUserBan(userID: string) {
     // toggles the banned column of the user with UserID
     const { error } = await supabase.rpc('toggle_user_ban', {quote_id: userID})
-    console.log(error)
 }
 
 export async function getUsers(userType?: number): Promise<User[] | null> {
