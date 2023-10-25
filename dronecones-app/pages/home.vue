@@ -8,5 +8,4 @@
 
 <template>
     <SiteHeader />
-    <TestComp />
 </template>
