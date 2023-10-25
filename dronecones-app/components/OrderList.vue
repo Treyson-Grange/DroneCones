@@ -37,9 +37,24 @@ const flavor3 = ref(null);
 const topping = ref(null);
 const scoops = ref(0);
 const price = ref(0);
-// Figure out num scoops
-const numScoopsEach = ref([])
 
+
+const amountScoops = [1,2,3];
+const selectedScoops = ref({});
+
+async function addOrder() {
+    const { error } = await supabase
+        .from('orderItem')
+        .insert({ 
+            cone: coneChoice, 
+            flavor1: flavor1, 
+            flavor2: flavor2,
+            flavor3: flavor3, 
+            topping: topping,
+            scoops: scoops,
+            price: price 
+        })
+}
 
 
 </script>
@@ -53,12 +68,30 @@ const numScoopsEach = ref([])
             
             <!-- <p>{{ Flavors.length }}</p> -->
             
-            <div v-for="item in Flavors">
+            <div v-for="(item, index) in Flavors" :key="index">
                 <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                <div>
+                    <label v-for="scoop in amountScoops" :key="scoop">
+                        <input 
+                            type="checkbox" 
+                            :id="`${item}-${scoop}`" 
+                            :disabled="isDisabled(item)" 
+                            @change="toggleScoop(item, scoop)"
+                        >
+                        {{ scoop }}
+                    </label>
+                </div>
+                <!-- <input type="checkbox" id="checkbox1" v-model="checked" >
+                <label for="checkbox1"> 1 scoop </label>
 
-                <button @click="">-</button>
+                <input type="checkbox" id="checkbox2" v-model="checked" >
+                <label for="checkbox2"> 2 scoop </label>
+
+                <input type="checkbox" id="checkbox3" v-model="checked" >
+                <label for="checkbox3"> 3 scoop </label> -->
+                <!-- <button @click="">1</button>
                 <p></p>
-                <button @click="">+</button>
+                <button @click="">+</button> -->
             
             </div>
         </div>
