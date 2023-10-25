@@ -1,17 +1,33 @@
 <script setup>
   import { supabase } from '../components/lib/supabaseClient';
+  import { getUser } from '~/database/userDatabase';
 
   const formData = {
     email: '',
     password: ''
   };
-  function redirectToProfilePage(user) {
-    //Get user from db
-    //set is as a varialbe. I think you can use vuex
-    //redirect to profile
-    window.location.href = '/order';
+  async function redirectToProfilePage(datas) {
+    try {
+      const data = await getUser(datas.user.id); 
+      if (data !== null) {
+        console.log(data.usertype);
+        if(data.usertype == 1) {
+          window.location.href = '/order';
+        }
+        else if(data.usertype == 2) {
+          window.location.href = '/droneHome';
+        }
+        else {
+          window.location.href = '/managerHome';
+        }
+        } else {
+          console.log("User not found");
+        }
+    } catch (error) {
+      console.error("Error:", error);
+    }   
   }
-    //Write a function that validates login, and forwards to corresponding page. 
+ 
   async function attemptLogin() {
     
     console.log(formData.email);
@@ -26,40 +42,12 @@
       console.error('Login error:', error.message);
     } else {
       console.log('Logged in as', data); 
-      redirectToProfilePage();         // Redirect or perform actions after a successful login
+      localStorage.setItem('userID', data.user.id);
+      console.log(data.user.id);
+      redirectToProfilePage(data);         // Redirect or perform actions after a successful login
     }
   }
 </script>
-<!-- <script setup>
-import { supabase } from '../components/lib/supabaseClient';
-
-const formData = {
-  email: '',
-  password: '',
-};
-
-async function attemptLogin() {
-  // Your login logic here
-
-  if (/* login is successful */) {
-    redirectToProfilePage(/* user data */);
-  } else {
-    console.error('Login failed.');
-  }
-}
-
-function redirectToProfilePage(user) {
-  // Implement your logic to handle a successful login and user data.
-  // For example, you can store user data in Vuex or a local storage.
-
-  // Once user data is handled, you can change the route to the "Profile" page if needed.
-}
-
-function navigateToRegister() {
-  // Implement your logic to navigate to the "Register" page.
-  // You can use JavaScript to set the window.location.href to the "Register" page or handle it as needed.
-}
-</script> -->
 <template>
   <div class="page">
     <div class="login">
