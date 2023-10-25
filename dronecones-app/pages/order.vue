@@ -5,7 +5,7 @@
 
 
 <template>
-    <SiteHeader />
+    <Navbar />
     <RecentOrderHistory />
     <OrderList
         :icecream-items="data.icecreamFlavors"

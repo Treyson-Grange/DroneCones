@@ -11,6 +11,10 @@
     //redirect to profile
     window.location.href = '/order';
   }
+
+  function navigateToRegister(){
+    window.location.href = '/register'
+  }
     //Write a function that validates login, and forwards to corresponding page. 
   async function attemptLogin() {
     
@@ -47,18 +51,6 @@ async function attemptLogin() {
     console.error('Login failed.');
   }
 }
-
-function redirectToProfilePage(user) {
-  // Implement your logic to handle a successful login and user data.
-  // For example, you can store user data in Vuex or a local storage.
-
-  // Once user data is handled, you can change the route to the "Profile" page if needed.
-}
-
-function navigateToRegister() {
-  // Implement your logic to navigate to the "Register" page.
-  // You can use JavaScript to set the window.location.href to the "Register" page or handle it as needed.
-}
 </script> -->
 <template>
   <div class="page">
@@ -77,7 +69,6 @@ function navigateToRegister() {
           <button type="submit" @click="navigateToRegister">Register</button>
           <button
             style="background-color: var(--accent-color); color: var(--font-accent)"
-            type="submit"
           >
             Login
           </button>
