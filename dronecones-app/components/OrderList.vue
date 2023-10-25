@@ -71,7 +71,7 @@ async function addOrder() {
             <div v-for="(item, index) in Flavors" :key="index">
                 <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
                 <div>
-                    <label v-for="scoop in amountScoops" :key="scoop">
+                    <!-- <label v-for="scoop in amountScoops" :key="scoop">
                         <input 
                             type="checkbox" 
                             :id="`${item}-${scoop}`" 
@@ -79,7 +79,7 @@ async function addOrder() {
                             @change="toggleScoop(item, scoop)"
                         >
                         {{ scoop }}
-                    </label>
+                    </label> -->
                 </div>
                 <!-- <input type="checkbox" id="checkbox1" v-model="checked" >
                 <label for="checkbox1"> 1 scoop </label>
