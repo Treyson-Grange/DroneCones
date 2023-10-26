@@ -67,8 +67,9 @@
           <input type="password" id="password" v-model="formData.password" />
         </div>
         <div class="spacer">
-          <button type="submit" @click="navigateToRegister">Register</button>
+          <button @click="navigateToRegister">Register</button>
           <button
+            type = "submit"
             style="background-color: var(--accent-color); color: var(--font-accent)"
           >
             Login

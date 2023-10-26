@@ -8,6 +8,6 @@
 
 <template>
     <Navbar />
-    <TestComp />
+    <Test />
     <h1>DroneHome</h1>
 </template>
