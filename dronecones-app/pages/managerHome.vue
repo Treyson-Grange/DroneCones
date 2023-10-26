@@ -6,5 +6,6 @@
 
 <template>
     <Navbar />
-    <Drones />
+    <TestComp />
+    <h1>managerHome</h1>
 </template>

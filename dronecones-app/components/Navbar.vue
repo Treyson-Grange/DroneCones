@@ -7,7 +7,7 @@
         <div class = "links">
             <a href="/">Home</a>
             <a href="order">Order</a>
-            <a href="drones">Drones</a>
+            <a href="droneHome">Drones</a>
             <a>Signout</a>
         </div>
     </nav>

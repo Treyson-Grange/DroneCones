@@ -12,5 +12,6 @@ export const db = {
     droneDelivery: () => supabase.from('droneDelivery'),
     drones: () => supabase.from('drones'),
     droneSize: () => supabase.from('droneSizes'),
-    supportForms: () => supabase.from('supportForms')
+    supportForms: () => supabase.from('supportForms'),
+    itemsInProgress: () => supabase.from('itemsInProgress')
 };

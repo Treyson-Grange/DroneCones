@@ -1,21 +1,38 @@
 <script setup>
   import { supabase } from '../components/lib/supabaseClient';
+  import { getUser } from '~/database/userDatabase';
 
   const formData = {
     email: '',
     password: ''
   };
-  function redirectToProfilePage(user) {
-    //Get user from db
-    //set is as a varialbe. I think you can use vuex
-    //redirect to profile
-    window.location.href = '/order';
+  async function redirectToProfilePage(datas) {
+    try {
+      const data = await getUser(datas.user.id); 
+      if (data !== null) {
+        console.log(data.usertype);
+        if(data.usertype == 1) {
+          window.location.href = '/order';
+        }
+        else if(data.usertype == 2) {
+          window.location.href = '/droneHome';
+        }
+        else {
+          window.location.href = '/managerHome';
+        }
+        } else {
+          console.log("User not found");
+        }
+    } catch (error) {
+      console.error("Error:", error);
+    }   
   }
 
   function navigateToRegister(){
     window.location.href = '/register'
   }
     //Write a function that validates login, and forwards to corresponding page. 
+ 
   async function attemptLogin() {
     
     console.log(formData.email);
@@ -30,28 +47,12 @@
       console.error('Login error:', error.message);
     } else {
       console.log('Logged in as', data); 
-      redirectToProfilePage();         // Redirect or perform actions after a successful login
+      localStorage.setItem('userID', data.user.id);
+      console.log(data.user.id);
+      redirectToProfilePage(data);         // Redirect or perform actions after a successful login
     }
   }
 </script>
-<!-- <script setup>
-import { supabase } from '../components/lib/supabaseClient';
-
-const formData = {
-  email: '',
-  password: '',
-};
-
-async function attemptLogin() {
-  // Your login logic here
-
-  if (/* login is successful */) {
-    redirectToProfilePage(/* user data */);
-  } else {
-    console.error('Login failed.');
-  }
-}
-</script> -->
 <template>
   <div class="page">
     <div class="login">
