@@ -1,6 +1,7 @@
 <template>
     <div class = "navbar-under"></div>
     <nav class = "navbar">
+        <button class = "menu-button">Menu</button>
         <div class = "title">
             Drone Cones
         </div>
