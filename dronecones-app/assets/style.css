@@ -78,6 +78,7 @@ input:focus {
 .spacer {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 }
 .end {
   display: flex;

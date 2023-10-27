@@ -67,13 +67,13 @@
           <input type="password" id="password" v-model="formData.password" />
         </div>
         <div class="spacer">
-          <button @click="navigateToRegister">Register</button>
           <button
             type = "submit"
             style="background-color: var(--accent-color); color: var(--font-accent)"
           >
             Login
           </button>
+          <button @click="navigateToRegister">Register</button>
         </div>
       </form>
     </div>
