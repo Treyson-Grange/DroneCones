@@ -1,15 +1,7 @@
-<script>
-    document.getElementById("menu-button").addEventListener("click", ()=> {
-        document.getElementById("menu-bar").classList.toggle("open");
-    });
-</script>
-
-
-
 <template>
     <div class = "navbar-under"></div>
     <nav class = "navbar">
-        <button class = "menu-button" id = "menu-button">Menu</button>
+        <button class = "menu-button" @click="openClose">Menu</button>
         <div class = "title">
             Drone Cones
         </div>
@@ -19,9 +11,24 @@
             <a href="/">Signout</a>
         </div>
     </nav>
-    <div class = "menu-bar" id = "menu-bar">
+    <div class = "menu-bar" :class="{'open' : isopen}">
         <a href="order">Order</a>
         <a href="droneHome">Drones</a>
         <a href="/">Signout</a>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isopen: false
+    };
+  },
+  methods: {
+    openClose() {
+      this.isopen = !this.isopen;
+    }
+  }
+};
+</script>

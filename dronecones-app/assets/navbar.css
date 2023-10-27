@@ -72,9 +72,11 @@
     top:64px;
     background-color: var(--primary-color);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 .open{
     left: 0px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 .menu-bar a{
     width: 268px;
