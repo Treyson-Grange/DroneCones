@@ -55,6 +55,7 @@
 </script>
 <template>
   <div class="page">
+    <h1>Drone Cones</h1>
     <div class="login">
       <h2>Login</h2>
       <form @submit.prevent="attemptLogin">

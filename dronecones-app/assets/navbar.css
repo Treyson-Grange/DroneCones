@@ -87,7 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--font-accent);
+    color: var(--font-primary);
 }
 .menu-bar a:hover{
     background-color: var(--secondary-color);
