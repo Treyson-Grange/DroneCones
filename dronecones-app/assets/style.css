@@ -41,7 +41,7 @@ h2{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: clamp(300px, 75%, 500px);
   border-radius: 16px;
   padding-bottom: 25px;
   background: var(--secondary-color);
@@ -49,11 +49,11 @@ h2{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 form{
-  width: calc(100% - 32px);
+  width: calc(100% - 50px);
 }
 /* Input form */
 .form-group {
-  width: calc(100% - 32px);
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -64,7 +64,7 @@ label {
 /* Text boxes */
 input {
   border: none;
-  width: 100%;
+  width: calc(100% - 32px);
   height: 48px;
   border-radius: 16px;
   padding: 0px 16px 0px 16px;
