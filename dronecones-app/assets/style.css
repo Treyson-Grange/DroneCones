@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 :root {
-  /* --primary-color: rgba(214, 98, 181, 1);
-  --secondary-color: rgba(67, 84, 172, 1);
-  --accent-color: rgba(113, 251, 253, 1); */
   --primary-color: #560BAD;
   --secondary-color: #7209B7;
   --accent-color: #4CC9F0;
