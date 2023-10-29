@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
 :root {
   --primary-color: #560BAD;
   --secondary-color: #7209B7;
@@ -12,22 +13,25 @@
   --title-font-size: 32px;
 }
 
-
+/* Global styles */
 body {
   font-family: var(--the-font);
   display: flex;
   justify-content: center;
   background-color: var(--primary-color);
 }
-h1{
+
+h1 {
   font-size: var(--title-font-size);
   font-weight: bolder;
   color: var(--accent-color);
 }
-h2{
+
+h2 {
   font-size: var(--header-font-size);
 }
 
+/* Common styles */
 .page {
   width: 100vw;
   height: 100vh;
@@ -37,7 +41,8 @@ h2{
   justify-content: center;
 }
 
-.login{
+/* Login form styles */
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,40 +51,42 @@ h2{
   padding-bottom: 25px;
   background: var(--secondary-color);
   color: var(--font-secondary);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
-form{
+
+form {
   width: calc(100% - 50px);
 }
-/* Input form */
+
+/* Form input styles */
 .form-group {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+
 label {
   font-weight: bold;
   margin: 16px 0px 8px 0px;
 }
-/* Text boxes */
+
 input {
   border: none;
   width: calc(100% - 32px);
   height: 48px;
   border-radius: 16px;
   padding: 0px 16px 0px 16px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16) inset, 0 3px 6px rgba(0,0,0,0.23) inset;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) inset, 0 3px 6px rgba(0, 0, 0, 0.23) inset;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   background: var(--primary-color);
   color: var(--font-primary);
   font-family: var(--the-font);
   font-size: var(--body-font-size);
 }
+
 input:focus {
   box-shadow: none;
 }
-
-
 
 /* Spacing and alignment */
 .spacer {
@@ -87,38 +94,37 @@ input:focus {
   justify-content: space-between;
   flex-direction: row-reverse;
 }
+
 .end {
   display: flex;
   justify-content: flex-end;
 }
 
-
-
-/* Button */
+/* Button styles */
 button {
   width: clamp(100px, calc((2/5 * 100) * 1%), 200px);
   height: 48px;
   margin-top: 16px;
   border: none;
   border-radius: 16px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   background-color: var(--primary-color);
   color: var(--font-primary);
   font-family: var(--the-font);
   font-size: var(--body-font-size);
 }
+
 button:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
 button:focus {
   box-shadow: none;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
-
-
-/* Toggle */
+/* Toggle button styles */
 .toggle-button {
   position: relative;
   display: inline-block;
@@ -126,10 +132,11 @@ button:focus {
   height: 49px;
   padding-bottom: 5px;
 }
+
 .hidden-input {
   display: none;
-  
 }
+
 .toggle {
   position: absolute;
   cursor: pointer;
@@ -141,6 +148,7 @@ button:focus {
   bottom: 0;
   transition: background-color 0.4s;
 }
+
 .toggle::before {
   content: "";
   position: absolute;
@@ -152,14 +160,16 @@ button:focus {
   border-radius: 50%;
   transition: transform 0.4s;
 }
+
 .hidden-input:checked + .toggle {
-  background-color: #4CAF50; /* Grecoloren  when toggled on */
-}
-.hidden-input:checked + .toggle::before {
-  transform: translateX(30px); /* Moves the knob to the right when toggled on */
+  background-color: #4CAF50;
 }
 
-input[type="checkbox"]{
+.hidden-input:checked + .toggle::before {
+  transform: translateX(30px);
+}
+
+input[type="checkbox"] {
   background-color: #fff;
   margin: 0;
   font: inherit;
@@ -169,5 +179,4 @@ input[type="checkbox"]{
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
-  
 }
