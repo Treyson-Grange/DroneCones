@@ -7,7 +7,9 @@
 
 
 <template>
-    <Navbar />
+    <Navbar> 
+        <a href="/droneHome">Drones</a>
+    </Navbar>
     <Test />
-    <h1>DroneHome</h1>
+    <Drones/>
 </template>

@@ -23,7 +23,6 @@ body {
 
 h1 {
   font-size: var(--title-font-size);
-  font-weight: bolder;
   color: var(--accent-color);
 }
 
@@ -102,7 +101,7 @@ input:focus {
 
 /* Button styles */
 button {
-  width: clamp(100px, calc((2/5 * 100) * 1%), 200px);
+  width: clamp(120px, calc((2/5 * 100) * 1%), 200px);
   height: 48px;
   margin-top: 16px;
   border: none;
