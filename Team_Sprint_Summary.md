@@ -4,10 +4,14 @@ For these two weeks we continued work on functionality of our app. We met online
 
 For this sprint of development we worked on the following
 * Treyson: Finished Login functionality
-* Emily and Samuel: Continued work on ordering functionality
-* Matt: Finished database and started manager page. 
-* Jordan: Started drone owener page and styling work.
-* Nathan: Started Payment page
+* Emily and Samuel: Continued work on ordering functionality (Not done)
+* Matt: Finished database and started manager page. (Not done) 
+* Jordan: Started drone owener page and styling work. (Not done)
+* Nathan: Started Payment page (Not done)
+
+Setbacks: 
+* There were 3 people working on the login functionality, but nothing was getting done, so I set the two others to another task and tackled it myself. 
+* Everyone was really busy so nothing got done.
 
 ## Sprint 3: Development
 
