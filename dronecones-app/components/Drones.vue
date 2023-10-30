@@ -14,14 +14,10 @@
                 <div>Size: medium</div>
                 <div>Status: disabled</div>
             </div>
-            <form>
-                <label for="status">Choose a Status:</label>
-                <select id="drone-status" name="status">
-                    <option value="enabled">Enabled</option>
-                    <option value="disabled">Disabled</option>
-                    <option value="delete">Delete</option>
-                </select>
-                <input type="submit" value="Submit">
+            <form class = "choices">
+                <button>Enable</button>
+                <button>Disabled</button>
+                <button>Delete</button>
             </form>
         </div>
     </div>

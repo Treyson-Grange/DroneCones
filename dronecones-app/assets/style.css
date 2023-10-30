@@ -62,7 +62,19 @@ h2 {
 form {
   width: calc(100% - 50px);
 }
-
+.choices{
+  width: 100%-32px;
+  padding: 16px;
+  margin-top: 16px;
+  background-color: var(--primary-color);
+  color: var(--font-secondary);
+}
+.choices button{
+  background-color: var(--secondary-color);
+  color: var(--font-secondary);
+  width: var(90px, var(1/3 * 10)* 1%, 140);
+  margin-top: 0px;
+}
 /* Form input styles */
 .form-group {
   width: 100%;
