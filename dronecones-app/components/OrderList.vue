@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue'
 import { supabase } from './lib/supabaseClient'
 import * as stockDb from '../database/stockDatabase'
 import * as db from '../database/db'
+import * as droneDb from '../database/droneDatabase'
+import * as transDb from '../database/transactionDatabase'
 
 // import type {IcecreamFlavor, Cone, Topping} from "@/types"
 const Flavors = ref([]);
@@ -42,6 +44,8 @@ const price = ref(0);
 const amountScoops = [1,2,3];
 const selectedScoops = ref({});
 
+
+// Change to include id of user to keep track of who
 async function addOrder() {
     const { error } = await supabase
         .from('orderItem')
@@ -119,7 +123,7 @@ async function addOrder() {
 
             </div>
         </div>
-        <button>Submit Order</button>
+        <button @click="addOrder">Submit Order</button>
 
     </div>
 </template>
