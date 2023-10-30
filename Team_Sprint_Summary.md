@@ -1,4 +1,13 @@
 # Flapjack Heros Sprint Summary #
+## Sprint 4: Development Pt2
+For these two weeks we continued work on functionality of our app. We met online a few times for progress reports and to split up tasks. We also met for work days. 
+
+For this sprint of development we worked on the following
+* Treyson: Finished Login functionality
+* Emily and Samuel: Continued work on ordering functionality
+* Matt: Finished database and started manager page. 
+* Jordan: Started drone owener page and styling work.
+* Nathan: Started Payment page
 
 ## Sprint 3: Development
 
