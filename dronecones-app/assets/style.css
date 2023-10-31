@@ -3,6 +3,7 @@
   --primary-color: rgba(214, 98, 181, 1);
   --secondary-color: rgba(67, 84, 172, 1);
   --accent-color: rgba(113, 251, 253, 1);
+  --secondary-accent-color: rgb(64, 144, 146);
   --font-primary: #000;
   --font-secondary: #fff;
   --font-accent: #000;
@@ -107,6 +108,23 @@ button:hover {
 button:focus {
   box-shadow: none;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+button:disabled, button[disabled]{
+  background-color: var(--secondary-accent-color);
+}
+
+.order-button{
+  width: 200px;
+  height: 48px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: var(--accent-color);
+  color: var(--font-primary);
+  font-family: var(--the-font);
+  font-size: var(--body-font-size);
 }
 
 

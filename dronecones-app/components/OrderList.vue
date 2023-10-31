@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue'
 import { supabase } from './lib/supabaseClient'
 import * as stockDb from '../database/stockDatabase'
 import * as db from '../database/db'
+import * as droneDb from '../database/droneDatabase'
+import * as transDb from '../database/transactionDatabase'
 
 // import type {IcecreamFlavor, Cone, Topping} from "@/types"
 const Flavors = ref([]);
@@ -42,84 +44,73 @@ const price = ref(0);
 const amountScoops = [1,2,3];
 const selectedScoops = ref({});
 
-async function addOrder() {
-    const { error } = await supabase
-        .from('orderItem')
-        .insert({ 
-            cone: coneChoice, 
-            flavor1: flavor1, 
-            flavor2: flavor2,
-            flavor3: flavor3, 
-            topping: topping,
-            scoops: scoops,
-            price: price 
-        })
-}
-
-
 </script>
 
 <template>
     <div>
         
-        <h1>Drone Cone Order Menu</h1>
-        <h2>Ice Cream Flavors</h2>
-        <div>
+        <h1 style="text-align: center">Drone Cone Order Menu</h1>
+        <h2 style="text-align: center">Ice Cream Flavors</h2>
+        <div style="text-align: center">
             
-            <!-- <p>{{ Flavors.length }}</p> -->
             
-            <div v-for="(item, index) in Flavors" :key="index">
-                <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
-                <div>
-                    <!-- <label v-for="scoop in amountScoops" :key="scoop">
-                        <input 
-                            type="checkbox" 
-                            :id="`${item}-${scoop}`" 
-                            :disabled="isDisabled(item)" 
-                            @change="toggleScoop(item, scoop)"
-                        >
-                        {{ scoop }}
-                    </label> -->
+            <div style="display: inline-block; margin: 50px; vertical-align: top">
+                <h3>First Flavor</h3>
+                <p v-if="flavor1 != null">First Flavor is {{ flavor1.name }}</p>
+                <div v-for="(item, index) in Flavors" :key="index">
+                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <button class="order-button" @click="flavor1=item">Add to Order</button>
                 </div>
-                <!-- <input type="checkbox" id="checkbox1" v-model="checked" >
-                <label for="checkbox1"> 1 scoop </label>
-
-                <input type="checkbox" id="checkbox2" v-model="checked" >
-                <label for="checkbox2"> 2 scoop </label>
-
-                <input type="checkbox" id="checkbox3" v-model="checked" >
-                <label for="checkbox3"> 3 scoop </label> -->
-                <!-- <button @click="">1</button>
-                <p></p>
-                <button @click="">+</button> -->
+            </div>
             
+            <div style="display: inline-block; margin: 50px; vertical-align: top">
+                <h3>Second Flavor</h3>
+                <p v-if="flavor2 != null">Second Flavor is {{ flavor2.name }}</p>
+                <div v-for="(item, index) in Flavors" :key="index">
+                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <button class="order-button" :disabled="flavor1==null" @click="flavor2=item">Add to Order</button>
+                </div>
+                <button class="order-button" :disabled="flavor1==null" style=" margin-top: 60px" @click="flavor2=null;flavor3=null">No Second Scoop</button>
+            </div>
+
+            <div style="display: inline-block; margin: 50px; vertical-align: top">
+                <h3>Third Flavor</h3>
+                <p v-if="flavor3 != null">Third Flavor is {{ flavor3.name }}</p>
+                <div v-for="(item, index) in Flavors" :key="index">
+                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <button class="order-button" :disabled="flavor1==null || flavor2==null" @click="flavor3=item">Add to Order</button>
+                </div>
+                <button class="order-button" :disabled="flavor1==null || flavor2==null" style=" margin-top: 60px" @click="flavor3=null">No Third Scoop</button>
             </div>
         </div>
         
 
-        <h2>Cones</h2>
-        <div>
-            <div v-for="item in Cones">
-                <p>{{ item.name}} ${{ item.price}}</p>
-                <!-- <p>{{ item.buyingAmount }}</p> -->
-                <!-- <button @click="item.buyingAmount++"></button>
-                <button @click="item.buyingAmount--"></button> -->
-
+        <h2 style="text-align: center">Cones</h2>
+        <div style="text-align: center">
+            <p v-if="coneChoice != null">Cone is {{ coneChoice.name }}</p>
+            <div v-for="(item, index) in Cones" :key="index">
+                <p>{{ item.name }} ${{ item.price}}</p>
+                <button class="order-button" @click="coneChoice=item">Add to Order</button>
             </div>
         </div>
 
 
-        <h2>Toppings</h2>
-        <div>
+        <h2 style="text-align: center">Toppings</h2>
+        <div style="text-align: center">
+            <p v-if="topping != null">Topping is {{ topping.name }}</p>
             <div v-for="item in Toppings">
                 <p>{{ item.name}} ${{ item.price }}</p>
-                <!-- <p>{{ item.buyingAmount }}</p>
-                <button @click="item.buyingAmount++"></button>
-                <button @click="item.buyingAmount--"></button> -->
-
+                <button  class="order-button" @click="topping=item">Add to Order</button>
             </div>
         </div>
-        <button>Submit Order</button>
 
+        <div style="text-align: center; margin-top: 50px; margin-bottom: 100px">
+            <button class="order-button">Save Order</button>
+            <button class="order-button">Add to Cart</button>
+            <a href="order">
+                <button class="order-button">Create New Order</button>
+            </a>
+            <button class="order-button">Your Cart</button>
+        </div>
     </div>
 </template>
