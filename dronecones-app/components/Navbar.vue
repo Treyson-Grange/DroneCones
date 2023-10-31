@@ -1,3 +1,8 @@
+<script setup>
+  defineProps(['type']);
+</script>
+
+
 <template>
     <div class = "navbar-under"></div>
     <nav class = "navbar">
@@ -6,15 +11,15 @@
             Drone Cones
         </div>
         <div class = "links">
-            <a href="order">Order</a>
-            <a href="droneHome">Drones</a>
-            <a href="/">Signout</a>
+            <slot />
+            <a>Support</a>
+            <a href = "/">Account</a>
         </div>
     </nav>
     <div class = "menu-bar" :class="{'open' : isopen}">
-        <a href="order">Order</a>
-        <a href="droneHome">Drones</a>
-        <a href="/">Signout</a>
+        <slot />
+        <a>Support</a>
+        <a href = "/">Account</a>
     </div>
 </template>
 

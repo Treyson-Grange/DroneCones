@@ -55,6 +55,7 @@
 </script>
 <template>
   <div class="page">
+    <h1>Drone Cones</h1>
     <div class="login">
       <h2>Login</h2>
       <form @submit.prevent="attemptLogin">
@@ -64,7 +65,7 @@
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="formData.password" />
+          <input style="font-weight: 900;" type="password" id="password" v-model="formData.password" />
         </div>
         <div class="spacer">
           <button

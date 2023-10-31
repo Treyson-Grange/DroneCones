@@ -6,6 +6,5 @@
 <style>@import url('/assets/navbar.css');</style>
 
 <template>
-    <Navbar />
     <LoginComp />
 </template>

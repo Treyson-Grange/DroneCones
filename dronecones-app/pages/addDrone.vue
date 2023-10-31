@@ -10,6 +10,5 @@
     <Navbar> 
         <a href="/droneHome">Drones</a>
     </Navbar>
-    <!-- <Test /> -->
-    <Drones/>
+    <AddDrone/>
 </template>
