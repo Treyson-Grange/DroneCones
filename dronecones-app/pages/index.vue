@@ -3,7 +3,7 @@
 </script>
 
 <style>@import url('/assets/style.css');</style>
-<style>@import url('/assets/navbar.css')</style>
+<style>@import url('/assets/navbar.css');</style>
 
 <template>
     <Navbar />
