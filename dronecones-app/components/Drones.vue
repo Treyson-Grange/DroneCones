@@ -1,12 +1,15 @@
 <script setup>
     import { supabase } from './lib/supabaseClient'
+    function navigateToAddDrone(){
+        window.location.href = '/addDrone'
+    }
 </script>
 
 <template>
     <div class = "page2">
         <div class = "drone-header">
             <h1>Drones</h1>
-            <button>Add Drone</button>
+            <button @click = "navigateToAddDrone">Add Drone</button>
         </div>
         <div class = 'drone-item'>
             <h2>Example Name</h2>
