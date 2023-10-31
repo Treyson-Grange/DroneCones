@@ -1,7 +1,7 @@
 <template>
     <div class = "page2">
         <h1>Add New Drone</h1>
-        <div class = "login">
+        <div class = "form-list">
             <form>
                 <div class = "form-group">
                     <label for ="name">Name:</label>

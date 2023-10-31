@@ -56,7 +56,7 @@
 <template>
   <div class="page">
     <h1>Drone Cones</h1>
-    <div class="login">
+    <div class="form-list">
       <h2>Login</h2>
       <form @submit.prevent="attemptLogin">
         <div class="form-group">

@@ -58,7 +58,7 @@
 
 <template>
   <div class = "page">
-    <div class="login">
+    <div class="form-list">
       <h2>Register</h2>
       <form v-on:submit="submitForm">
         <div class="form-group">
