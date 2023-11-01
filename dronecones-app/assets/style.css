@@ -228,7 +228,7 @@ input[type="checkbox"] {
 /*Floating Action Button*/
 .floating{
   background-color:var(--accent-color);
-  color: var(--font-secondary);
+  color: var(--font-accent);
   position: fixed;
   z-index: 10;
   bottom: 32px;
