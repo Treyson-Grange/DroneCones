@@ -1,4 +1,10 @@
 <template>
+  <div class="type-buttons-row">
+    <button class="table-button" @click="addConeView()">Add Cone</button>
+    <button class="table-button" @click="addConeView()">Add Cone</button>
+    <button class="table-button" @click="addConeView()">Add Cone</button>
+
+  </div>
     
     <div>
       <table class="cone-table">
