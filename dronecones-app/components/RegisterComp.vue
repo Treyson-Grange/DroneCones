@@ -94,12 +94,12 @@
           </div>
         </div>
         <div class = "spacer">
-          <button type = "submit" formaction = "/">Cancel</button>
           <button 
           style = "background-color: var(--accent-color); color: var(--font-accent);"
           type="submit">
             Register
           </button>
+          <button type = "submit" formaction = "/">Cancel</button>
         </div>
       </form>
     </div>

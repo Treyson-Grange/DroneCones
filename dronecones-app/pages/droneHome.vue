@@ -7,7 +7,9 @@
 
 
 <template>
-    <SiteHeader />
-    <TestComp />
-    <h1>DroneHome</h1>
+    <Navbar> 
+        <a href="/droneHome">Drones</a>
+    </Navbar>
+    <!-- <Test /> -->
+    <Drones/>
 </template>

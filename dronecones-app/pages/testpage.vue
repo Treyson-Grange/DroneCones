@@ -4,6 +4,6 @@
 </style>
 
 <template>
-    <SiteHeader />
+    <Navbar />
     <Test />
 </template>

@@ -7,5 +7,8 @@
 
 
 <template>
-    <SiteHeader />
+    <Navbar> 
+        <a href="/droneHome">Drones</a>
+    </Navbar>
+    <AddDrone/>
 </template>

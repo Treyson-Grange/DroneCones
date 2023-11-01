@@ -5,7 +5,7 @@
 
 
 <template>
-    <SiteHeader />
+    <Navbar />
     <TestComp />
     <h1>managerHome</h1>
 </template>

@@ -27,6 +27,11 @@
       console.error("Error:", error);
     }   
   }
+
+  function navigateToRegister(){
+    window.location.href = '/register'
+  }
+    //Write a function that validates login, and forwards to corresponding page. 
  
   async function attemptLogin() {
     
@@ -50,6 +55,7 @@
 </script>
 <template>
   <div class="page">
+    <h1>Drone Cones</h1>
     <div class="login">
       <h2>Login</h2>
       <form @submit.prevent="attemptLogin">
@@ -59,16 +65,16 @@
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="formData.password" />
+          <input style="font-weight: 900;" type="password" id="password" v-model="formData.password" />
         </div>
         <div class="spacer">
-          <button type="submit" @click="navigateToRegister">Register</button>
           <button
+            type = "submit"
             style="background-color: var(--accent-color); color: var(--font-accent)"
-            type="submit"
           >
             Login
           </button>
+          <button @click="navigateToRegister">Register</button>
         </div>
       </form>
     </div>

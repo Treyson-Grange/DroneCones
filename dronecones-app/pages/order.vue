@@ -5,7 +5,10 @@
 
 
 <template>
-    <SiteHeader />
+    <Navbar>
+        <a href="/order">Order</a>
+        <a href="/cart">Cart</a>
+    </Navbar>
     <RecentOrderHistory />
     <OrderList
         :icecream-items="data.icecreamFlavors"
