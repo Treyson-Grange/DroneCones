@@ -19,20 +19,31 @@
 
 
   async function registerUser(userEmail, userPassword, accountType, userName, firstName, lastName) {
-    const { data, error } = await supabase.auth.signUp({
-          email: userEmail,
-          password: userPassword,
-          options: { 
-              data: {
-                  usertype: accountType, 
-                  username: userName, 
-                  firstname: firstName, 
-                  lastname: lastName, 
-                  email: userEmail,
-              }
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: userEmail,
+        password: userPassword,
+        options: {
+          data: {
+            usertype: accountType,
+            username: userName,
+            firstname: firstName,
+            lastname: lastName,
+            email: userEmail,
           }
-      })
-      };
+        }
+      });
+
+      if (error) {
+        console.error("Error during sign-up:", error);
+      } else {
+        console.log("made it");
+      }
+    } catch (e) {
+      console.error("An unexpected error occurred:", e);
+  }
+}
+    
 
   const formData = {
     username: '',
