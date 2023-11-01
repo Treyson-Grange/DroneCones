@@ -8,14 +8,8 @@
         },
         async created() {
             try {
-                const { data, error } = 
-                    getUserOrderHistory(localStorage.getItem('userID'), 3);
-                if (error) {
-                    console.error('Error fetching transactions:', error);
-                } else {
-                    this.pastOrders = data;
-                    console.log(data);
-                }
+                const data = await getUserOrderHistory(localStorage.getItem('userID'), 3);
+                this.pastOrders = data;
             } catch (error) {
                 console.error('An error occurred:', error);
             }
@@ -27,8 +21,8 @@
     <div>
         <h2>Ice Cream Order History</h2>
         <ul>
-            <li v-for="order in pastOrders">
-                {{ order.final_price }}
+            <li v-for="order in pastOrders" :key="order.id">
+                This part will display the information for past order number {{ order.id }} I can click to reorder.
             </li>
         </ul>
     </div>
