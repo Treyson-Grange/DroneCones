@@ -10,22 +10,31 @@
 <template>
     <div class = "page2">
         <div class = "drone-header">
-            <div>{{ this.drones[0] }}</div>
             <h1>Drones</h1>
             <button @click = "navigateToAddDrone">Add Drone</button>
         </div>
-        <div class = 'drone-item'>
-            <h2 @click = "showDroneOptions">Example Name</h2>
-            <div class = 'drone-info' @click = "showDroneOptions">
-                <div>Size: medium</div>
-                <div>Status: disabled</div>
+        <div class = 'drone-item' v-for="drone in drones" :key="drone.id">
+            <h2>{{drone.name}}</h2>
+            <div class = 'drone-info'>
+                <div>Size: 
+                    <span v-if = "drone.size == 0">Small</span>
+                    <span v-else-if = "drone.size == 1">Medium</span>
+                    <span v-else>Large</span>
+                </div>
+                <div>Status: 
+                    <span v-if = "drone.available == 0">Disabled</span>
+                    <span v-else>Enabled</span>
+                </div>
             </div>
-            <form class = "choices" :class="{'show-choices' : showOptions}">
+            <form class = "choices" :class="{'show-choices' : showOptions, 'hide-choices': !showOptions}">
                 <button>Enable</button>
                 <button>Disabled</button>
                 <button>Delete</button>
             </form>
         </div>
+        <button class = "floating" @click = "showDroneOptions">
+            Edit
+        </button>
     </div>
 </template>
 
@@ -42,7 +51,8 @@ export default {
     showDroneOptions() {
       this.showOptions = !this.showOptions;
     },
-    async mounted() {
+  },
+  async mounted() {
     // You can call the getDrones function here or in any method as needed
     try {
       const limit = 10; // Specify your desired limit
@@ -51,7 +61,6 @@ export default {
     } catch (error) {
       console.error('Error fetching drones:', error);
     }
-  }
   }
 };
 </script>
