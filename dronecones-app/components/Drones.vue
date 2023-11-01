@@ -35,7 +35,7 @@ export default {
     return {
       showOptions: false,
       drones: [],
-      userID: localStorage.getItem('userID')
+    //   userID: localStorage.getItem('userID')
     };
   },
   methods: {
