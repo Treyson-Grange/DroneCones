@@ -5,7 +5,11 @@
 
 
 <template>
-    <Navbar />
-    <TestComp />
-    <h1>managerHome</h1>
+    <Navbar>
+        <a href="managerHome">Inventory</a>
+        <a href="reports">Reports</a>
+        <a href="managerSupport">Support</a>
+    </Navbar>
+    <InventoryComp style="padding-top: 100px;" />
 </template>
+

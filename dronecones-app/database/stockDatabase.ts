@@ -10,7 +10,8 @@ Cone functions
 export async function getCones(): Promise<Cone[] | null> {
     // returns an array of all cones in database as cone types
     const { data, error } = await db.cones()
-        .select();
+        .select()
+        .order('id');
 
     // let cones : Cone[] = [];
     // if (data) {
@@ -65,10 +66,10 @@ export async function toggleConeAvailability(id: number) {
     const { error } = await supabase.rpc('toggle_cone_availability', {quote_id: id})
 }
 
-export async function updateConePrice(id: number, price: number) {
+export async function updateCone(id: number, cone: Cone) {
     // update the price of cone with given id
     const { error } = await db.cones()
-        .update({ price: price })
+        .update(cone)
         .eq('id', id)
 }
 
