@@ -12,13 +12,11 @@
         </div>
         <div class = "links">
             <slot />
-            <a>Support</a>
             <a href = "/">Account</a>
         </div>
     </nav>
     <div class = "menu-bar" :class="{'open' : isopen}">
         <slot />
-        <a>Support</a>
         <a href = "/">Account</a>
     </div>
 </template>
