@@ -26,10 +26,17 @@
                     <span v-else>Enabled</span>
                 </div>
             </div>
-            <form class = "choices" :class="{'show-choices' : showOptions, 'hide-choices': !showOptions}">
-                <button>Enable</button>
-                <button>Disabled</button>
-                <button>Delete</button>
+            <form :class="{'show-choices' : showOptions, 'hide-choices': !showOptions}">
+              <div class="radio-button-container">
+                    <input class = "radio" type="radio" name="name1" id="radio-1">
+                    <label class = "radio-button" for="radio-1">Enable</label>
+
+                    <input class = "radio" type="radio" name="name1" id="radio-2">
+                    <label class = "radio-button" for="radio-2">Disable</label>
+
+                    <input class = "radio" type="radio" name="name1" id="radio-3">
+                    <label class = "radio-button" for="radio-3">Delete</label>
+                </div>
             </form>
         </div>
         <button class = "floating" @click = "showDroneOptions">
