@@ -1,3 +1,11 @@
+<script setup>
+    import { supabase } from './lib/supabaseClient'
+    function navigateToDrones(){
+        window.location.href = '/droneHome'
+    }
+</script>
+
+
 <template>
     <div class = "page2">
         <h1>Add New Drone</h1>
@@ -16,7 +24,7 @@
                 </div>
                 <div class = "spacer">
                     <button style = "background-color: var(--accent-color); color: var(--font-accent);">Add</button>
-                    <button>Cancel</button>
+                    <button @click = "navigateToDrones">Cancel</button>
                 </div>
             </form>
         </div>

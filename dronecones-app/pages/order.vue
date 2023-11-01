@@ -8,6 +8,7 @@
     <Navbar>
         <a href="/order">Order</a>
         <a href="/cart">Cart</a>
+        <a>Support</a>
     </Navbar>
     <RecentOrderHistory />
     <OrderList

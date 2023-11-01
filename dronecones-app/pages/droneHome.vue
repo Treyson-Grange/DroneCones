@@ -9,6 +9,7 @@
 <template>
     <Navbar> 
         <a href="/droneHome">Drones</a>
+        <a>Support</a>
     </Navbar>
     <!-- <Test /> -->
     <Drones/>
