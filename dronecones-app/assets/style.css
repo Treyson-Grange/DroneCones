@@ -16,6 +16,7 @@
 /* Global styles */
 body {
   font-family: var(--the-font);
+  font-size: var(--body-font-size);
   display: flex;
   justify-content: center;
   background-color: var(--primary-color);
