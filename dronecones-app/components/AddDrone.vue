@@ -16,14 +16,14 @@
                     <input type = "text" id = "name"/>
                 </div>
                 <div class="radio-button-container">
-                    <input class = "radio" type="radio" name="name1" id="radio-1">
-                    <label class = "radio-button" for="radio-1">Small</label>
+                    <input class = "radio" type="radio" name="name1" id="small">
+                    <label class = "radio-button" for="small">Small</label>
 
-                    <input class = "radio" type="radio" name="name1" id="radio-2">
-                    <label class = "radio-button" for="radio-2">Medium</label>
+                    <input class = "radio" type="radio" name="name1" id="medium">
+                    <label class = "radio-button" for="medium">Medium</label>
 
-                    <input class = "radio" type="radio" name="name1" id="radio-3">
-                    <label class = "radio-button" for="radio-3">Large</label>
+                    <input class = "radio" type="radio" name="name1" id="large">
+                    <label class = "radio-button" for="large">Large</label>
                 </div>
                 <div class = "spacer">
                     <button style = "background-color: var(--accent-color); color: var(--font-accent);">Add</button>
