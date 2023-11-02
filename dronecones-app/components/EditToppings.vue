@@ -1,7 +1,7 @@
 <template>
-    <div class="add-cone-form" v-if="showForm">
+    <div class="add-topping-form" v-if="showForm">
       <div class="form-container">
-        <h2 style="color:white">Edit Cone</h2>
+        <h2 style="color:white">Edit Topping</h2>
         <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="name">Name:</label>
@@ -23,7 +23,7 @@
               </div>
           </div>
           <div class="button-container">
-            <button class="delete-button" @click="deleteCone">Delete</button>
+            <button class="delete-button" @click="deleteTopping">Delete</button>
             <button class="cancel-button" @click="closeForm">Cancel</button>
             <button type="submit" class="submit-button" @click="saveEdits()">Save</button>
           </div>
@@ -37,7 +37,7 @@ import * as stockdb from './../database/stockDatabase'
   export default {
     data() {
       return {
-        cone: null,
+        topping: null,
         showForm: false,
         formData: {
           name: '',
@@ -48,13 +48,13 @@ import * as stockdb from './../database/stockDatabase'
       };
     },
     methods: {
-      openForm(cone) {
+      openForm(topping) {
         this.showForm = true;
-        this.cone = cone;
-        this.formData.name = cone.name;
-        this.formData.price = cone.price;
-        this.formData.amount = cone.amount;
-        this.formData.available = cone.available;
+        this.topping = topping;
+        this.formData.name = topping.name;
+        this.formData.price = topping.price;
+        this.formData.amount = topping.amount;
+        this.formData.available = topping.available;
         console.log(this.formData)
         
       },
@@ -65,24 +65,24 @@ import * as stockdb from './../database/stockDatabase'
           amount: null,
           available: false,
         }
-        this.cone = null
+        this.topping = null
         this.showForm = false;
         
       },
       async saveEdits() {
         // Handle the form submission here, e.g., send data to the server
         // After successful submission, you can close the form
-        stockdb.updateCone(this.cone.id, this.formData)
+        stockdb.updateTopping(this.topping.id, this.formData)
         await new Promise(r => setTimeout(r, 200));
-        this.$parent.updateCones();
+        this.$parent.updateToppings();
         this.closeForm();
         
       },
-      async deleteCone() {
-        stockdb.removeCone(this.cone.id)
+      async deleteTopping() {
+        stockdb.removeTopping(this.topping.id)
         await new Promise(r => setTimeout(r, 300));
         this.closeForm();
-        this.$parent.updateCones();
+        this.$parent.updateToppings();
       },
     },
   };
@@ -90,7 +90,7 @@ import * as stockdb from './../database/stockDatabase'
   
 <style scoped>
   /* Style for the form and its container */
-  .add-cone-form {
+  .add-topping-form {
     position: fixed;
     top: 0;
     left: 0;

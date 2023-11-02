@@ -3,10 +3,10 @@
       <div class="form-container">
         <h2>Restock</h2>
         <form @submit.prevent="submitForm">
-          <div v-for="(cone, index) in selectedItems" :key="index">
+          <div v-for="(topping, index) in selectedItems" :key="index">
             <div class="form-group">
-              <label>{{ cone.name }}</label>
-              <input type="number" v-model="cone.quantity" min="0" placeholder="0" required />
+              <label>{{ topping.name }}</label>
+              <input type="number" v-model="topping.quantity" min="0" placeholder="0" required />
             </div>
           </div>
           <div class="button-container">
@@ -40,15 +40,15 @@ export default {
       async submitForm() {
         // Handle the form submission here, e.g., send restock data to the server
         // After successful submission, you can close the form
-        for (const cone of this.selectedItems) {
-          stockdb.addConeAmount(cone.id, cone.quantity)
-          delete cone.quantity
+        for (const topping of this.selectedItems) {
+          stockdb.addToppingAmount(topping.id, topping.quantity)
+          delete topping.quantity
         }
 
         this.closeForm();
         this.$parent.selectedItems = []
         await new Promise(r => setTimeout(r, 300));
-        this.$parent.updateCones();
+        this.$parent.updateToppings();
         },
     },
 };

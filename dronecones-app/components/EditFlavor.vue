@@ -1,7 +1,7 @@
 <template>
-    <div class="add-cone-form" v-if="showForm">
+    <div class="add-flavor-form" v-if="showForm">
       <div class="form-container">
-        <h2 style="color:white">Edit Cone</h2>
+        <h2 style="color:white">Edit Flavor</h2>
         <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="name">Name:</label>
@@ -9,7 +9,7 @@
           </div>
           <div class="form-group">
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="1" min="0" placeholder="0.00" v-model="formData.price" />
+            <input type="number" id="price" name="price" step="1" min="0" placeholder="0.00" v-model="formData.price_per_scoop" />
           </div>
           <div class="form-group">
             <label for="amount">Amount:</label>
@@ -23,7 +23,7 @@
               </div>
           </div>
           <div class="button-container">
-            <button class="delete-button" @click="deleteCone">Delete</button>
+            <button class="delete-button" @click="deleteFlavor">Delete</button>
             <button class="cancel-button" @click="closeForm">Cancel</button>
             <button type="submit" class="submit-button" @click="saveEdits()">Save</button>
           </div>
@@ -37,52 +37,52 @@ import * as stockdb from './../database/stockDatabase'
   export default {
     data() {
       return {
-        cone: null,
+        flavor: null,
         showForm: false,
         formData: {
           name: '',
-          price: null,
+          price_per_scoop: null,
           amount: null,
           available: false,
         },
       };
     },
     methods: {
-      openForm(cone) {
+      openForm(flavor) {
         this.showForm = true;
-        this.cone = cone;
-        this.formData.name = cone.name;
-        this.formData.price = cone.price;
-        this.formData.amount = cone.amount;
-        this.formData.available = cone.available;
+        this.flavor = flavor;
+        this.formData.name = flavor.name;
+        this.formData.price_per_scoop = flavor.price_per_scoop;
+        this.formData.amount = flavor.amount;
+        this.formData.available = flavor.available;
         console.log(this.formData)
         
       },
       closeForm() {
         this.formData= {
           name: '',
-          price: null,
+          price_per_scoop: null,
           amount: null,
           available: false,
         }
-        this.cone = null
+        this.flavor = null
         this.showForm = false;
         
       },
       async saveEdits() {
         // Handle the form submission here, e.g., send data to the server
         // After successful submission, you can close the form
-        stockdb.updateCone(this.cone.id, this.formData)
-        await new Promise(r => setTimeout(r, 200));
-        this.$parent.updateCones();
+        stockdb.updateIcecreamFlavor(this.flavor.id, this.formData)
+        await new Promise(r => setTimeout(r, 300));
+        this.$parent.updateFlavors();
         this.closeForm();
         
       },
-      async deleteCone() {
-        stockdb.removeCone(this.cone.id)
+      async deleteFlavor() {
+        stockdb.removeIcecreamFlavor(this.flavor.id)
         await new Promise(r => setTimeout(r, 300));
         this.closeForm();
-        this.$parent.updateCones();
+        this.$parent.updateFlavors();
       },
     },
   };
@@ -90,7 +90,7 @@ import * as stockdb from './../database/stockDatabase'
   
 <style scoped>
   /* Style for the form and its container */
-  .add-cone-form {
+  .add-flavor-form {
     position: fixed;
     top: 0;
     left: 0;

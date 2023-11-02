@@ -53,13 +53,14 @@ import * as stockdb from './../database/stockDatabase'
         this.showForm = false;
       },
       async submitForm() {
-        stockdb.addNewCone(this.formData.name, this.formData.amount, this.formData.price, this.formData.available)
+        stockdb.addNewCone(this.formData.name, this.formData.amount, this.formData.price * 100, this.formData.available)
         this.formData = {
           name: '',
           price: null,
           amount: null,
           available: false,
         };
+        await new Promise(r => setTimeout(r, 300));
         this.closeForm();
         this.$parent.updateCones();
       },

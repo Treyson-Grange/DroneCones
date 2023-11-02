@@ -1,61 +1,77 @@
 <template>
-    <div class="restock-form" v-if="showForm">
+    <div class="add-flavor-form" v-if="showForm">
       <div class="form-container">
-        <h2>Restock</h2>
+        <h2 style="color:white">Add New Flavor</h2>
         <form @submit.prevent="submitForm">
-          <div v-for="(cone, index) in selectedItems" :key="index">
-            <div class="form-group">
-              <label>{{ cone.name }}</label>
-              <input type="number" v-model="cone.quantity" min="0" placeholder="0" required />
-            </div>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" v-model="formData.name" required />
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0.00" v-model="formData.price" />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" min="0" placeholder="0" v-model="formData.amount" />
+          </div>
+          <div class="form-group">
+              <label for="available">Available:</label>
+              <div class="toggle-button">
+                <input type="checkbox" id="toggle" v-model="formData.available" class="hidden-input" />
+                <label for="toggle" class="toggle"></label>
+              </div>
           </div>
           <div class="button-container">
             <button class="cancel-button" @click="closeForm">Cancel</button>
-            <button type="submit" class="submit-button">Submit</button>
+            <button type="submit" class="submit-button" @click="submitForm()">Submit</button>
           </div>
         </form>
       </div>
     </div>
-  </template>
-  
+</template>
+
 <script>
 import * as stockdb from './../database/stockDatabase'
-
-export default {
-
+  export default {
     data() {
       return {
         showForm: false,
-        selectedItems: this.$parent.selectedItems,
+        formData: {
+          name: '',
+          price: null,
+          amount: null,
+          available: false,
+        },
       };
     },
+
     methods: {
       openForm() {
         this.showForm = true;
-        this.selectedItems = this.$parent.selectedItems
       },
       closeForm() {
         this.showForm = false;
       },
       async submitForm() {
-        // Handle the form submission here, e.g., send restock data to the server
-        // After successful submission, you can close the form
-        for (const cone of this.selectedItems) {
-          stockdb.addConeAmount(cone.id, cone.quantity)
-          delete cone.quantity
-        }
-
+        stockdb.addNewIcecreamFlavor(this.formData.name, this.formData.amount, this.formData.price * 100, this.formData.available)
+        this.formData = {
+          name: '',
+          price: null,
+          amount: null,
+          available: false,
+        };
         this.closeForm();
-        this.$parent.selectedItems = []
         await new Promise(r => setTimeout(r, 300));
-        this.$parent.updateCones();
-        },
+        this.$parent.updateFlavors();
+      },
     },
-};
+  };
 </script>
   
-  <style scoped>
-  .restock-form {
+<style scoped>
+  /* Style for the form and its container */
+  .add-flavor-form {
     position: fixed;
     top: 0;
     left: 0;
@@ -78,22 +94,18 @@ export default {
   
   /* Style for form elements */
   .form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   
   label {
-    height: 30px;
-    width: 200px;
+    display: block;
     margin-bottom: 5px;
-    color:white;
+    color:white
   }
 
   input {
   border: none;
-  width: 50px;
+  width: calc(100% - 32px);
   height: 48px;
   border-radius: 16px;
   padding: 0px 16px 0px 16px;
@@ -108,8 +120,10 @@ export default {
 input:focus {
   box-shadow: none;
 }
+
+
   
-/* Style for buttons */
+  /* Style for buttons */
 .button-container {
     text-align: right;
     display: flex;
@@ -132,4 +146,5 @@ input:focus {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}  </style>
+}
+  </style>

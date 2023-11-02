@@ -67,7 +67,7 @@ export async function toggleConeAvailability(id: number) {
 }
 
 export async function updateCone(id: number, cone: Cone) {
-    // update the price of cone with given id
+    // update the cone with given id
     const { error } = await db.cones()
         .update(cone)
         .eq('id', id)
@@ -125,7 +125,7 @@ export async function removeIcecreamFlavor(id: number) {
         .eq('id', id)
 }
 
-export async function updateIcecreamFlavorAmount(id: number, increment_num: number) {
+export async function addIcecreamFlavorAmount(id: number, increment_num: number) {
     //adds the amount given to the amount of the ice cream flavor with given id
     const { error } = await supabase.rpc('add_flavor_amount', {
         quote_id: id, increment_num: increment_num
@@ -137,10 +137,10 @@ export async function toggleIcecreamFlavorAvailability(id: number) {
     const { error } = await supabase.rpc('toggle_flavor_availability', {quote_id: id})
 }
 
-export async function updateIcecreamFlavorPrice(id: number, pricePerScoop: number) {
-    // update the price per scoop of ice cream flavor with given id
+export async function updateIcecreamFlavor(id: number, flavor: IcecreamFlavor) {
+    // update the ice cream flavor with given id
     const { error } = await db.icecreamFlavors()
-        .update({ price_per_scoop: pricePerScoop })
+        .update(flavor)
         .eq('id', id)
 }
 
@@ -209,9 +209,9 @@ export async function toggleToppingAvailability(id: number) {
     const { error } = await supabase.rpc('toggle_topping_availability', {quote_id: id})
 }
 
-export async function updateToppingPrice(id: number, price: number) {
-    // update the price of topping with given id
+export async function updateTopping(id: number, topping: Topping) {
+    // update the topping with given id
     const { error } = await db.toppings()
-        .update({ price: price })
+        .update(topping)
         .eq('id', id)
 }
