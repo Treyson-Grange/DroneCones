@@ -1,4 +1,5 @@
 <template>
+  <h1>Inventory</h1>
   <div class="type-buttons-row">
     <div class="type-button" @click="toCones()">Cones</div>
     <div class="type-button" @click="toFlavors()">Flavors</div>

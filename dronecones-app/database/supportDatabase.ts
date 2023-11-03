@@ -21,7 +21,17 @@ export async function getForms(limit: number = 25, includeResolved: Boolean = tr
     */
     const resolved = includeResolved ? '(TRUE, FALSE)' : '(FALSE)'
     const { data, error } = await db.supportForms()
-        .select()
+        .select(`
+            id,
+            form_field,
+            created_at,
+            resolved,
+            users (
+                firstname,
+                lastname,
+                email
+            )
+        `)
         .filter('resolved', 'in', resolved)
         .order('created_at', {'ascending': false})
         .limit(limit)
