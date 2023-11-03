@@ -8,7 +8,7 @@
             <button @click="toggleElement">Add Drone</button>
         </Drones>
         <AddDrone class = "animated-element2" :class="{ 'active2': !isActive}">
-            <button @click="toggleElement">Cancel</button>
+            <button type = "button" @click="toggleElement">Cancel</button>
         </AddDrone>
     </div>
 </template>
