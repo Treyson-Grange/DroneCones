@@ -41,7 +41,7 @@
     z-index: 0;
     position: absolute;
     left: -100%;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.8s ease-in-out;
 }
 .animated-element2{
     z-index: 1;
@@ -55,7 +55,7 @@
     opacity: 0;
     position: absolute;
     top: -100%;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.8s ease-in-out;
 }
 
 
