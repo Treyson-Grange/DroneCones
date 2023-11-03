@@ -153,13 +153,13 @@ async function addDroneDelivery(transactionID: number, droneID: number) {
 
 }
 
-export async function getRevenueHistory(from: string = "2000-01-01 12:00") {    
+export async function getRevenueHistory() {    
     const { data, error } = await db.transactions()
-        .select(`final_price`)
+        .select(`
+            final_price,
+            order_time
+        `)
         .order('order_time')
-        .rangeGt('during', '[' + from + ", " + "2023-11-01 12:00" + ")")
-    console.log(data);
     return data
-
 }
 

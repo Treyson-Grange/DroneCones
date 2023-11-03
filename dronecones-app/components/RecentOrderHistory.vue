@@ -22,7 +22,7 @@
         <h2>Ice Cream Order History</h2>
         <ul>
             <li v-for="order in pastOrders" :key="order.id">
-                This part will display the information for past order number {{ order.id }} I can click to reorder.
+                This part will display the information for past order number {{ order.order_time }} I can click to reorder.
             </li>
         </ul>
     </div>
