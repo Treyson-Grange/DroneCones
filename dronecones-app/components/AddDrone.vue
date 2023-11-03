@@ -19,11 +19,6 @@
             } 
         }
     }
-
-    function navigateToDrones(){
-        console.log("hello");
-        window.location.href = "/droneHome";
-    }
 </script>
 
 
@@ -48,7 +43,7 @@
                 </div>
                 <div class = "spacer">
                     <button type = "submit" style = "background-color: var(--accent-color); color: var(--font-accent);">Add</button>
-                    <button @click = "navigateToDrones">Cancel</button>
+                    <slot/>
                 </div>
             </form>
         </div>

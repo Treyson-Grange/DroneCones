@@ -1,17 +1,13 @@
 <script setup>
     import { supabase } from './lib/supabaseClient'
     import {getDrones} from '../database/droneDatabase'
-    
-    function navigateToAddDrone(){
-        window.location.href = '/addDrone'
-    }
 </script>
 
 <template>
     <div class = "page2">
         <div class = "drone-header">
             <h1>Drones</h1>
-            <button @click = "navigateToAddDrone">Add Drone</button>
+            <slot/>
         </div>
         <div class = 'drone-item' v-for="drone in drones" :key="drone.id">
             <h2>{{drone.name}}</h2>
