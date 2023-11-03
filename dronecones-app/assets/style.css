@@ -4,6 +4,7 @@
   --primary-color: #560BAD;
   --secondary-color: #7209B7;
   --accent-color: #4CC9F0;
+  --accent-color-two: #f04cd7;
   --font-primary: #fff;
   --font-secondary: #fff;
   --font-accent: #000;
@@ -141,7 +142,7 @@ button:focus {
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 button:disabled, button[disabled]{
-  background-color: var(--secondary-accent-color);
+  background-color: var(--accent-color-two);
 }
 
 .order-button{
