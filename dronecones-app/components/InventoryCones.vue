@@ -57,7 +57,6 @@ export default {
           .then(cones => {
               this.cones = cones
           })
-      
   },
 
   methods: {

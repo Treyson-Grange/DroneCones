@@ -35,6 +35,13 @@ export async function toggleDroneAvailability(droneID: number) {
     const { error } = await supabase.rpc('toggle_drone_availability', {quote_id:droneID})
 }
 
+export async function editDrone(id: number, drone: Drone) {
+    // update the drone with given id, only need to pass information that's changed, but can pass all
+    const { error } = await db.drones()
+        .update(drone)
+        .eq('id', id)
+}
+
 export async function getDrones(limit: number = 10, userID?: number | null): Promise<Drone[] | null> {
     /* 
         Returns a list of drone objects with all information about those drones
