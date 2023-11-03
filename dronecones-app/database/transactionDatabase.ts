@@ -72,6 +72,32 @@ export async function getUserOrderHistory(userID: string, limit: number = 3) {
     return data
 
 }
+export async function getTransaction(transactionID: string) {    
+    const { data, error } = await db.transactions()
+        .select(`
+            id,
+            user_id,
+            sales_price,
+            tax,
+            final_price,
+            completed,
+            item_count,
+            order_time,
+            orderItem (
+                id,
+                cone,
+                flavor1,
+                flavor2,
+                flavor3,
+                topping,
+                scoops
+            )
+        `)
+        .eq('id',transactionID)
+
+    return data
+
+}
 
 export async function addItemInProgress(item: ItemInProgress) {
     const { data, error } = await db.itemsInProgress()

@@ -1,17 +1,13 @@
 <script setup>
     import { supabase } from './lib/supabaseClient'
     import {getDrones} from '../database/droneDatabase'
-    
-    function navigateToAddDrone(){
-        window.location.href = '/addDrone'
-    }
 </script>
 
 <template>
     <div class = "page2">
         <div class = "drone-header">
             <h1>Drones</h1>
-            <button @click = "navigateToAddDrone">Add Drone</button>
+            <slot/>
         </div>
         <div class = 'drone-item' v-for="drone in drones" :key="drone.id">
             <h2>{{drone.name}}</h2>
@@ -39,9 +35,6 @@
                 </div>
             </form>
         </div>
-        <button class = "floating" @click = "showDroneOptions">
-            Edit
-        </button>
     </div>
 </template>
 
@@ -62,7 +55,7 @@ export default {
   async mounted() {
     // You can call the getDrones function here or in any method as needed
     try {
-      const limit = 10; // Specify your desired limit
+      const limit = 1000; // Specify your desired limit
       this.drones = await getDrones(limit, this.id);
       console.log('Drones:', this.drones);
     } catch (error) {

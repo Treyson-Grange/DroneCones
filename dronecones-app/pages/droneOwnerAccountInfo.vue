@@ -4,12 +4,12 @@
     
 </script>
 
-
+<style>@import url('/assets/style.css');</style>
+<style>@import url('/assets/navbar.css');</style>
 
 <template>
     
     <Navbar />
-    <Test />
     <h1>DroneHome</h1>
-    
+    <DroneOwnerRevenue />
 </template>
