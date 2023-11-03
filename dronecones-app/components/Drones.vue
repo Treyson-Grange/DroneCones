@@ -35,9 +35,6 @@
                 </div>
             </form>
         </div>
-        <button class = "floating" @click = "showDroneOptions">
-            Edit
-        </button>
     </div>
 </template>
 
@@ -58,7 +55,7 @@ export default {
   async mounted() {
     // You can call the getDrones function here or in any method as needed
     try {
-      const limit = 10; // Specify your desired limit
+      const limit = 1000; // Specify your desired limit
       this.drones = await getDrones(limit, this.id);
       console.log('Drones:', this.drones);
     } catch (error) {

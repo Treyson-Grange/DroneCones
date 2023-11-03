@@ -11,6 +11,7 @@
         const sizeValue = Number(formData.size);
         if(formData.name !== '' && formData.size !== ''){
             const error = await addDrone(localStorage.getItem("userID"), formData.name.toString(), sizeValue);
+            location.reload();
             if(error){
                 console.log("Creating Drone Error: ", error.message);
             }
