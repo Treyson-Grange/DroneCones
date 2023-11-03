@@ -110,7 +110,7 @@
           type="submit">
             Register
           </button>
-          <button type = "submit" formaction = "/">Cancel</button>
+          <button type="button" ><a style="text-decoration: none;" href="/" class="button">Cancel</a></button>
         </div>
       </form>
     </div>
