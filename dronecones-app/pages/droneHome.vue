@@ -31,12 +31,31 @@
 
 
 <style>
-.active1 {
-    display: none;
+.animated-element1{
+    z-index: 1;
+    opacity: 1;
+    background-color: var(--primary-color);
+    left: 0px;
 }
-
+.active1 {
+    z-index: 0;
+    position: absolute;
+    left: -100%;
+    transition: all 0.6s ease-in-out;
+}
+.animated-element2{
+    z-index: 1;
+    opacity: 1;
+    background-color: var(--primary-color);
+    height: calc(100vh - 64px);
+    top: 0px;
+}
 .active2 {
-    display: none;
+    z-index: 0;
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+    transition: all 0.6s ease-in-out;
 }
 
 
