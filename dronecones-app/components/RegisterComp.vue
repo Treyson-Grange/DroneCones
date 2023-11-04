@@ -110,7 +110,7 @@
           type="submit">
             Register
           </button>
-          <button type="button">Cancel</button>
+          <button type="button" @click = "navigateTo('/')">Cancel</button>
         </div>
       </form>
     </div>
