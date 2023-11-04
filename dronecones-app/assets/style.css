@@ -176,6 +176,7 @@ button {
   color: var(--font-primary);
   font-family: var(--the-font);
   font-size: var(--body-font-size);
+  cursor: pointer;
 }
 
 button:hover {

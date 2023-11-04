@@ -3,14 +3,12 @@
             <a href="/droneHome">Drones</a>
             <a>Support</a>
         </Navbar>
-    <div>
         <Drones class = "animated-element1" :class="{ 'active1': isActive }">
             <button @click="toggleElement">Add Drone</button>
         </Drones>
         <AddDrone class = "animated-element2" :class="{ 'active2': !isActive}">
             <button type = "button" @click="toggleElement">Cancel</button>
         </AddDrone>
-    </div>
 </template>
 
 
