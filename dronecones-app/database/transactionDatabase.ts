@@ -44,7 +44,7 @@ export async function getTransactions(): Promise<Transaction[] | null> {
     return data
 }
 
-export async function getUserOrderHistory(userID: string, limit: number = 3) {    
+export async function getUserOrderHistory(userID: string, limit: number = 3) {  
     const { data, error } = await db.transactions()
         .select(`
             id,
@@ -185,5 +185,13 @@ async function addDroneDelivery(transactionID: number, droneID: number) {
 
 }
 
-
+export async function getRevenueHistory() {    
+    const { data, error } = await db.transactions()
+        .select(`
+            final_price,
+            order_time
+        `)
+        .order('order_time')
+    return data
+}
 
