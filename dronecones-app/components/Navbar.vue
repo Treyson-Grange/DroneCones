@@ -1,7 +1,3 @@
-<script setup>
-</script>
-
-
 <template>
     <div class = "navbar-under"></div>
     <nav class = "navbar">
@@ -11,12 +7,10 @@
         </div>
         <div class = "links">
             <slot />
-            <a href = "/">Account</a>
         </div>
     </nav>
     <div class = "menu-bar" :class="{'open' : isopen}">
         <slot />
-        <a href = "/">Account</a>
     </div>
 </template>
 
