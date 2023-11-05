@@ -5,7 +5,7 @@
 
 
 <template>
-    <SiteHeader />
     <h1>Manager Account Information</h1>
     <bankInfo />
+    <revenueGraphs />
 </template>
