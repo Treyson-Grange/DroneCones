@@ -98,6 +98,12 @@ export async function getTransaction(transactionID: string) {
     return data
 
 }
+export async function removeSalesPrice(transactionID: string) {
+    const { data, error } = await db.transactions()
+        .update({ sales_price: 0 })
+        .eq('id', transactionID)
+        
+}
 
 export async function addItemInProgress(item: ItemInProgress) {
     const { data, error } = await db.itemsInProgress()

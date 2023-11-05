@@ -10,6 +10,5 @@
 <template>
     
     <Navbar />
-    <h1>DroneHome</h1>
     <DroneOwnerRevenue />
 </template>
