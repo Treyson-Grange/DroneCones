@@ -100,6 +100,22 @@ input[type="password"]:focus
   box-shadow: none;
 }
 
+textarea{
+  border: none;
+  width: calc(100% - 32px);
+  resize: vertical;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) inset, 0 3px 6px rgba(0, 0, 0, 0.23) inset;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  background: var(--primary-color);
+  color: var(--font-primary);
+  font-family: var(--the-font);
+  font-size: var(--body-font-size);
+}
+textarea:focus{
+  box-shadow: none;
+}
 
 
 
@@ -176,6 +192,7 @@ button {
   color: var(--font-primary);
   font-family: var(--the-font);
   font-size: var(--body-font-size);
+  cursor: pointer;
 }
 
 button:hover {
@@ -261,18 +278,6 @@ input[type="checkbox"] {
   transform: translateY(-0.075em);
 }
 
-
-
-/*Floating Action Button*/
-.floating{
-  background-color:var(--accent-color);
-  color: var(--font-accent);
-  position: fixed;
-  z-index: 10;
-  bottom: 32px;
-  right: 32px;
-  width: 100px;
-}
 
 
 /*Drone Styling*/

@@ -1,7 +1,7 @@
 <template>
     <div class="restock-form" v-if="showForm">
       <div class="form-container">
-        <h2>Restock</h2>
+        <h1>Restock</h1>
         <form @submit.prevent="submitForm">
           <div v-for="(flavor, index) in selectedItems" :key="index">
             <div class="form-group">

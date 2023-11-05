@@ -1,7 +1,7 @@
 <template>
     <div class="add-flavor-form" v-if="showForm">
       <div class="form-container">
-        <h2 style="color:white">Add New Flavor</h2>
+        <h1>Add New Flavor</h1>
         <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="name">Name:</label>

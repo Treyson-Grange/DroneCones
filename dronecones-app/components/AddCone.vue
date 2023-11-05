@@ -1,7 +1,7 @@
 <template>
     <div class="add-cone-form" v-if="showForm">
       <div class="form-container">
-        <h2 style="color:white">Add New Cone</h2>
+        <h1>Add New Cone</h1>
         <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="name">Name:</label>
