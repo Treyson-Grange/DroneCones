@@ -185,13 +185,4 @@ async function addDroneDelivery(transactionID: number, droneID: number) {
 
 }
 
-export async function getRevenueHistory() {    
-    const { data, error } = await db.transactions()
-        .select(`
-            final_price,
-            order_time
-        `)
-        .order('order_time')
-    return data
-}
 
