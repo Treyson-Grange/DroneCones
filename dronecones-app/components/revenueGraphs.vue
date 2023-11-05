@@ -53,12 +53,16 @@ export default {
             var order_time = new Date(data.order_time);
             if (!this.yearsInOperation.includes(order_time.getFullYear())) {
                 this.yearsInOperation.push(order_time.getFullYear());
-                this.revenueByYear.push(data.final_price);
-            } else {
-                this.revenueByYear[this.revenueByYear.length -1] += data.final_price;
             }
         });
 
+        this.yearsInOperation.sort();
+        this.revenueByYear = new Array(this.yearsInOperation.length).fill(0); // inialize the revenues
+        this.chartData.forEach((data) => {
+            var order_time = new Date(data.order_time);
+            this.revenueByYear[this.yearsInOperation.indexOf(order_time.getFullYear())] += data.final_price;
+        });
+        
         new Chart(this.$refs.myChart, {
             type: 'bar',
             data: {
