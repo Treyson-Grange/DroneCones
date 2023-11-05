@@ -1,7 +1,7 @@
 <template>
         <Navbar> 
             <a href="/droneHome">Drones</a>
-            <a>Support</a>
+            <a href="/support">Support</a>
         </Navbar>
         <Drones class = "animated-element1" :class="{ 'active1': isActive }">
             <button @click="toggleElement">Add Drone</button>
