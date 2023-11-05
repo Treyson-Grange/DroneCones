@@ -8,13 +8,12 @@
 <script>
 import { Chart } from 'chart.js/auto';
 import { getRevenueHistory } from '../database/transactionDatabase';
+
   
 export default {
     data() {
         return {
             chartData: [],
-            orderTimes: [],
-            finalPrices: [],
         };
     },
 
@@ -22,10 +21,6 @@ export default {
         try {
             const data = await getRevenueHistory();
             this.chartData = data;
-
-            // Extract order_time and final_price data for charting
-            this.orderTimes = this.chartData.map((order) => order.order_time);
-            this.finalPrices = this.chartData.map((order) => order.final_price);
         } catch (error) {
             console.error('An error occurred:', error);
         }
@@ -35,62 +30,41 @@ export default {
     async mounted() {
         // Ensure that the data fetching and processing is complete
         await this.loadData();
+        const currentDate = new Date();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        // filter chart data for current year
+        this.chartData = this.chartData.filter((data) => new Date(data.order_time).getFullYear() == currentDate.getFullYear());
+        var monthList = Array.from({ length: currentDate.getMonth() + 1 }, (_, i) => i); // .getMonth() starts at 0 for january and ends at 11 for december so we add one to make it the number of months we want
+        var theLabels = monthList.map((month) => monthNames[month]);
+        var monthRevenues = new Array(monthList.length).fill(0);
+        this.chartData.forEach((data) => {
+            var order_time = new Date(data.order_time);
+            if (monthList.includes(order_time.getMonth())) {
+                monthRevenues[order_time.getMonth()] += data.final_price;
+            }
+        });
+        
         new Chart(this.$refs.myChart, {
             type: 'bar',
             data: {
                 datasets: [{
-                    label: 'Bar Dataset',
-                    data: this.finalPrices,
+                    label: 'Current Year Revenue',
+                    data: monthRevenues,
                     // this dataset is drawn below
-                    order: 2
+                    order: 1
                 }],
-                labels: [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",]
+                labels: theLabels
             },
             options: {
                 responsive: true,
             },
             });
-
-        // new Chart(this.$refs.myChart, {
-        //     type: 'scatter',
-        //     data: {
-                // labels: [
-                // "January",
-                // "February",
-                // "March",
-                // "April",
-                // "May",
-                // "June",
-                // "July",
-                // "August",
-                // "September",
-                // "October",
-                // ],
-        //         datasets: [{
-        //         backgroundColor:"rgba(0,0,255,1.0)",
-        //         borderColor: "rgba(0,0,255,0.1)",
-        //         data: this.finalPrices
-        //         }]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //     },
-        // });
     },
 
     methods: {
         async loadData() {
-            if (this.finalPrices.length === 0) {
+            if (this.chartData.length === 0) {
                 // If finalPrices is empty, wait for a short time and retry
                 await new Promise(resolve => setTimeout(resolve, 100));
                 await this.loadData();
