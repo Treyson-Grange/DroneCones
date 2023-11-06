@@ -7,13 +7,19 @@
             <label for="name">Name:</label>
             <input type="text" id="name" v-model="formData.name" required />
           </div>
-          <div class="form-group">
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0.00" v-model="formData.price" />
+          <div>
+            <label for="picture">Picture:</label>
+            <input type="file" id="picture" ref="file" accept="image/x-png,image/gif,image/jpeg" @change="setFile"/>
           </div>
-          <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" min="0" placeholder="0" v-model="formData.amount" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="price">Price:</label>
+              <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0.00" v-model="formData.price" />
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount:</label>
+              <input type="number" id="amount" min="0" placeholder="0" v-model="formData.amount" />
+            </div>
           </div>
           <div class="form-group">
               <label for="available">Available:</label>
@@ -43,6 +49,7 @@ import * as stockdb from './../database/stockDatabase'
           amount: null,
           available: false,
         },
+        image: null,
       };
     },
 
@@ -53,14 +60,18 @@ import * as stockdb from './../database/stockDatabase'
       closeForm() {
         this.showForm = false;
       },
+      setFile() {
+        this.image = this.$refs.file.files[0]
+      },
       async submitForm() {
-        stockdb.addNewIcecreamFlavor(this.formData.name, this.formData.amount, this.formData.price * 100, this.formData.available)
+        stockdb.addNewIcecreamFlavor(this.formData.name, this.formData.amount, this.formData.price * 100, this.formData.available, this.image)
         this.formData = {
           name: '',
           price: null,
           amount: null,
           available: false,
         };
+        this.image = null
         this.closeForm();
         await new Promise(r => setTimeout(r, 300));
         this.$parent.updateFlavors();
@@ -96,6 +107,11 @@ import * as stockdb from './../database/stockDatabase'
   .form-group {
     margin-bottom: 8px;
   }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+  }
   
   label {
     display: block;
@@ -103,9 +119,23 @@ import * as stockdb from './../database/stockDatabase'
     color:white
   }
 
-  input {
+input[type=text] {
   border: none;
   width: calc(100% - 32px);
+  height: 48px;
+  border-radius: 16px;
+  padding: 0px 16px 0px 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) inset, 0 3px 6px rgba(0, 0, 0, 0.23) inset;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  background: var(--primary-color);
+  color: var(--font-primary);
+  font-family: var(--the-font);
+  font-size: var(--body-font-size);
+  }
+
+input[type=number] {
+  border: none;
+  width: 75%;
   height: 48px;
   border-radius: 16px;
   padding: 0px 16px 0px 16px;
