@@ -2,6 +2,7 @@
         <Navbar> 
             <a href="/droneHome">Drones</a>
             <a href="/support">Support</a>
+            <a href="/droneOwnerAccountInfo">Account</a>
         </Navbar>
         <Drones class = "animated-element1" :class="{ 'active1': isActive }">
             <button @click="toggleElement">Add Drone</button>
