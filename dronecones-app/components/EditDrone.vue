@@ -1,8 +1,8 @@
 <template>
-  <form :class="{'show-choices' : showOptions, 'hide-choices': !showOptions}" style = "width:100%;">
+  <form :class="{'show-choices' : showForm, 'hide-choices': !showForm}" style = "width:100%;">
     <div class = "form-group">
       <label for = "name">Enter new name:</label>
-      <input type = "text" id = "name" v-model="drone.name">
+      <input type = "text" id = "name">
     </div>
     <div class = "form-group">
       <label for="size">Change Status:</label>
@@ -41,46 +41,43 @@
 </template>
 
 <script>
-import * as stockdb from './../database/stockDatabase'
+import * as dronedb from './../database/droneDatabase'
   export default {
     data() {
       return {
-        flavor: null,
+        drone: null,
         showForm: false,
         formData: {
           name: '',
-          price_per_scoop: null,
-          amount: null,
-          available: false,
+          size: 0,
+          available: true,
         },
       };
     },
     methods: {
-      openForm(flavor) {
+      openForm(drone) {
         this.showForm = true;
-        this.flavor = flavor;
-        this.formData.name = flavor.name;
-        this.formData.price_per_scoop = flavor.price_per_scoop;
-        this.formData.amount = flavor.amount;
-        this.formData.available = flavor.available;
+        this.drone = drone;
+        this.formData.name = drone.name;
+        this.formData.size = drone.size;
+        this.formData.enable = drone.available;
         console.log(this.formData)
         
       },
       closeForm() {
         this.formData= {
           name: '',
-          price_per_scoop: null,
-          amount: null,
-          available: false,
+          size: 0,
+          available: true
         }
-        this.flavor = null
+        this.drone = null
         this.showForm = false;
         
       },
       async saveEdits() {
         // Handle the form submission here, e.g., send data to the server
         // After successful submission, you can close the form
-        stockdb.updateIcecreamFlavor(this.flavor.id, this.formData)
+        dronedb.editDrone(this.drone.id, this.formData)
         await new Promise(r => setTimeout(r, 300));
         this.$parent.updateFlavors();
         this.closeForm();

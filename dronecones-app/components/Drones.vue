@@ -36,14 +36,17 @@ export default {
     };
   },
   methods: {
-    showDroneOptions() {
-      this.showOptions = !this.showOptions;
-    },
+    refreshDrones(){
+      dronedb.getDrones()
+              .then(drones => {
+                  this.drones = drones
+              })
+    }
   },
   async mounted() {
     // You can call the getDrones function here or in any method as needed
     try {
-      const limit = 1000; // Specify your desired limit
+      const limit = 50; // Specify your desired limit
       this.drones = await getDrones(limit, this.id);
       console.log('Drones:', this.drones);
     } catch (error) {
