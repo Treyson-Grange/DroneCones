@@ -76,6 +76,7 @@ export async function getUserOrderHistory(userID: string, limit: number = 3) {
 export async function addItemInProgress(item: ItemInProgress) {
     const { data, error } = await db.itemsInProgress()
         .insert(item)
+    console.log(error)
 }
 
 export async function getItemInProgress(itemId: number): Promise<ItemInProgress | null> {

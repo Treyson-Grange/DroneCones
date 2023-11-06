@@ -11,11 +11,6 @@
         <a>Support</a>
     </Navbar>
     <RecentOrderHistory />
-    <OrderList
-        :icecream-items="data.icecreamFlavors"
-        :cones="data.Cones"
-        :toppings="data.Toppings"
-        
-    />
+    <OrderList/>
 </template>
 
