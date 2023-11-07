@@ -39,12 +39,15 @@ export async function getCone(id: number): Promise<Cone | null>{
     return cone;
 }
 
-export async function addNewCone(name: string, amount: number, price: number, available: boolean = true) {
+export async function addNewCone(name: string, amount: number, price: number, available: boolean = true, image: any) {
     // add a new row into cone database with given information
+    uploadConeImage(image)
+    const imagePath = `https://kaclifohgdnakblyiaia.supabase.co/storage/v1/object/public/stockImages/cones/${image.name}`
+    
     const { data, error } = await db.cones()
-        .insert({name: name, amount: amount, price: price, available: available})
+        .insert({name: name, amount: amount, price: price, available: available, image: imagePath})
         .select()
-    // TODO maybe return created cone or id of cone
+
 }
 
 export async function removeCone(id: number) {
@@ -73,6 +76,16 @@ export async function updateCone(id: number, cone: Cone) {
         .eq('id', id)
 }
 
+async function uploadConeImage(image: any) {
+    const { data, error } = await supabase
+        .storage
+        .from('stockImages')
+        .upload(`cones/${image.name}`, image, {
+            cacheControl: '3600',
+            upsert: false
+    })
+}
+
 
 
 /* 
@@ -82,13 +95,6 @@ export async function getIcecreamFlavors(): Promise<IcecreamFlavor[] | null> {
     // returns an array of all ice cream flavors in database as IcecreamFlavor types
     const { data, error } = await db.icecreamFlavors()
         .select();
-
-    // let flavors : IcecreamFlavor[] = [];
-    // if (data) {
-    //     data?.forEach( (element) => {
-    //         flavors.push(element)
-    //     });
-    // }
     console.log(data)
     return data
 }
@@ -110,12 +116,14 @@ export async function getIcecreamFlavor(id: number): Promise<IcecreamFlavor | nu
     return flavor;
 }
 
-export async function addNewIcecreamFlavor(name: string, amount: number, pricePerScoop: number, available: boolean = true) {
+export async function addNewIcecreamFlavor(name: string, amount: number, pricePerScoop: number, available: boolean = true, image: any) {
     // add a new row into icecream flavors database with given information
+    uploadIcecreamImage(image)
+    const imagePath = `https://kaclifohgdnakblyiaia.supabase.co/storage/v1/object/public/stockImages/icecreamFlavors/${image.name}`
+    
     const { data, error } = await db.icecreamFlavors()
         .insert({name: name, amount: amount, price_per_scoop: pricePerScoop, available: available})
         .select()
-    // TODO maybe return created cone or id of cone
 }
 
 export async function removeIcecreamFlavor(id: number) {
@@ -144,6 +152,15 @@ export async function updateIcecreamFlavor(id: number, flavor: IcecreamFlavor) {
         .eq('id', id)
 }
 
+async function uploadIcecreamImage(image: any) {
+    const { data, error } = await supabase
+        .storage
+        .from('stockImages')
+        .upload(`icecreamFlavors/${image.name}`, image, {
+            cacheControl: '3600',
+            upsert: false
+    })
+}
 
 
 
@@ -182,12 +199,14 @@ export async function getTopping(id: number): Promise<Topping | null>{
     return topping;
 }
 
-export async function addNewTopping(name: string, amount: number, price: number, available: boolean = true) {
+export async function addNewTopping(name: string, amount: number, price: number, available: boolean = true, image:any) {
     // add a new row into topping database with given information
+    uploadToppingImage(image)
+    const imagePath = `https://kaclifohgdnakblyiaia.supabase.co/storage/v1/object/public/stockImages/toppings/${image.name}`
+    
     const { data, error } = await db.toppings()
         .insert({name: name, amount: amount, price: price, available: available})
         .select()
-    // TODO maybe return created topping or id of toppings
 }
 
 export async function removeTopping(id: number) {
@@ -214,4 +233,14 @@ export async function updateTopping(id: number, topping: Topping) {
     const { error } = await db.toppings()
         .update(topping)
         .eq('id', id)
+}
+
+async function uploadToppingImage(image: any) {
+    const { data, error } = await supabase
+        .storage
+        .from('stockImages')
+        .upload(`toppings/${image.name}`, image, {
+            cacheControl: '3600',
+            upsert: false
+    })
 }
