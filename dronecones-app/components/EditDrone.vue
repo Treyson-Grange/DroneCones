@@ -54,7 +54,6 @@ import * as dronedb from './../database/droneDatabase'
       return {
         drone: null,
         del: 'false',
-        available: 'true',
         showForm: false,
         formData: {
           name: '',
@@ -77,7 +76,7 @@ import * as dronedb from './../database/droneDatabase'
         this.formData= {
           name: '',
           size: 0,
-          available: ''
+          available: true
         }
         this.drone = null
         this.showForm = false;
@@ -92,10 +91,6 @@ import * as dronedb from './../database/droneDatabase'
         else{
           console.log("editing");
           dronedb.editDrone(this.drone.id, this.formData)
-          if(this.drone.available !== this.formData.available){
-            console.log("toggling");
-            dronedb.toggleDroneAvailability(this.drone.id);
-          }
           await new Promise(r => setTimeout(r, 300));
           this.$parent.updateDrones();
           this.closeForm();
