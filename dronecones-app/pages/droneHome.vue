@@ -3,7 +3,7 @@
             <a href="/droneHome">Drones</a>
             <a href="/support">Support</a>
         </Navbar>
-        <Drones ref = "droneView" class = "animated-element1" :class="{ 'active1': isActive }">
+        <Drones ref = "droneView" class = "animated-element1" :class="{ 'active1': isActive || showEdit}">
             <button @click="toggleElement">Add Drone</button>
         </Drones>
         <AddDrone class = "animated-element2" :class="{ 'active2': !isActive}">
@@ -19,10 +19,13 @@
         return {
         isActive: false,
         drone: null,
+        showEdit: false,
         userId: localStorage.getItem('userId')
         };
     },
     methods: {
+        mounted(){
+        },
         toggleElement() {
             this.isActive = !this.isActive;
         },

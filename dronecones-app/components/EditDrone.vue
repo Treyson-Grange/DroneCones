@@ -1,5 +1,5 @@
 <template>
-  <div class = "page2" :class="{'show-choices' : showForm, 'hide-choices': !showForm}">
+  <div class = "page2 animated-element2" :class="{'active2' : !showEdit}">
     <div class = "form-list">
     <form>
       <div class = "form-group">
@@ -54,7 +54,7 @@ import * as dronedb from './../database/droneDatabase'
       return {
         drone: null,
         del: 'false',
-        showForm: false,
+        showEdit: false,
         formData: {
           name: '',
           size: 0,
@@ -64,7 +64,8 @@ import * as dronedb from './../database/droneDatabase'
     },
     methods: {
       openForm(drone) {
-        this.showForm = true;
+        this.showEdit = true;
+        this.$parent.showEdit = true;
         this.drone = drone;
         this.formData.name = drone.name;
         this.formData.size = drone.size;
@@ -79,8 +80,8 @@ import * as dronedb from './../database/droneDatabase'
           available: true
         }
         this.drone = null
-        this.showForm = false;
-        
+        this.showEdit = false;
+        this.$parent.showEdit = false;
       },
       async saveEdits() {
         this.formData.available = this.formData.available === "true" ? true : false;
@@ -93,6 +94,7 @@ import * as dronedb from './../database/droneDatabase'
           dronedb.editDrone(this.drone.id, this.formData)
           await new Promise(r => setTimeout(r, 300));
           this.$parent.updateDrones();
+          await new Promise(r => setTimeout(r, 300));
           this.closeForm();
         }
       },
@@ -100,6 +102,7 @@ import * as dronedb from './../database/droneDatabase'
         dronedb.removeDrone(this.drone.id)
         await new Promise(r => setTimeout(r, 300));
         this.$parent.updateDrones();
+        await new Promise(r => setTimeout(r, 300));
         this.closeForm();
       },
     },
