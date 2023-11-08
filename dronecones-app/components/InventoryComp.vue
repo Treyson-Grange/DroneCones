@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import * as transdb from './../database/transactionDatabase'
 export default {
   data() {
     return {
@@ -27,15 +28,12 @@ export default {
   methods: {
     toCones() {
       this.type = 'cones'
-      console.log(this.type)
     },
     toFlavors() {
       this.type = 'flavors'
-      console.log(this.type)
     },
     toToppings() {
       this.type = 'toppings'
-      console.log(this.type)
     }
   }
 }

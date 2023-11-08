@@ -1,6 +1,7 @@
 import { supabase } from '../components/lib/supabaseClient'
 import { db } from './db'
 import type { Transaction, OrderItem, DroneDelivery, ItemInProgress } from './databaseTypes'
+import * as stockdb from './stockDatabase'
 
 type Order = {
     completed: any;
@@ -21,6 +22,7 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
         Adds new rows to drone deliveries database for each droneID in droneIDs
         Adds new rows to soldItems database, for each item in the items list
     */
+    transaction.completed = false
     const { data, error } = await db.transactions()
         .insert(transaction)
         .select()
@@ -150,18 +152,37 @@ async function addAllSoldItems(userId: string, transactionID: number) {
     const { data, error } = await db.itemsInProgress()
         .select()
         .eq('user_id', userId)
-    console.log('items in progress')
-    console.log(data)
-    console.log(error)
+    // console.log('items in progress')
+    // console.log(data)
+    // console.log(error)
     if (data == null) return
     data.forEach( (item) => {
-        console.log(item)
+        // console.log(item)
         delete item.user_id
         delete item.id
         addSoldItem(transactionID, item)
+        updateStock(item)
     })
 
     removeUsersItemsInProgress(userId)
+}
+
+async function updateStock(item: OrderItem) {
+    if (typeof item.cone === 'number') {
+        stockdb.addConeAmount(item.cone, -1)
+    }
+    if (typeof item.flavor1 === 'number') {
+        stockdb.addIcecreamFlavorAmount(item.flavor1, -1)
+    }
+    if (typeof item.flavor2 === 'number') {
+        stockdb.addIcecreamFlavorAmount(item.flavor2, -1)
+    }
+    if (typeof item.flavor3 === 'number') {
+        stockdb.addIcecreamFlavorAmount(item.flavor3, -1)
+    }
+    if (typeof item.topping === 'number') {
+        stockdb.addToppingAmount(item.topping, -1)
+    }
 }
 
 async function addSoldItem(transactionID: number, item: OrderItem) {
