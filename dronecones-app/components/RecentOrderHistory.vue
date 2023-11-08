@@ -19,8 +19,8 @@
 
 <template>
     <div>
-        <h2>Ice Cream Order History</h2>
-        <ul>
+        <h2 style="text-align: center">Ice Cream Order History</h2>
+        <ul style="text-align: center">
             <li v-for="order in pastOrders" :key="order.id">
                 This part will display the information for past order number {{ order.order_time }} I can click to reorder.
             </li>

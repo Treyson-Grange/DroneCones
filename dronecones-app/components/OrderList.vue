@@ -42,11 +42,39 @@ const flavor3 = ref(null);
 const topping = ref(null);
 const scoops = ref(0);
 const price = ref(0);
+const amountScoops = ref(0);
 
+async function getPrice(){
+    price.value = 0
+    if (flavor1.value != null){
+        price.value += flavor1.value.price_per_scoop
+    }
+    if (flavor2.value != null){
+        price.value += flavor2.value.price_per_scoop
+    }
+    if (flavor3.value != null){
+        price.value += flavor3.value.price_per_scoop
+    }
+    if (cone.value != null){
+        price.value += cone.value.price
+    }
+    if (topping.value != null){
+        price.value += topping.value.price
+    } 
+}
 
-const amountScoops = [1,2,3];
-const selectedScoops = ref({});
-
+async function getScoop(){
+    scoops.value = 0
+    if (flavor1.value != null){
+        scoops.value += 1
+    }
+    if (flavor2.value != null){
+        scoops.value += 1
+    }
+    if (flavor3.value != null){
+        scoops.value += 1
+    } 
+}
 
 
 </script>
@@ -55,10 +83,15 @@ const selectedScoops = ref({});
     <div>
         
         <h1 style="text-align: center">Drone Cone Order Menu</h1>
+        
         <h2 style="text-align: center">Ice Cream Flavors</h2>
-        <div style="text-align: center">
-            <!-- <p>{{ user_id }}</p> -->
-            
+            <div style="text-align: center">
+                <div v-for="(item, index) in Flavors" :key="index" style="display: inline-block">
+                    <img :src="item.image" width="200" style="margin: 10px">
+                    <p>{{ item.name }}</p>
+                </div>
+            </div>
+        <div style="text-align: center">    
             <div style="display: inline-block; margin: 50px; vertical-align: top">
                 <h3>First Flavor</h3>
                 <p v-if="flavor1 != null">First Flavor is {{ flavor1.name }}</p>
@@ -92,6 +125,13 @@ const selectedScoops = ref({});
 
         <h2 style="text-align: center">Cones</h2>
         <div style="text-align: center">
+            <div v-for="(item, index) in Cones" :key="index" style="display: inline-block">
+                <img :src="item.image" width="200" height="200" style="margin: 10px">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+
+        <div style="text-align: center">
             <p v-if="cone != null">Cone is {{ cone.name }}</p>
             <div v-for="(item, index) in Cones" :key="index">
                 <p>{{ item.name }} ${{ item.price}}</p>
@@ -102,15 +142,22 @@ const selectedScoops = ref({});
 
         <h2 style="text-align: center">Toppings</h2>
         <div style="text-align: center">
+            <div v-for="(item, index) in Toppings" :key="index" style="display: inline-block">
+                <img :src="item.image" width="200" style="margin: 10px">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+        <div style="text-align: center">
             <p v-if="topping != null">Topping is {{ topping.name }}</p>
             <div v-for="item in Toppings">
                 <p>{{ item.name}} ${{ item.price }}</p>
                 <button  class="order-button" :disabled="item.available !== true" @click="topping=item">Add to Order</button>
             </div>
         </div>
+        
 
         <div style="text-align: center; margin-top: 50px; margin-bottom: 100px">
-            <button class="order-button" :disabled="flavor1 == null || cone == null" @click="transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3.id, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
+            <button class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3.id, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
             <a href="order">
                 <button class="order-button">Create New Order</button>
             </a>
