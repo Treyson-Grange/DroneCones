@@ -9,7 +9,7 @@
             <h1>Drones</h1>
             <slot/>
         </div>
-        <div class = 'drone-item' v-for="drone in drones" :key="drone.id">
+        <div class = 'drone-item' v-for="(drone, index) in drones" :key="index">
             <h2>{{drone.name}}</h2>
             <div class = 'drone-info'>
                 <div>Size: 
@@ -22,18 +22,7 @@
                     <span v-else>Enabled</span>
                 </div>
             </div>
-            <form :class="{'show-choices' : showOptions, 'hide-choices': !showOptions}">
-              <div class="radio-button-container">
-                    <input class = "radio" type="radio" name="name1" id="radio-1">
-                    <label class = "radio-button" for="radio-1">Enable</label>
-
-                    <input class = "radio" type="radio" name="name1" id="radio-2">
-                    <label class = "radio-button" for="radio-2">Disable</label>
-
-                    <input class = "radio" type="radio" name="name1" id="radio-3">
-                    <label class = "radio-button" for="radio-3">Delete</label>
-                </div>
-            </form>
+            <button @click="this.$parent.editDrone(this.drones[index])">Edit</button>
         </div>
     </div>
 </template>
@@ -48,14 +37,17 @@ export default {
     };
   },
   methods: {
-    showDroneOptions() {
-      this.showOptions = !this.showOptions;
+    refreshDrones(){
+      dronedb.getDrones()
+              .then(drones => {
+                  this.drones = drones
+              })
     },
   },
   async mounted() {
     // You can call the getDrones function here or in any method as needed
     try {
-      const limit = 1000; // Specify your desired limit
+      const limit = 50; // Specify your desired limit
       this.drones = await getDrones(limit, this.id);
       console.log('Drones:', this.drones);
     } catch (error) {

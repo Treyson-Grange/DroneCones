@@ -4,12 +4,13 @@
             <a href="/support">Support</a>
             <a href="/droneOwnerAccountInfo">Account</a>
         </Navbar>
-        <Drones class = "animated-element1" :class="{ 'active1': isActive }">
+        <Drones ref = "droneView" class = "animated-element1" :class="{ 'active1': isActive || showEdit}">
             <button @click="toggleElement">Add Drone</button>
         </Drones>
         <AddDrone class = "animated-element2" :class="{ 'active2': !isActive}">
             <button type = "button" @click="toggleElement">Cancel</button>
         </AddDrone>
+        <EditDrone ref = "editDroneView"/>
 </template>
 
 
@@ -18,12 +19,26 @@
     data() {
         return {
         isActive: false,
+        drone: null,
+        showEdit: false,
+        userId: localStorage.getItem('userId')
         };
     },
     methods: {
-        toggleElement() {
-        this.isActive = !this.isActive;
+        mounted(){
         },
+        toggleElement() {
+            this.isActive = !this.isActive;
+        },
+        editDrone(drone){
+            this.$refs.editDroneView.openForm(drone);
+        },
+        updateDrones() {
+            this.$refs.refreshDrones();
+        },
+        setDrone(drone){
+            this.drone = drone
+        }
     },
     };
 </script>
