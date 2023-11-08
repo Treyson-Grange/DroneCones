@@ -23,13 +23,13 @@
 <template>
     <div>
         <h2>Bank Information</h2>
-        <ul>
-            <li>
-                routingNumber:
-            </li>
-            <li v>
-                accountNumber:
-            </li>
-        </ul>
+        <form>
+                <label for="routingNumber">Routing Number:</label>
+                <input type="text" id="routingNumber" name="routingNumber" required><br><br>
+
+                <label for="accountNumber">Account Number:</label>
+                <input type="text" id="accountNumber" name="accountNumber" required><br><br>
+            </form>
+            <button>Save Changes</button>
     </div>
 </template>
