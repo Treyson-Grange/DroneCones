@@ -22,6 +22,7 @@
                     <span v-else>Enabled</span>
                 </div>
             </div>
+            <button @click="this.$parent.editDrone(this.drones[index])">Edit</button>
         </div>
     </div>
 </template>
@@ -41,7 +42,7 @@ export default {
               .then(drones => {
                   this.drones = drones
               })
-    }
+    },
   },
   async mounted() {
     // You can call the getDrones function here or in any method as needed

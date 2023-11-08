@@ -10,29 +10,31 @@
             <button type = "button" @click="toggleElement">Cancel</button>
         </AddDrone>
         <EditDrone ref = "editDroneView"/>
-        <button @click = "editDrone">Edit</button>
 </template>
 
 
 <script>
-    import * as dronedb from './../database/droneDatabase'
     export default {
     data() {
         return {
         isActive: false,
+        drone: null,
         userId: localStorage.getItem('userId')
         };
     },
     methods: {
         toggleElement() {
-        this.isActive = !this.isActive;
+            this.isActive = !this.isActive;
         },
-        editDrone() {
-            this.$refs.editDroneView.openForm();
+        editDrone(drone){
+            this.$refs.editDroneView.openForm(drone);
         },
-        updateFlavors() {
+        updateDrones() {
             this.$refs.refreshDrones();
         },
+        setDrone(drone){
+            this.drone = drone
+        }
     },
     };
 </script>

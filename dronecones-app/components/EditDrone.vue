@@ -1,43 +1,50 @@
 <template>
-  <form :class="{'show-choices' : showForm, 'hide-choices': !showForm}" style = "width:100%;">
-    <div class = "form-group">
-      <label for = "name">Enter new name:</label>
-      <input type = "text" id = "name">
-    </div>
-    <div class = "form-group">
-      <label for="size">Change Status:</label>
-      <div class="radio-button-container" style="margin-top: 0px;" id = "size" :key="index">
-            <input class = "radio" type="radio" name="size1" id="radio-1">
-            <label class = "radio-button" for="radio-1">Small</label>
+  <div class = "page2" :class="{'show-choices' : showForm, 'hide-choices': !showForm}">
+    <div class = "form-list">
+    <form>
+      <div class = "form-group">
+        <label for = "name">Enter new name:</label>
+        <input type = "text" id = "name" v-model="formData.name">
+      </div>
+      <div class = "form-group">
+        <legend for="size">Change Status:</legend>
+        <fieldset class="radio-button-container" style="margin-top: 0px; border: none;" id = "size">
+          <input class = "radio" type="radio" name="size" id="size-1" value = "0" v-model="formData.size">
+          <label class = "radio-button" for="size-1">Small</label>
 
-            <input class = "radio" type="radio" name="size1" id="radio-2">
-            <label class = "radio-button" for="radio-2">Medium</label>
+          <input class = "radio" type="radio" name="size" id="size-2" value = "1" v-model="formData.size">
+          <label class = "radio-button" for="size-2">Medium</label>
 
-            <input class = "radio" type="radio" name="size1" id="radio-3">
-            <label class = "radio-button" for="radio-3">Large</label>
-        </div>
-    </div>
-    <div class = "form-group">
-      <label for="status">Change Status:</label>
-      <div class="radio-button-container" style="margin-top: 0px;" id = "status">
-            <input class = "radio" type="radio" name="name1" id="radio-1">
-            <label class = "radio-button" for="radio-1">Enable</label>
+          <input class = "radio" type="radio" name="size" id="size-3" value = "2" v-model="formData.size">
+          <label class = "radio-button" for="size-3">Large</label>
+        </fieldset>
+      </div>
+      <div class = "form-group">
+        <legend for="status">Change Status:</legend>
+        <fieldset class="radio-button-container" style="margin-top: 0px; border: none;" id = "status">
+          <input class = "radio" type="radio" name="status" id="status-1" value = "true" v-model="formData.available">
+          <label class = "radio-button" for="status-1">Enable</label>
 
-            <input class = "radio" type="radio" name="name1" id="radio-2">
-            <label class = "radio-button" for="radio-2">Disable</label>
+          <input class = "radio" type="radio" name="status" id="status-2" value = "false" v-model="formData.available">
+          <label class = "radio-button" for="status-2">Disable</label>
 
-            <input class = "radio" type="radio" name="name1" id="radio-3">
-            <label class = "radio-button" for="radio-3">Delete</label>
-        </div>
-    </div>
-    <div class = "end">
-      <button 
-      style = "background-color: var(--accent-color); color: var(--font-accent);"
-      type="submit">
-        Save
-      </button>
-    </div>
-  </form>
+          <input class = "radio" type="radio" name="status" id="status-3" value = "true" v-model="del">
+          <label class = "radio-button" for="status-3">Delete</label>
+        </fieldset>
+      </div>
+      <div class = "spacer">
+        <button 
+        style = "background-color: var(--accent-color); color: var(--font-accent);"
+        type="submit"
+        @click = "saveEdits"
+        >
+          Save
+        </button>
+        <button type = "button" @click = "closeForm">Cancel</button>
+      </div>
+    </form>
+  </div>
+  </div>
 </template>
 
 <script>
@@ -46,6 +53,7 @@ import * as dronedb from './../database/droneDatabase'
     data() {
       return {
         drone: null,
+        del: false,
         showForm: false,
         formData: {
           name: '',
@@ -60,7 +68,7 @@ import * as dronedb from './../database/droneDatabase'
         this.drone = drone;
         this.formData.name = drone.name;
         this.formData.size = drone.size;
-        this.formData.enable = drone.available;
+        this.formData.available = drone.available;
         console.log(this.formData)
         
       },
@@ -68,26 +76,36 @@ import * as dronedb from './../database/droneDatabase'
         this.formData= {
           name: '',
           size: 0,
-          available: true
+          available: ''
         }
         this.drone = null
         this.showForm = false;
         
       },
       async saveEdits() {
-        // Handle the form submission here, e.g., send data to the server
-        // After successful submission, you can close the form
-        dronedb.editDrone(this.drone.id, this.formData)
-        await new Promise(r => setTimeout(r, 300));
-        this.$parent.updateFlavors();
-        this.closeForm();
-        
+        this.formData.available = this.formData.available === "true";
+        this.del = this.del === "true";
+        if(this.del){
+          console.log("deleting");
+          this.deleteDrone();
+        }
+        else{
+          console.log("editing");
+          dronedb.editDrone(this.drone.id, this.formData)
+          if(this.drone.status !== this.formData.available){
+            console.log("toggling");
+            dronedv.toggleDroneAvailability(this.drone.id);
+          }
+          await new Promise(r => setTimeout(r, 300));
+          this.$parent.updateDrones();
+          this.closeForm();
+        }
       },
-      async deleteFlavor() {
-        stockdb.removeIcecreamFlavor(this.flavor.id)
+      async deleteDrone() {
+        stockdb.removeDrone(this.drone.id)
         await new Promise(r => setTimeout(r, 300));
+        this.$parent.updateDrones();
         this.closeForm();
-        this.$parent.updateFlavors();
       },
     },
   };

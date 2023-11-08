@@ -71,6 +71,7 @@ form {
   flex-direction: column;
 }
 
+legend,
 label {
   font-weight: bold;
   margin: 16px 0px 8px 0px;
