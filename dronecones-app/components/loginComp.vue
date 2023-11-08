@@ -32,8 +32,15 @@
   function navigateToRegister(){
     window.location.href = '/register'
   }
-    //Write a function that validates login, and forwards to corresponding page. 
- 
+
+  function incorrect(){
+    const notification = document.getElementById("warning");
+    notification.classList.add("warning-on");
+    setTimeout(() => {
+        notification.classList.remove("warning-on");
+    }, 3000);
+  }
+
   async function attemptLogin() {
     
     console.log(formData.email);
@@ -46,6 +53,7 @@
     console.log("asdf")
     if (error) {
       console.error('Login error:', error.message);
+      incorrect();
     } else {
       console.log('Logged in as', data); 
       localStorage.setItem('userID', data.user.id);
@@ -79,8 +87,8 @@
         </div>
       </form>
     </div>
-    <div class = "warning">Wrong Username or Password</div>
   </div>
+  <div class = "warning" id = "warning">Wrong Username or Password</div>
 </template>
 
 
