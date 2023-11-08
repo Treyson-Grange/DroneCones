@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--primary-color);
+  color: var(--font-primary);
 }
 
 h1 {
