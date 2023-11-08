@@ -1,5 +1,6 @@
 <template>
   <div class = "page2 animated-element2" :class="{'active2' : !showEdit}">
+    <h1>Edit Drone</h1>
     <div class = "form-list">
     <form>
       <div class = "form-group">
@@ -7,7 +8,7 @@
         <input type = "text" id = "name" v-model="formData.name">
       </div>
       <div class = "form-group">
-        <legend for="size">Change Status:</legend>
+        <legend for="size">Change Size:</legend>
         <fieldset class="radio-button-container" style="margin-top: 0px; border: none;" id = "size">
           <input class = "radio" type="radio" name="size" id="size-1" value = "0" v-model="formData.size">
           <label class = "radio-button" for="size-1">Small</label>

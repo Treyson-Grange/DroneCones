@@ -86,14 +86,14 @@
             <h1>Transfer Funds</h1>
             <p style="padding-left: 10pt; padding-right: 10pt; text-align: center;">Leave Routing Number and Account Number empty to use your accounts bank.</p>
             <form>
-                <label for="routingNumber">Routing Number:</label>
-                <input type="text" id="routingNumber" name="routingNumber" required><br><br>
-
-                <label for="accountNumber">Account Number:</label>
-                <input type="text" id="accountNumber" name="accountNumber" required><br><br>
-
-                
-
+                <div class = "form-group">
+                    <label for="routingNumber">Routing Number:</label>
+                    <input type="text" id="routingNumber" name="routingNumber" required>
+                </div>
+                <div class = "form-group">
+                    <label for="accountNumber">Account Number:</label>
+                    <input type="text" id="accountNumber" name="accountNumber" required>
+                </div>
             </form>
             <button @click="emptyRevenue">Transfer Funds</button>
             <br>
