@@ -133,6 +133,18 @@ export async function getDronesForDelivery(count: number): Promise<number[] | nu
     return droneIDs
 }
 
+export async function availableDroneCount(): Promise<number | null> {
+    // Returns the number of currently available drones
+    const { count, error } = await db.drones()
+        .select('*', { count: 'exact', head: true})
+        .eq('available', true)
+        .eq('in_use', false)
+
+    console.log(count)
+    console.log(error)
+    return count
+}
+
 
 
 export async function getDroneDeliveries(queryType: string, ID: number): Promise<DroneDelivery[] | null> {

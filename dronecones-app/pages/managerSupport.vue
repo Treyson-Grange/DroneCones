@@ -1,13 +1,26 @@
-<script setup lang="ts">
+<script lang="ts">
+export default {
+    data() {
+        return {
+            usertype: localStorage.getItem('usertype'),
+        }
+    }
+}
 </script>
 
 
 
 <template>
-    <Navbar>
-        <a href="managerHome">Inventory</a>
-        <a href="managerAccountInfo">Account Information</a>
-        <a href="managerSupport">Support</a>
-    </Navbar>   
-    <ManagerSupports/>
+    <div v-if="usertype=='3'">
+        <Navbar>
+            <a href="managerHome">Inventory</a>
+            <a href="managerAccountInfo">Account Information</a>
+            <a href="managerSupport">Support</a>
+        </Navbar>   
+        <ManagerSupports/>
+    </div>
+    <div v-else>
+        <Forbidden/>
+
+    </div>
 </template>

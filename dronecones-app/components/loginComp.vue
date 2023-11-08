@@ -9,6 +9,7 @@
   async function redirectToProfilePage(datas) {
     try {
       const data = await getUser(datas.user.id); 
+      localStorage.setItem('usertype', data.usertype)
       if (data !== null) {
         console.log(data.usertype);
         if(data.usertype == 1) {

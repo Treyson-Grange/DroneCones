@@ -1,5 +1,9 @@
 <template>
-  <h1>Inventory</h1>
+  <div class="spaced-row">
+    <h1>Inventory</h1>
+    <p v-if="availableDrones != null">There are  {{ this.availableDrones }} available drones</p>
+
+  </div>
   <div class="type-buttons-row">
     <div class="type-button" @click="toCones()">Cones</div>
     <div class="type-button" @click="toFlavors()">Flavors</div>
@@ -19,11 +23,19 @@
 
 <script>
 import * as transdb from './../database/transactionDatabase'
+import * as dronedb from './../database/droneDatabase'
+
 export default {
   data() {
     return {
-      type: 'cones'
+      type: 'cones',
+      availableDrones: null
     }
+  },
+  async mounted(){
+    dronedb.availableDroneCount()
+      .then(count => this.availableDrones = count)
+    
   },
   methods: {
     toCones() {
@@ -42,6 +54,11 @@ export default {
   
 
 <style>
+
+.spaced-row {
+  display: flex;
+  justify-content: space-between;
+}
 
 .type-buttons-row {
   padding-top: 10px;

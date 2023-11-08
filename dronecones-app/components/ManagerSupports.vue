@@ -15,7 +15,7 @@
                     <td> {{ form.created_at === null ? 'N/A' : this.formatDate(form.created_at) }}</td>
                     <td> {{ this.getUsersName(form.users) }}</td>
                     <td> {{ form.form_field === null ? 'N/A' : this.formatComment(form.form_field) }}</td>
-                    <td> {{ form.resolved === null ? 'N/A' : (form.resolved ? 'No' : 'Yes') }}</td>
+                    <td> {{ form.resolved === null ? 'N/A' : (form.resolved ? 'Yes' : 'No') }}</td>
                 </tr>
             </tbody>
         </table>
@@ -39,6 +39,7 @@ import * as supportdb from './../database/supportDatabase'
 export default {
     data() {
         return {
+            usertype: localStorage.getItem('usertype'),
             showResolved: true,
             forms: [],
             shownForms: [],
