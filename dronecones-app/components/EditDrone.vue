@@ -53,7 +53,8 @@ import * as dronedb from './../database/droneDatabase'
     data() {
       return {
         drone: null,
-        del: false,
+        del: 'false',
+        available: 'true',
         showForm: false,
         formData: {
           name: '',
@@ -83,18 +84,17 @@ import * as dronedb from './../database/droneDatabase'
         
       },
       async saveEdits() {
-        this.formData.available = this.formData.available === "true";
-        this.del = this.del === "true";
-        if(this.del){
+        this.formData.available = this.formData.available === "true" ? true : false;
+        if(this.del === "true"){
           console.log("deleting");
           this.deleteDrone();
         }
         else{
           console.log("editing");
           dronedb.editDrone(this.drone.id, this.formData)
-          if(this.drone.status !== this.formData.available){
+          if(this.drone.available !== this.formData.available){
             console.log("toggling");
-            dronedv.toggleDroneAvailability(this.drone.id);
+            dronedb.toggleDroneAvailability(this.drone.id);
           }
           await new Promise(r => setTimeout(r, 300));
           this.$parent.updateDrones();
@@ -102,7 +102,7 @@ import * as dronedb from './../database/droneDatabase'
         }
       },
       async deleteDrone() {
-        stockdb.removeDrone(this.drone.id)
+        dronedb.removeDrone(this.drone.id)
         await new Promise(r => setTimeout(r, 300));
         this.$parent.updateDrones();
         this.closeForm();
