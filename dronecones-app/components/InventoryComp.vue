@@ -55,6 +55,10 @@ export default {
 
 <style>
 
+p {
+  color: #fff
+}
+
 .spaced-row {
   display: flex;
   justify-content: space-between;

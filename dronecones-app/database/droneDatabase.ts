@@ -140,8 +140,6 @@ export async function availableDroneCount(): Promise<number | null> {
         .eq('available', true)
         .eq('in_use', false)
 
-    console.log(count)
-    console.log(error)
     return count
 }
 
