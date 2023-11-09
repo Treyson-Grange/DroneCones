@@ -42,6 +42,13 @@ export async function editDrone(id: number, drone: Drone) {
         .eq('id', id)
 }
 
+export async function removeDrone(id: number) {
+    // remove drone with specified id from the database
+    const { error } = await db.drones()
+        .delete()
+        .eq('id', id)
+}
+
 export async function getDrones(limit: number = 10, userID?: number | null): Promise<Drone[] | null> {
     /* 
         Returns a list of drone objects with all information about those drones
