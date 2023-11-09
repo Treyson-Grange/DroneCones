@@ -64,6 +64,12 @@ export async function addConeAmount(id: number, increment_num: number) {
     })
 }
 
+export async function useOneCone(id: number) {
+    const { error } = await supabase.rpc('add_cone_amount', {
+        quote_id: id, increment_num: -1
+    })
+}
+
 export async function toggleConeAvailability(id: number) {
     // update the Available column of cone with given ID to opposite boolean value
     const { error } = await supabase.rpc('toggle_cone_availability', {quote_id: id})
@@ -137,6 +143,12 @@ export async function addIcecreamFlavorAmount(id: number, increment_num: number)
     //adds the amount given to the amount of the ice cream flavor with given id
     const { error } = await supabase.rpc('add_flavor_amount', {
         quote_id: id, increment_num: increment_num
+    })
+}
+
+export async function useOneIcecreamFlavor(id: number) {
+    const { error } = await supabase.rpc('add_flavor_amount', {
+        quote_id: id, increment_num: -1
     })
 }
 
@@ -220,6 +232,12 @@ export async function addToppingAmount(id: number, increment_num: number) {
     //adds the amount given to the amount of the topping with given id
     const { error } = await supabase.rpc('add_topping_amount', {
         quote_id: id, increment_num: increment_num
+    })
+}
+
+export async function useOneTopping(id: number) {
+    const { error } = await supabase.rpc('add_topping_amount', {
+        quote_id: id, increment_num: -1
     })
 }
 

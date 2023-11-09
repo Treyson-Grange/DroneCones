@@ -169,19 +169,19 @@ async function addAllSoldItems(userId: string, transactionID: number) {
 
 async function updateStock(item: OrderItem) {
     if (typeof item.cone === 'number') {
-        stockdb.addConeAmount(item.cone, -1)
+        stockdb.useOneCone(item.cone)
     }
     if (typeof item.flavor1 === 'number') {
-        stockdb.addIcecreamFlavorAmount(item.flavor1, -1)
+        stockdb.useOneIcecreamFlavor(item.flavor1)
     }
     if (typeof item.flavor2 === 'number') {
-        stockdb.addIcecreamFlavorAmount(item.flavor2, -1)
+        stockdb.useOneIcecreamFlavor(item.flavor2)
     }
     if (typeof item.flavor3 === 'number') {
-        stockdb.addIcecreamFlavorAmount(item.flavor3, -1)
+        stockdb.useOneIcecreamFlavor(item.flavor3)
     }
     if (typeof item.topping === 'number') {
-        stockdb.addToppingAmount(item.topping, -1)
+        stockdb.useOneTopping(item.topping)
     }
 }
 
