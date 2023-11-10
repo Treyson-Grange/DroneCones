@@ -1,6 +1,5 @@
 import { supabase } from '../components/lib/supabaseClient'
-// import type {IcecreamFlavor, Cone, Topping} from "@/types"
-import type { Cone, IcecreamFlavor, Topping } from './databaseTypes'
+import type { Cone, IcecreamFlavor, Topping, RestockHistory } from './databaseTypes'
 import { db } from './db'
 
 
@@ -262,3 +261,44 @@ async function uploadToppingImage(image: any) {
             upsert: false
     })
 }
+
+export async function restockCones(items: any) {
+    for (const item of items) {
+        makeRestockOrder('cone', item)
+    }
+
+}
+
+async function makeRestockOrder(type: string, item: any) {
+    let restockOrder: RestockHistory = {
+        type: type,
+        status: 'placed',
+        amount: item.quantity,
+    }
+    if (type == 'cone') {
+        restockOrder.cone = item.id
+    } else if (type == 'flavor') {
+        restockOrder.flavor = item.id
+    } else if (type == 'topping') {
+        restockOrder.topping = item.id
+    }
+    console.log(restockOrder)
+    const { data, error } = await db.restockHistory()
+        .insert(restockOrder)
+        .select()
+
+    
+        
+}
+
+
+
+// .select(`
+//             id,
+//             cone (
+//                 name
+//             ),
+//             flavor (
+//                 name
+//             )
+//         `)
