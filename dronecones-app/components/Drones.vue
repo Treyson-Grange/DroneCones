@@ -10,19 +10,30 @@
             <slot/>
         </div>
         <div class = 'drone-item' v-for="(drone, index) in drones" :key="index">
-            <h2>{{drone.name}}</h2>
+            <div class = 'spacer' style="width: 100%;">
+              <button @click="this.$parent.editDrone(this.drones[index])"
+              style="margin: 0px; align-self: center; width:100px;"
+              >
+                Edit
+              </button>
+              <h2>{{drone.name}}</h2>
+            </div>
             <div class = 'drone-info'>
-                <div>Size: 
+                <div> 
+                    <strong>Size: </strong>
                     <span v-if = "drone.size == 0">Small</span>
                     <span v-else-if = "drone.size == 1">Medium</span>
                     <span v-else>Large</span>
                 </div>
-                <div>Status: 
+                <div> 
+                    <strong>Status: </strong>
                     <span v-if = "drone.available == 0">Disabled</span>
                     <span v-else>Enabled</span>
                 </div>
+                <div>
+                  <strong>Revenue: </strong>
+                </div>
             </div>
-            <button @click="this.$parent.editDrone(this.drones[index])">Edit</button>
         </div>
     </div>
 </template>
