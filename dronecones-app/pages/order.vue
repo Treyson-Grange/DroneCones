@@ -11,6 +11,7 @@
         <a href="/support">Support</a>
     </Navbar>
     <RecentOrderHistory />
+    <droneQueue />
     <OrderList/>
 </template>
 
