@@ -161,7 +161,7 @@ async function getScoop(){
             <a href="order">
                 <button class="order-button">Create New Order</button>
             </a>
-            <a href="">
+            <a href="cart">
                 <button class="order-button">Your Cart</button>
             </a>
         </div>
