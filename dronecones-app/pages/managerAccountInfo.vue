@@ -3,9 +3,9 @@
     export default {
     data() {
         return {
-            usertype: localStorage.getItem('usertype'),
+            usertype: localStorage.getItem('usertype')
         }
-    }
+    },
 }
 </script>
 
