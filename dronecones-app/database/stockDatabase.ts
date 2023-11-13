@@ -33,7 +33,6 @@ export async function getCone(id: number): Promise<Cone | null>{
     } else {       
         cone = data?.at(0)
     }
-    console.log(cone)
 
     return cone;
 }
@@ -100,7 +99,6 @@ export async function getIcecreamFlavors(): Promise<IcecreamFlavor[] | null> {
     // returns an array of all ice cream flavors in database as IcecreamFlavor types
     const { data, error } = await db.icecreamFlavors()
         .select();
-    console.log(data)
     return data
 }
 
@@ -116,7 +114,6 @@ export async function getIcecreamFlavor(id: number): Promise<IcecreamFlavor | nu
     } else {       
         flavor = data?.at(0)
     }
-    console.log(flavor)
 
     return flavor;
 }
@@ -184,12 +181,6 @@ export async function getToppings(): Promise<Topping[] | null> {
     const { data, error } = await db.toppings()
         .select();
 
-    // let toppings : Topping[] = [];
-    // if (data) {
-    //     data?.forEach( (element) => {
-    //         toppings.push(element)
-    //     });
-    // }
     return data
 }
 
@@ -205,7 +196,6 @@ export async function getTopping(id: number): Promise<Topping | null>{
     } else {       
         topping = data?.at(0)
     }
-    console.log(topping)
 
     return topping;
 }
@@ -266,7 +256,6 @@ export async function restockCones(items: any) {
     for (const item of items) {
         makeRestockOrder('cone', item)
     }
-
 }
 
 async function makeRestockOrder(type: string, item: any) {
@@ -282,23 +271,59 @@ async function makeRestockOrder(type: string, item: any) {
     } else if (type == 'topping') {
         restockOrder.topping = item.id
     }
-    console.log(restockOrder)
-    const { data, error } = await db.restockHistory()
+    var { data, error } = await db.restockHistory()
         .insert(restockOrder)
         .select()
 
+
+    if (data == null) return
+
+    await new Promise(r => setTimeout(r, 20 * 1000));
+
+    restockOrder.status = 'shipped'
+    await db.restockHistory()
+        .update(restockOrder)
+        .eq('id', data[0].id)
+
+    await new Promise(r => setTimeout(r, 20 * 1000));
     
+    restockOrder.status = 'completed'
+    await db.restockHistory()
+        .update(restockOrder)
+        .eq('id', data[0].id) 
         
+    if (restockOrder.cone != null && restockOrder.amount != null) {
+        addConeAmount(restockOrder.cone, restockOrder.amount)
+    } else if (restockOrder.flavor != null && restockOrder.amount != null)  {
+        addIcecreamFlavorAmount(restockOrder.flavor, restockOrder.amount)
+    } else if (restockOrder.topping != null && restockOrder.amount != null)  {
+        addToppingAmount(restockOrder.topping, restockOrder.amount)
+    }
+}
+
+export async function getRestockHistory() {
+    const { data, error } = await db.restockHistory()
+        .select(`
+            id,
+            created_at,
+            type,
+            amount,
+            status,
+            cone (
+                name
+            ),
+            flavor (
+                name
+            ),
+            topping (
+                name
+            )
+        `)
+        .order('created_at', { ascending: false })
+
+
+    return data
 }
 
 
 
-// .select(`
-//             id,
-//             cone (
-//                 name
-//             ),
-//             flavor (
-//                 name
-//             )
-//         `)

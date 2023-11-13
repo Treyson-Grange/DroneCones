@@ -49,11 +49,11 @@ export async function removeDrone(id: number) {
         .eq('id', id)
 }
 
-export async function getDrones(limit: number = 10, userID?: number | null): Promise<Drone[] | null> {
+export async function getDrones(limit = 10, userID?: number | null): Promise<Drone[] | null> {
     /* 
         Returns a list of drone objects with all information about those drones
         The limit argument will determine how many drones to return, defaults to 10
-        If userID is not given, it will return a list of all drones,
+        If userID is not given, it will return a slist of all drones,
         If userID is given, it will only return drones with that user as the owner
     */
     if (userID) {

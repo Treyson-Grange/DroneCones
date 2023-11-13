@@ -8,6 +8,7 @@
     <div class="type-button" @click="toCones()">Cones</div>
     <div class="type-button" @click="toFlavors()">Flavors</div>
     <div class="type-button" @click="toToppings()">Toppings</div>
+    <div class="type-button" @click="toPastOrders()">Past Orders</div>
   </div>
   <div v-if="this.type=='cones'">
     <InventoryCones/>
@@ -17,6 +18,9 @@
   </div>
   <div v-if="this.type=='toppings'">
     <InventoryToppings/>
+  </div>
+  <div v-if="this.type=='pastOrders'"> 
+    <InventoryPastOrders/>
   </div>
     
 </template>
@@ -46,6 +50,9 @@ export default {
     },
     toToppings() {
       this.type = 'toppings'
+    },
+    toPastOrders() {
+      this.type = 'pastOrders'
     }
   }
 }

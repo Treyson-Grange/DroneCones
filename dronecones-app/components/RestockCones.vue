@@ -38,8 +38,6 @@ export default {
         this.showForm = false;
       },
       async submitForm() {
-        // Handle the form submission here, e.g., send restock data to the server
-        // After successful submission, you can close the form
         // for (const cone of this.selectedItems) {
         //   stockdb.addConeAmount(cone.id, cone.quantity)
         //   delete cone.quantity
