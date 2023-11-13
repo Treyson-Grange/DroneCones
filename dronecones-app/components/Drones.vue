@@ -1,6 +1,7 @@
 <script setup>
     import { supabase } from './lib/supabaseClient'
-    import {getDrones} from '../database/droneDatabase'
+    import { getDroneDeliveries, getDrones } from '~/database/droneDatabase';
+    import { getTransaction } from '~/database/transactionDatabase'
 </script>
 
 <template>
@@ -10,19 +11,30 @@
             <slot/>
         </div>
         <div class = 'drone-item' v-for="(drone, index) in drones" :key="index">
-            <h2>{{drone.name}}</h2>
+            <div class = 'spacer' style="width: 100%;">
+              <button @click="this.$parent.editDrone(this.drones[index])"
+              style="margin: 0px; align-self: center; width:100px;"
+              >
+                Edit
+              </button>
+              <h2>{{drone.name}}</h2>
+            </div>
             <div class = 'drone-info'>
-                <div>Size: 
+                <div> 
+                    <strong>Size: </strong>
                     <span v-if = "drone.size == 0">Small</span>
                     <span v-else-if = "drone.size == 1">Medium</span>
                     <span v-else>Large</span>
                 </div>
-                <div>Status: 
+                <div> 
+                    <strong>Status: </strong>
                     <span v-if = "drone.available == 0">Disabled</span>
                     <span v-else>Enabled</span>
                 </div>
+                <div>
+                  <strong>Revenue:</strong> ${{ this.revenues[index] }}
+                </div>
             </div>
-            <button @click="this.$parent.editDrone(this.drones[index])">Edit</button>
         </div>
     </div>
 </template>
@@ -33,8 +45,13 @@ export default {
     return {
       showOptions: false,
       drones: [],
+      revenues: [],
       id: localStorage.getItem('userID') || 'Data not set'
     };
+  },
+  async created(){
+    await this.retrieveDrones();
+    this.getTotalRevenue();
   },
   methods: {
     refreshDrones(){
@@ -43,16 +60,37 @@ export default {
                   this.drones = drones
               })
     },
+    async retrieveDrones() {
+      // You can call the getDrones function here or in any method as needed
+      try {
+        const limit = 50; // Specify your desired limit
+        this.drones = await getDrones(limit, this.id);
+        console.log('Drones:', this.drones);
+      } catch (error) {
+        console.error('Error fetching drones:', error);
+      }
+    },
+    async getTotalRevenue() {
+      console.log("hello");
+      try {
+          for(let i = 0; i < this.drones.length; i++) {
+              this.revenues[i] = 0;
+              let droneDeliveries = await getDroneDeliveries("drone", this.drones[i].id)
+              if (droneDeliveries.length >= 1){
+                  for(let j = 0; j < droneDeliveries.length; j++) {
+                      let transaction = await getTransaction(droneDeliveries[j].transaction_id);
+                      let revenueFromJob = transaction[0].sales_price / 2;
+                      this.revenues[i] += revenueFromJob;
+                  }
+                  
+              }
+              
+          }
+          console.log('Revenues: ', this.revenues);
+      } catch (error) {
+          console.log(error);
+      }
+    },
   },
-  async mounted() {
-    // You can call the getDrones function here or in any method as needed
-    try {
-      const limit = 50; // Specify your desired limit
-      this.drones = await getDrones(limit, this.id);
-      console.log('Drones:', this.drones);
-    } catch (error) {
-      console.error('Error fetching drones:', error);
-    }
-  }
 };
 </script>
