@@ -1,4 +1,24 @@
 # Flapjack Heros Sprint Summary #
+## Sprint 5: Development Pt3
+For these two weeks we continued work on functionality of our app. We met online that Monday night (i.e., the first night of the sprint) to make sure each person knew what needed to be done and gave out tasks to do. We also met for work days. 
+
+For this sprint of development we worked on the following
+* Treyson: Finished Drone Account Information and worked on the capabilities of the order timer
+* Emily: Finished the ordering page
+* Matt: Primarily worked on the manager stock ordering page and the support form pages. Also, helped with database and some other small things in the program
+* Jordan: Got the drone owner page working.
+* Nathan: Got done with the support form page
+* Samuel: Created revenue graphs for the manager and worked on showing the customer when drones weren't available for use
+
+Setbacks: 
+* Figuring out the database with ordering stuff is a bit tricky for the shopping cart page 
+
+Succusses:
+* I want to go into a bit more detail of how good we did. This was in my opinion our best sprint! Everyone was doing their part. Each person was making progress on their part. I took the time to go through the entire project and make a list of all the things I thought needed to be done or might be good to get done (i.e., definately helpful for people to know what we had left to do). Each of us when we finished our part helped conquer that list of tasks!
+* We worked so hard that it felt right to throw a pancake party on the last work day. I brough some pancakes and they brought some toppings. It was fun!
+* I think this was the busiest sprint for us but we really worked hard as a team trying to help out one another as we had extra time apart from our individual parts!
+
+# Flapjack Heros Sprint Summary #
 ## Sprint 4: Development Pt2
 For these two weeks we continued work on functionality of our app. We met online a few times for progress reports and to split up tasks. We also met for work days. 
 
