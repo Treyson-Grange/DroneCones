@@ -190,6 +190,7 @@ textarea:focus{
   justify-content: center;
   flex-wrap: wrap;
   background-color: var(--primary-color);
+  padding: 0px;
   margin-top: 16px;
   border-radius: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) inset, 0 3px 6px rgba(0, 0, 0, 0.23) inset;
