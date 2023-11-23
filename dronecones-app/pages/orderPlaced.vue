@@ -8,5 +8,4 @@
 
 <template>
     <OrderTimer />
-    
 </template>
