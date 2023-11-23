@@ -64,7 +64,8 @@ export async function getUserOrderHistory(userID: string, limit: number = 3) {
                 flavor2,
                 flavor3,
                 topping,
-                scoops
+                scoops,
+                price
             )
         `)
         .eq('user_id',userID)
@@ -110,7 +111,8 @@ export async function removeSalesPrice(transactionID: string) {
 export async function addItemInProgress(item: ItemInProgress) {
     const { data, error } = await db.itemsInProgress()
         .insert(item)
-    console.log(error)
+        
+        console.log(error)
 }
 
 export async function getItemInProgress(itemId: number): Promise<ItemInProgress | null> {
@@ -206,5 +208,4 @@ async function addDroneDelivery(transactionID: number, droneID: number) {
         })
 
 }
-
 
