@@ -13,6 +13,7 @@
 </template>
 
   <script>
+  import { supabase } from '../components/lib/supabaseClient'
   export default {
     data() {
       return {
@@ -28,8 +29,18 @@
         this.orderStatus = 'in_transit';
       }, 6000);
   
-      setTimeout(() => {
+      setTimeout( async () => {
+        let orderID = localStorage.getItem('orderID');
         this.orderStatus = 'delivered';
+        let { data: transactions, error } = await supabase
+        .from('transactions')
+        .update({ completed: true })
+        .eq('id', orderID);
+
+        if(error) {
+          console.log(error);
+        }
+        //At this point, we need to get the order and set it as delivered
       }, 9000);
     },
   };

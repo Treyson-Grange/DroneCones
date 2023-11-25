@@ -80,9 +80,15 @@
             this.errorMessage = "Cannot order right now"
           }
         })
-
+        let ID=0;
         console.log(`{completed: ${false}, final_price: ${this.total}, item_count: ${this.orderItems.length}, sales_price: ${this.subtotal}, tax: ${this.tax}, user_id: ${this.id}}, drones: ${drones}`)
-        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones).then(data => console.log(data))
+        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones).then(
+          data => ID= data,
+          )
+        console.log(this.id);
+        console.log(ID);
+        localStorage.setItem('orderID', ID);
+        window.location = '/orderPlaced';
       },
       async removeItem(item) {
         let index = this.orderItems.indexOf(item)
