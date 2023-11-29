@@ -166,6 +166,22 @@ textarea:focus{
 .item-container {
   flex-grow: 4;
 }
+.history-container {
+  flex-grow: 4;
+}
+.order-history-item {
+  color: var(--font-primary);
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(175px, 33%, 400px);
+  padding: 8px 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 .delete-container {
   align-self: center;
 }
