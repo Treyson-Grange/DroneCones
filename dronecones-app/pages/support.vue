@@ -14,7 +14,6 @@
         <a href="/order">Order</a>
         <a href="/cart">Cart</a>
         <a href="/support">Support</a>
-        <a>Account</a>
     </Navbar>
     <Support/>
 </template>
