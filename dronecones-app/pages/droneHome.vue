@@ -1,8 +1,17 @@
 <template>
         <Navbar> 
-            <a href="/droneHome">Drones</a>
-            <a href="/support">Support</a>
-            <a href="/droneOwnerAccountInfo">Account</a>
+            <a href="/droneHome">
+                <img src = "./../assets/drone.png" class = "invert" width = "16">
+                <span style = "padding-left: 8px">Drones</span>
+            </a>
+            <a href="/support">
+                <img src = "./../assets/help.png" class = "invert" width = "16">
+                <span style = "padding-left: 8px">Support</span>
+            </a>
+            <a href="/droneOwnerAccountInfo">
+                <img src = "./../assets/user.png" class = "invert" width = "16">
+                <span style = "padding-left: 8px;">Account</span>
+            </a>
         </Navbar>
         <Drones ref = "droneView" class = "animated-element1" :class="{ 'active1': isActive || showEdit}">
             <button @click="toggleElement">

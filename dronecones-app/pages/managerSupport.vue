@@ -13,9 +13,18 @@ export default {
 <template>
     <div v-if="usertype=='3'">
         <Navbar>
-            <a href="managerHome">Inventory</a>
-            <a href="managerAccountInfo">Account Information</a>
-            <a href="managerSupport">Support</a>
+            <a href="managerHome">
+                <img src = "./../assets/inventory.png" class = "invert" width = "16">
+                <span>Inventory</span>
+            </a>
+            <a href="managerSupport">
+                <img src = "./../assets/help.png" class = "invert" width = "16">
+                <span style = "padding-left: 8px">Support</span>
+            </a>
+            <a href="managerAccountInfo">
+                <img src = "./../assets/user.png" class = "invert" width = "16">
+                <span style = "padding-left: 8px;">Account</span>
+            </a>
         </Navbar>   
         <ManagerSupports/>
     </div>
