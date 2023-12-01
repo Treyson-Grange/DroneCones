@@ -154,10 +154,16 @@ async function getScoop(){
                 <button  class="order-button" :disabled="item.available !== true" @click="topping=item">Add to Order</button>
             </div>
         </div>
-        
 
         <div style="text-align: center; margin-top: 50px; margin-bottom: 100px">
-            <button class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3.id, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
+            <button v-if="flavor2 !== null && flavor3 !== null && topping !==null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3.id, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
+            <button v-if="flavor2 !== null && flavor3 !== null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3.id, price:price, scoops:scoops, topping:topping, user_id:user_id})">Add to Cart</button>
+            
+            <button v-if="flavor2 !== null && flavor3 == null && topping !==null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
+            <button v-if="flavor2 !== null && flavor3 == null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2.id, flavor3:flavor3, price:price, scoops:scoops, topping:topping, user_id:user_id})">Add to Cart</button>
+            
+            <button v-if="flavor2 == null && flavor3 == null && topping !==null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2, flavor3:flavor3, price:price, scoops:scoops, topping:topping.id, user_id:user_id})">Add to Cart</button>
+            <button v-if="flavor2 == null && flavor3 == null" class="order-button" :disabled="flavor1 == null || cone == null" @click="getPrice(); getScoop(); transDb.addItemInProgress({ cone:cone.id, flavor1:flavor1.id, flavor2:flavor2, flavor3:flavor3, price:price, scoops:scoops, topping:topping, user_id:user_id})">Add to Cart</button>
             <a href="order">
                 <button class="order-button">Create New Order</button>
             </a>
