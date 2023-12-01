@@ -44,7 +44,10 @@
                     <label class = "radio-button" for="large">Large</label>
                 </fieldset>
                 <div class = "spacer">
-                    <button type = "submit" style = "background-color: var(--accent-color); color: var(--font-accent);">Add</button>
+                    <button type = "submit" style = "background-color: var(--accent-color); color: var(--font-accent);">
+                        <img src = "./../assets/plus.png" width = "16">
+                        <span style = "padding-left: 8px;">Add</span>
+                    </button>
                     <slot/>
                 </div>
             </form>
