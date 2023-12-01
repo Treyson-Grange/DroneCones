@@ -23,13 +23,13 @@
       <div class = "form-group">
         <legend for="status">Change Status:</legend>
         <fieldset class="radio-button-container" style="margin-top: 0px; border: none;" id = "status">
-          <input class = "radio" type="radio" name="status" id="status-1" value = "true" v-model="formData.available">
+          <input class = "radio" type="radio" name="status" id="status-1" value = true v-model="formData.available">
           <label class = "radio-button" for="status-1">Enable</label>
 
-          <input class = "radio" type="radio" name="status" id="status-2" value = "false" v-model="formData.available">
+          <input class = "radio" type="radio" name="status" id="status-2" value = false v-model="formData.available">
           <label class = "radio-button" for="status-2">Disable</label>
 
-          <input class = "radio" type="radio" name="status" id="status-3" value = "true" v-model="del">
+          <input class = "radio" type="radio" name="status" id="status-3" value = true v-model="del">
           <label class = "radio-button" for="status-3">Delete</label>
         </fieldset>
       </div>
@@ -54,7 +54,7 @@ import * as dronedb from './../database/droneDatabase'
     data() {
       return {
         drone: null,
-        del: 'false',
+        del: false,
         showEdit: false,
         formData: {
           name: '',
@@ -85,8 +85,7 @@ import * as dronedb from './../database/droneDatabase'
         this.$parent.showEdit = false;
       },
       async saveEdits() {
-        this.formData.available = this.formData.available === "true" ? true : false;
-        if(this.del === "true"){
+        if(this.del){
           console.log("deleting");
           this.deleteDrone();
         }
