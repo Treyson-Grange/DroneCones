@@ -75,7 +75,7 @@
     width: 300px;
     bottom: 0px;
     top:64px;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color-var);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
@@ -106,7 +106,7 @@ a:hover img{
 
 
 
-@media screen and (max-width: 675px){
+@media screen and (max-width: 765px){
     .links{
         display: none;
     }
@@ -114,7 +114,7 @@ a:hover img{
         justify-content: flex-start;
     }
 }
-@media screen and (min-width: 675px){
+@media screen and (min-width: 766px){
     .menu-button{
         display: none;
     }

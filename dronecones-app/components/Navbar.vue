@@ -9,10 +9,18 @@
         </div>
         <div class = "links">
             <slot />
+            <a href = "/">
+              <img src = "./../assets/exit.png" class = "invert" width = "16">
+              <span style = "padding-left: 8px;">Logout</span>
+            </a>
         </div>
     </nav>
     <div class = "menu-bar" :class="{'open' : isopen}">
         <slot />
+        <a href = "/">
+              <img src = "./../assets/exit.png" class = "invert" width = "16">
+              <span style = "padding-left: 8px;">Logout</span>
+        </a>
     </div>
 </template>
 
