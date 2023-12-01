@@ -1,7 +1,9 @@
 <template>
     <div class = "navbar-under"></div>
     <nav class = "navbar">
-        <button class = "menu-button" @click="openClose">Menu</button>
+        <button class = "menu-button" @click="openClose">
+          <img src = "./../assets/menu.png" class = "invert" width="32" height="32">
+        </button>
         <div class = "title">
             Drone Cones
         </div>

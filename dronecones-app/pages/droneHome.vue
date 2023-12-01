@@ -5,7 +5,10 @@
             <a href="/droneOwnerAccountInfo">Account</a>
         </Navbar>
         <Drones ref = "droneView" class = "animated-element1" :class="{ 'active1': isActive || showEdit}">
-            <button @click="toggleElement">Add Drone</button>
+            <button @click="toggleElement">
+                <img src = "./../assets/plus.png" width = "16">
+                <span style = "padding-left: 8px;">Drone</span>
+            </button>
         </Drones>
         <AddDrone class = "animated-element2" :class="{ 'active2': !isActive}">
             <button type = "button" @click="toggleElement">Cancel</button>

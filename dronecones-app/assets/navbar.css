@@ -61,6 +61,9 @@
     box-shadow: none;
     background-color: var(--accent-color);
 }
+.menu-button:hover img{
+    filter: invert(0%);
+}
 .menu-bar {
     height: 100vh;
     position: fixed;
