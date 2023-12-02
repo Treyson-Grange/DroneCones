@@ -21,7 +21,7 @@
               <td>{{ topping.amount === null ? 'N/A' : topping.amount }}</td>
               <td>{{ topping.available === null ? 'N/A' : availableString(topping.available) }}</td>
               <td>
-                <img @click="editToppings(index)" src=".\..\assets\edit.ico" width="20"/>
+                <img @click="editToppings(index)" src=".\..\assets\edit.png" width="20" class = "invert"/>
               </td>
             </tr>
           </tbody>
