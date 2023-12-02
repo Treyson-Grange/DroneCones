@@ -80,7 +80,7 @@ import * as dronedb from './../database/droneDatabase'
           size: 0,
           available: true
         }
-        this.drone = null
+        this.drone = null;
         this.showEdit = false;
         this.$parent.showEdit = false;
       },

@@ -81,7 +81,8 @@
             type = "submit"
             style="background-color: var(--accent-color); color: var(--font-accent)"
           >
-            Login
+            <img src = "./../assets/enter.png" width="16" height="16">
+            <span style = "padding-left: 8px;">Login</span>
           </button>
           <button @click="navigateToRegister">Register</button>
         </div>
