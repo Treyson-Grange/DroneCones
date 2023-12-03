@@ -38,12 +38,9 @@ export default {
         this.showForm = false;
       },
       async submitForm() {
-        // Handle the form submission here, e.g., send restock data to the server
-        // After successful submission, you can close the form
-        for (const flavor of this.selectedItems) {
-          stockdb.addIcecreamFlavorAmount(flavor.id, flavor.quantity)
-          delete flavor.quantity
-        }
+
+        stockdb.restockFlavors(this.selectedItems)
+
 
         this.closeForm();
         this.$parent.selectedItems = []

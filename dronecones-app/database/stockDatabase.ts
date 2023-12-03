@@ -258,6 +258,19 @@ export async function restockCones(items: any) {
     }
 }
 
+export async function restockFlavors(items: any) {
+    for (const item of items) {
+        makeRestockOrder('flavor', item)
+    }
+}
+
+export async function restockToppings(items: any) {
+    for (const item of items) {
+        makeRestockOrder('topping', item)
+    }
+}
+
+
 async function makeRestockOrder(type: string, item: any) {
     let restockOrder: RestockHistory = {
         type: type,

@@ -38,12 +38,12 @@ export default {
         this.showForm = false;
       },
       async submitForm() {
-        // Handle the form submission here, e.g., send restock data to the server
-        // After successful submission, you can close the form
-        for (const topping of this.selectedItems) {
-          stockdb.addToppingAmount(topping.id, topping.quantity)
-          delete topping.quantity
-        }
+        // for (const topping of this.selectedItems) {
+        //   stockdb.addToppingAmount(topping.id, topping.quantity)
+        //   delete topping.quantity
+        // }
+        stockdb.restockToppings(this.selectedItems)
+
 
         this.closeForm();
         this.$parent.selectedItems = []
