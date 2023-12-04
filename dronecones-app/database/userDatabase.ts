@@ -31,7 +31,6 @@ export async function getUser(userID: string):  Promise<User | null> {
     } else {
         user = data?.at(0)
     }
-    console.log(user)
 
     return user
 }
@@ -41,7 +40,6 @@ export async function updateUser(userID: string, userUpdate: UserUpdate) {
     const { error } = await db.users()
         .update(userUpdate)
         .eq('id', userID)
-    console.log(userUpdate)
 }
 
 export async function toggleUserBan(userID: string) {
@@ -55,12 +53,10 @@ export async function getUsers(userType?: number): Promise<User[] | null> {
         const { data, error } = await db.users()
             .select()
             .eq('userType', userType)
-        console.log(data)
         return data
     } else {
         const { data, error } = await db.users()
             .select()
-        console.log(data)
         return data
     }
     
@@ -94,7 +90,6 @@ export async function getUsersAddress(userID: string): Promise<Address | null> {
     } else {
         address = data?.at(0)
     }
-    console.log(address)
 
     return address
 }

@@ -98,7 +98,8 @@ Ice cream flavors functions
 export async function getIcecreamFlavors(): Promise<IcecreamFlavor[] | null> {
     // returns an array of all ice cream flavors in database as IcecreamFlavor types
     const { data, error } = await db.icecreamFlavors()
-        .select();
+        .select()
+        .order('id');
     return data
 }
 
@@ -179,8 +180,8 @@ Toppings functions
 export async function getToppings(): Promise<Topping[] | null> {
     // returns an array of all toppings in database as topping types
     const { data, error } = await db.toppings()
-        .select();
-
+        .select()
+        .order('id');
     return data
 }
 
@@ -306,7 +307,7 @@ async function makeRestockOrder(type: string, item: any) {
         .eq('id', data[0].id) 
         
     if (restockOrder.cone != null && restockOrder.amount != null) {
-        addConeAmount(restockOrder.cone, restockOrder.amount)
+        addIcecreamFlavorAmount(restockOrder.cone, restockOrder.amount)
     } else if (restockOrder.flavor != null && restockOrder.amount != null)  {
         addIcecreamFlavorAmount(restockOrder.flavor, restockOrder.amount)
     } else if (restockOrder.topping != null && restockOrder.amount != null)  {
