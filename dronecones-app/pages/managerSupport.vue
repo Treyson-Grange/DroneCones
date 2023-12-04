@@ -15,7 +15,7 @@ export default {
         <Navbar>
             <a href="managerHome">
                 <img src = "./../assets/inventory.png" class = "invert" width = "16">
-                <span>Inventory</span>
+                <span style = "padding-left: 8px;">Inventory</span>
             </a>
             <a href="managerSupport">
                 <img src = "./../assets/help.png" class = "invert" width = "16">
@@ -25,7 +25,7 @@ export default {
                 <img src = "./../assets/user.png" class = "invert" width = "16">
                 <span style = "padding-left: 8px;">Account</span>
             </a>
-        </Navbar>   
+        </Navbar>
         <ManagerSupports/>
     </div>
     <div v-else>

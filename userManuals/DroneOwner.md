@@ -7,7 +7,7 @@
 ![Add Menu](DroneOwnerImages/AddMenu.jpg)
     1. The name textfield is where the name of the new drone is specified.
     2. There are then three options for the size of the drone, small, medium, and large. Small means the drone can carry one cone, medium the drone carries two cones and large means the drone can carry up to four cones.
-* At the bottom on the menu there two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
+* At the bottom on the menu there are two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
 * One thing to note is that the default status is set to enabled.
 
 ## Editing a Drone
@@ -32,8 +32,8 @@
 * To view total income click on "Account" in the navbar at the top of the page(or inside the side menu). This will redirect to the account page.
 ![Account](DroneOwnerImages/Account.jpg)
 * At the top under Total Revenue the total income is listed for all drones
-* Under Transfer Funds there is an option to enter banking information like Routing and Account numbers. To transfer funds to a bank enter the corresponding information and then click on the "Transfer Funds" buttn at the bottom of the page. The result will be a transfer, thus setting the income balance to zero.
-* To go back to the homepage click on "Drones" in the menue bar.
+* Under Transfer Funds there is an option to enter banking information like Routing and Account numbers. To transfer funds to a bank enter the corresponding information and then click on the "Transfer Funds" button at the bottom of the page. The result will be a transfer, thus setting the income balance to zero.
+* To go back to the homepage click on "Drones" in the menu bar.
 
 
 ## Support
