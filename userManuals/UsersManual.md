@@ -1,10 +1,62 @@
 # DroneCones Users Manual
+* [Overview](#drone-cones)
 * [Installation Instructions](#installation-instructions)  
 * [Getting Started](#getting-started-with-drone-cones)
   * [Customers](#customer-edition)
   * [Drone Owners](#drone-owners)
   * [Managers](#managers)
 * [Ordering](#the-order-page)
+* [Troubleshooting](#troubleshooting)
+* [Frequently Asked Questions](#frequently-asked-questions)
+* [Contact Information](#contact-information)
+
+# Drone Cones
+Welcome to Drone Cones! Drone Cones is a service to make some extra cash with your drone or to order some icecream like never before, BY DRONES! 
+
+## Customer
+Want to order some icecream? Here are some key features when doing so.
+* Ordering an icream cone
+    * You can order as many as three scoops on one cone each one with their own options for flavors
+    * You have a selection of cones to choose from
+    * You have a selection to toppings to choose from
+* Add you order to your cart
+    * You can view and place your order
+    * You can enter an adress and payment information
+    * Finally you can submit your order
+If you ever need help or would like to let us know how we are doing click on support and send us a message
+
+## Drone Operator
+To make some extra cash rent out your drone. It is as simple as that! Below are a list of the features available to the drone operator.
+* Adding a new drone for delivery
+* Editing an existing drone
+    * You can change the size if you have made some upgrades to a drone
+    * You can change the status either for maintenance or for personal use
+    * You can also delete a drone to retire it
+* To see the amount of money that you have made head over to the account page. There you can see the amount of money that you have earned and the ability to transfer funds to your bank account.
+* If you ever need help or would like to let us know how we are doing click on support and send us a message
+
+## Manager
+As a manager you can do the following.
+* Manage icecream flavors, cones and toppings
+    * Delete the option
+    * Update name
+    * Change price
+    * Update stock
+    * Change availablity
+* Add new flavors, cones and toppings
+    * Give the option a name
+    * Upload a photo
+    * Enter price, and the amount available
+    * Mark as available
+* Restock items
+    * Select the items to restock and then press restock and enter the amounts ordered.
+* View past orders
+* View and manage support messages
+    * Mark them as resolved
+
+<br>
+<br>
+<br>
 
 # Installation Instructions
 
@@ -98,7 +150,7 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 <br>
 <br>
 
-## Drone Owners
+# Drone Owners
 
 ## Adding a Drone
 * On the your homepage click the button on the upper right of the page labeled "+ Drone." This will open up a new menu.
@@ -107,7 +159,7 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 ![Add Menu](DroneOwnerImages/AddMenu.jpg)
     1. The name textfield is where the name of the new drone is specified.
     2. There are then three options for the size of the drone, small, medium, and large. Small means the drone can carry one cone, medium the drone carries two cones and large means the drone can carry up to four cones.
-* At the bottom on the menu there two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
+* At the bottom on the menu there are two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
 * One thing to note is that the default status is set to enabled.
 
 ## Editing a Drone
@@ -132,8 +184,8 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 * To view total income click on "Account" in the navbar at the top of the page(or inside the side menu). This will redirect to the account page.
 ![Account](DroneOwnerImages/Account.jpg)
 * At the top under Total Revenue the total income is listed for all drones
-* Under Transfer Funds there is an option to enter banking information like Routing and Account numbers. To transfer funds to a bank enter the corresponding information and then click on the "Transfer Funds" buttn at the bottom of the page. The result will be a transfer, thus setting the income balance to zero.
-* To go back to the homepage click on "Drones" in the menue bar.
+* Under Transfer Funds there is an option to enter banking information like Routing and Account numbers. To transfer funds to a bank enter the corresponding information and then click on the "Transfer Funds" button at the bottom of the page. The result will be a transfer, thus setting the income balance to zero.
+* To go back to the homepage click on "Drones" in the menu bar.
 
 
 ## Support
@@ -199,7 +251,9 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
     *   "completed" once you have recieved the order.
     *   "canceled" if the order was canceled for any reason.
 ![Restocking History](ManagerImages/RestockHistory.png)
-
+## Revenue Graphs
+*   Go to the account information page to view revenue graphs and bank information
+![Manager Account Information](ManagerImages/managerAccountInformation.png)
 <br>
 <br>
 <br>
@@ -229,5 +283,53 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 ![Go to Cart](OrderImages/gotoCart.png) 
 * If you would like to make another order, you can press the "Create New Order" button at the bottom of the Ordering page or the "Order" button in the Navigation bar at the top of the page.
 ![Create New Order](OrderImages/createNew.png) 
+* If you would like to order a from a recent past order, you can select one of the past orders at the top of the page.
+![Order Past Order](OrderImages/OrderPastItem.png) 
+
+<br>
+<br>
+<br>
+
+# Troubleshooting
+
+## Login Page
+## When I register my account, I am not getting a confirmation email about it?
+Wait a few minutes…It’s been known to take up to 20 minutes for the email to send.
 
 
+## Order page
+## When I try to add a flavor, cone type, or topping it doesn’t add?
+Check the color of the “add to order” button. It will appear pink if the item requested is out of stock.
+## I want order multiple cones in one transaction with different attributes, but the cone specifications stay the same when I add the first one to the cart?
+Click “Create New Order” button to refresh the specifications. The previous cone added to the cart will remain in the cart until deleted from the cart page itself.
+
+## Drones page
+## I want to remove my drone from your system but there is no delete button?
+Click the Edit button for the drone to be removed. Change the status to delete and click save to delete.
+## Why doesn’t it work when I change the drone information?
+Try waiting a couple more seconds before saving the new updated drone information. Editing drones in a few seconds can sometimes not allow for the computer to know what is happening. 
+
+
+# Frequently Asked Questions
+
+## My order wasn't correct/ I never received it. How do I get a refund?
+You can fill out a form on the support page and we will look into it and issue a refund
+
+## Can I cancel my order after placing it
+Unfortunately, once you place your order, there is no way to cancel it.
+
+## I forgot my password. Can I recover it?
+At this time, there is no password reset option. Please email us at support@dronecones.com and we will help you to get your password.  
+NOTE: This is not an actual email. Only for demo purposes
+
+## If I am a drone owner and a customer, do I have to make 2 separate accounts?
+Yes. You will have to make a drone owner account and a customer account.
+
+## I don't want my drone to be used for deliveries today. Do I have to delete it and readd it later?
+On your account page, you can click to edit the drone. In that editing menu, there is an option to disable it for delivery. Whenever you want to use it again, you can go back to the same page and enable it. See [Drone owners](#editing-a-drone) section of manual for more info
+
+## How big are the drone sizes?
+A small drone can carry one cone. A medium drone can carry up to two cones. A large drone can carry up to four.
+
+# Contact Information
+To get in contact with us, you can fill out a form on the support page (best option), or email us at support@dronecones.com.
