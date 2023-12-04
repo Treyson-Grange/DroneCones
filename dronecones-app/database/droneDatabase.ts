@@ -61,13 +61,12 @@ export async function getDrones(limit = 10, userID?: number | null): Promise<Dro
             .select()
             .eq('owner_id', userID)
             .limit(limit)
-        console.log(data)
         return data
     } else {
         const { data, error } = await db.drones()
             .select()
+            .order('id')
             .limit(limit)
-        console.log(data)
         return data
     }
 }

@@ -42,7 +42,6 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
 export async function getTransactions(): Promise<Transaction[] | null> {
     const { data, error } = await db.transactions()
         .select()
-    console.log(data)
     return data
 }
 
@@ -112,7 +111,6 @@ export async function addItemInProgress(item: ItemInProgress) {
     const { data, error } = await db.itemsInProgress()
         .insert(item)
         
-        console.log(error)
 }
 
 export async function getItemInProgress(itemId: number): Promise<ItemInProgress | null> {
@@ -154,12 +152,8 @@ async function addAllSoldItems(userId: string, transactionID: number) {
     const { data, error } = await db.itemsInProgress()
         .select()
         .eq('user_id', userId)
-    // console.log('items in progress')
-    // console.log(data)
-    // console.log(error)
     if (data == null) return
     data.forEach( (item) => {
-        // console.log(item)
         delete item.user_id
         delete item.id
         addSoldItem(transactionID, item)
@@ -193,7 +187,6 @@ async function addSoldItem(transactionID: number, item: OrderItem) {
     
     const { data, error } = await db.orderItem()
         .insert(item)
-    console.log(error)
 }
 
 // async function getSoldItems() {
