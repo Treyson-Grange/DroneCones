@@ -7,6 +7,7 @@ Want to order some icecream? Here are some key features when doing so.
     * You can order as many as three scoops on one cone each one with their own options for flavors
     * You have a selection of cones to choose from
     * You have a selection to toppings to choose from
+    * You can also view past orders and also use them again
 * Add you order to your cart
     * You can view and place your order
     * You can enter an adress and payment information
