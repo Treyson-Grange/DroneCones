@@ -288,9 +288,23 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 
 # Troubleshooting
 
-<br>
-<br>
-<br>
+## Login Page:
+## When I register my account, I am not getting a confirmation email about it?
+Wait a few minutes…It’s been known to take up to 20 minutes for the email to send.
+
+
+## Order page:
+## When I try to add a flavor, cone type, or topping it doesn’t add?
+Check the color of the “add to order” button. It will appear pink if the item requested is out of stock.
+## I want order multiple cones in one transaction with different attributes, but the cone specifications stay the same when I add the first one to the cart?
+Click “Create New Order” button to refresh the specifications. The previous cone added to the cart will remain in the cart until deleted from the cart page itself.
+
+## Drones page:
+## I want to remove my drone from your system but there is no delete button?
+Click the Edit button for the drone to be removed. Change the status to delete and click save to delete.
+## Why doesn’t it work when I change the drone information?
+Try waiting a couple more seconds before saving the new updated drone information. Editing drones in a few seconds can sometimes not allow for the computer to know what is happening. 
+
 
 # Frequently Asked Questions
 
