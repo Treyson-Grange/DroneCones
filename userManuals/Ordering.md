@@ -23,3 +23,5 @@
 ![Go to Cart](OrderImages/gotoCart.png) 
 * If you would like to make another order, you can press the "Create New Order" button at the bottom of the Ordering page or the "Order" button in the Navigation bar at the top of the page.
 ![Create New Order](OrderImages/createNew.png) 
+* If you would like to order a from a recent past order, you can select one of the past orders at the top of the page.
+![Order Past Order](OrderImages/OrderPastItem.png) 

@@ -283,6 +283,8 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 ![Go to Cart](OrderImages/gotoCart.png) 
 * If you would like to make another order, you can press the "Create New Order" button at the bottom of the Ordering page or the "Order" button in the Navigation bar at the top of the page.
 ![Create New Order](OrderImages/createNew.png) 
+* If you would like to order a from a recent past order, you can select one of the past orders at the top of the page.
+![Order Past Order](OrderImages/OrderPastItem.png) 
 
 <br>
 <br>
@@ -290,18 +292,18 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 
 # Troubleshooting
 
-## Login Page:
+## Login Page
 ## When I register my account, I am not getting a confirmation email about it?
 Wait a few minutes…It’s been known to take up to 20 minutes for the email to send.
 
 
-## Order page:
+## Order page
 ## When I try to add a flavor, cone type, or topping it doesn’t add?
 Check the color of the “add to order” button. It will appear pink if the item requested is out of stock.
 ## I want order multiple cones in one transaction with different attributes, but the cone specifications stay the same when I add the first one to the cart?
 Click “Create New Order” button to refresh the specifications. The previous cone added to the cart will remain in the cart until deleted from the cart page itself.
 
-## Drones page:
+## Drones page
 ## I want to remove my drone from your system but there is no delete button?
 Click the Edit button for the drone to be removed. Change the status to delete and click save to delete.
 ## Why doesn’t it work when I change the drone information?
