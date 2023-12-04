@@ -251,7 +251,9 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
     *   "completed" once you have recieved the order.
     *   "canceled" if the order was canceled for any reason.
 ![Restocking History](ManagerImages/RestockHistory.png)
-
+## Revenue Graphs
+*   Go to the account information page to view revenue graphs and bank information
+![Manager Account Information](ManagerImages/managerAccountInformation.png)
 <br>
 <br>
 <br>
