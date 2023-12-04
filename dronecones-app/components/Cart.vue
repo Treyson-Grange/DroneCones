@@ -172,7 +172,7 @@
           <input type="text" id="zip" v-model="formData.zip" required/>
         </div>
         <div class="form-group centered payment-input">
-          <button class="place-order-button" type="submit" v-on:click="placeOrder()">Order</button>
+          <button class="place-order-button" type="submit" v-on:submit="placeOrder()">Order</button>
           <p id="error_message">{{ errorMessage }}</p>
         </div>
       </form>

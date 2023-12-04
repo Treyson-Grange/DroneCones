@@ -1,4 +1,20 @@
 # Flapjack Heros Sprint Summary #
+## Sprint 6: Testing and Deployment
+For this sprint, everybody searched for bugs in the website to fix. We also worked on writing the users manual. We had two virtual meetings to make sure everyone knew what to do.
+
+For this sprint, people worked on the following:
+* Emily McBride: wrote installation instructions and ordering section of users manual. Fixed bugs on ordering page.
+* Matt Rau: Wrote unit tests for the database. Wrote the manager section of the users manual. Fixed bug in restocking database functions.
+* Jordan Olsen: Wrote software overview and drone owner section of the users manual. Also did some UI revisions to improve the user experience. Fixed bug in editing drones
+* Samuel McMillan: Wrote the troubleshooting section of the users manual. got recent order history up.
+* Treyson Grange: Wrote getting started section of users manual. Added timer for orders to simulate delivery time.
+* Nathan Taylor - Wrote FAQs section of the users manual. Assembled individual parts of manual into one file. 
+
+
+Successes:
+* Communication for this sprint was good. Everybody knew their part and everybody got it done. There wasn't too many people working on any one thing.
+
+
 ## Sprint 5: Development Pt3
 For these two weeks we continued work on functionality of our app. We met online that Monday night (i.e., the first night of the sprint) to make sure each person knew what needed to be done and gave out tasks to do. We also met for work days. 
 
