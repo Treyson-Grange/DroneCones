@@ -88,7 +88,11 @@
         console.log(this.id);
         console.log(ID);
         localStorage.setItem('orderID', ID);
+        for(let i = 0; i < this.orderItems.length; i++) {
+          await removeItemInProgress(this.orderItems[i].id)
+        }
         window.location = '/orderPlaced';
+
       },
       async removeItem(item) {
         let index = this.orderItems.indexOf(item)

@@ -6,7 +6,7 @@ For this sprint, people worked on the following:
 * Emily McBride: wrote installation instructions and ordering section of users manual. Fixed bugs on ordering page.
 * Matt Rau: Wrote unit tests for the database. Wrote the manager section of the users manual. Fixed bug in restocking database functions.
 * Jordan Olsen: Wrote software overview and drone owner section of the users manual. Also did some UI revisions to improve the user experience. Fixed bug in editing drones
-* Samuel McMillan: Wrote the troubleshooting section of the users manual. got recent order history up.
+* Samuel McMillan: Wrote the troubleshooting section of the users manual. Got recent order history up. Helped create manager section and ordering sections of users manual.
 * Treyson Grange: Wrote getting started section of users manual. Added timer for orders to simulate delivery time.
 * Nathan Taylor - Wrote FAQs section of the users manual. Assembled individual parts of manual into one file. 
 
