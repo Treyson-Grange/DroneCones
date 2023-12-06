@@ -122,7 +122,7 @@
             <p v-if="item.flavor2 != null">Scoop 2: {{ flavors[item.flavor2] }}</p>
             <p v-if="item.flavor3 != null">Scoop 3: {{ flavors[item.flavor3] }}</p>
             <p v-if="item.topping != null">Topping: {{ toppings[item.topping] }}</p>
-            <p v-if="item.price != null">Price: {{ item.price }}</p>
+            <p v-if="item.price != null">Price: {{ item.price / 100}}</p>
           </div>
           <div class="delete-container">
             <div class="delete" v-on:click="removeItem(item)">
