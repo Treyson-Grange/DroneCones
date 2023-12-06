@@ -23,11 +23,14 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
         Adds new rows to soldItems database, for each item in the items list
     */
     transaction.completed = false
+    transaction.final_price = Math.floor(transaction.final_price)
+    transaction.tax = Math.floor(transaction.tax)
     const { data, error } = await db.transactions()
         .insert(transaction)
         .select()
     const transData = data?.at(0)
     console.log(error);
+    console.log(transaction)
     console.log(data);
 
     droneIDs.forEach( (droneID) => {
