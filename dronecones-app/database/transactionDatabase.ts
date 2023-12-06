@@ -27,6 +27,8 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
         .insert(transaction)
         .select()
     const transData = data?.at(0)
+    console.log(error);
+    console.log(data);
 
     droneIDs.forEach( (droneID) => {
         if (transData !== null) {

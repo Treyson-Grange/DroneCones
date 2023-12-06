@@ -73,6 +73,8 @@
         this.total = this.subtotal + this.tax
       },
       async placeOrder() {
+        console.log(this.id);
+        
         let drones = []
         await getDronesForDelivery(this.orderItems.length).then(data => {
           if (data != null) drones = data
@@ -82,9 +84,7 @@
         })
         let ID=0;
         console.log(`{completed: ${false}, final_price: ${this.total}, item_count: ${this.orderItems.length}, sales_price: ${this.subtotal}, tax: ${this.tax}, user_id: ${this.id}}, drones: ${drones}`)
-        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones).then(
-          data => ID= data,
-          )
+        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones)
         console.log(this.id);
         console.log(ID);
         localStorage.setItem('orderID', ID);
@@ -134,29 +134,29 @@
       <h4 id="subtotal">Subtotal: {{ subtotal }}</h4>
       <h4 id="tax">Tax: {{ tax }}</h4>
       <h3 id="total">Your total is ${{ total }}</h3>
-      <form v-on:submit="submitForm">
+      <form @submit.prevent="placeOrder()">
         <div class="form-group payment-input">
           <label for="card-name">Name on card</label>
-          <input type="text" id="card-name" v-model="formData.cardName" required/>
+          <input type="text" id="card-name" v-model="formData.cardName"/>
         </div>
         <div class="form-group payment-input">
           <label for="card-number">Card Number</label>
-          <input type="text" id="card-number" v-model="formData.cardNumber" required/>
+          <input type="text" id="card-number" v-model="formData.cardNumber" />
         </div>
         <div class="form-row centered payment-input">
           <div class="form-group">
             <label for="card-expiration">Card Expiration</label>
-            <input type="text" id="card-expiration" v-model="formData.cardExpiration" required/>
+            <input type="text" id="card-expiration" v-model="formData.cardExpiration"/>
           </div>
           <div class="form-group payment-input">
             <label for="security-code">Security code</label>
-            <input type="text" id="security-code" v-model="formData.securityCode" required/>
+            <input type="text" id="security-code" v-model="formData.securityCode"/>
           </div>
         </div>
         <div class="form-row centered payment-input">
           <div class="form-group address">
             <label for="address">Address Line 1</label>
-            <input type="text" id="address" v-model="formData.address" required/>
+            <input type="text" id="address" v-model="formData.address"/>
           </div>
           <div class="form-group apt payment-input">
             <label for="apt">Apt #</label>
@@ -165,18 +165,18 @@
         </div>
         <div class="form-group payment-input">
           <label for="city">City</label>
-          <input type="text" id="city" v-model="formData.city" required/>
+          <input type="text" id="city" v-model="formData.city" />
         </div>
         <div class="form-group payment-input">
           <label for="state">State</label>
-          <input type="text" id="state" v-model="formData.state" required/>
+          <input type="text" id="state" v-model="formData.state"/>
         </div>
         <div class="form-group payment-input">
           <label for="zip">Zip code</label>
-          <input type="text" id="zip" v-model="formData.zip" required/>
+          <input type="text" id="zip" v-model="formData.zip"/>
         </div>
         <div class="form-group centered payment-input">
-          <button class="place-order-button" type="submit" v-on:submit="placeOrder()">Order</button>
+          <button class="place-order-button" type="submit">Order</button>
           <p id="error_message">{{ errorMessage }}</p>
         </div>
       </form>
