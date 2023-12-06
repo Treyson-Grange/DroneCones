@@ -40,12 +40,15 @@ export async function addTransaction(transaction: Transaction, droneIDs: number[
 }
 
 export async function getTransactions(): Promise<Transaction[] | null> {
+    // returns all transactions in the database
     const { data, error } = await db.transactions()
         .select()
     return data
 }
 
 export async function getUserOrderHistory(userID: string, limit: number = 3) {  
+    // returns all transactions tied to given UserID, including all items in the order. 
+    // If limit is specified, it returns that many, otherwise returns three most recent
     const { data, error } = await db.transactions()
         .select(`
             id,
@@ -74,7 +77,8 @@ export async function getUserOrderHistory(userID: string, limit: number = 3) {
     return data
 
 }
-export async function getTransaction(transactionID: string) {    
+export async function getTransaction(transactionID: number) {
+    // returns transaction with given transactionID as a transaction object    
     const { data, error } = await db.transactions()
         .select(`
             id,
@@ -108,12 +112,14 @@ export async function removeSalesPrice(transactionID: string) {
 }
 
 export async function addItemInProgress(item: ItemInProgress) {
+    // adds the specified item into the itemsInProgress table
     const { data, error } = await db.itemsInProgress()
         .insert(item)
         
 }
 
 export async function getItemInProgress(itemId: number): Promise<ItemInProgress | null> {
+    // returns the itemInProgress with specified itemID from database
     const { data, error } = await db.itemsInProgress()
         .select()
         .eq('id', itemId)
@@ -129,12 +135,14 @@ export async function getItemInProgress(itemId: number): Promise<ItemInProgress 
 }
 
 export async function removeItemInProgress(itemId: number) {
+    // deletes the itemInProgress with specified itemID from the database
     const { error } = await db.itemsInProgress()
         .delete()
         .eq('id', itemId)
 }
 
 export async function getUsersItemsInProgress(userId: string) : Promise<ItemInProgress[] | null> {
+    // returns a list of all itemsInProgress with the given userID
     const { data, error } = await db.itemsInProgress()
         .select()
         .eq('user_id', userId)
@@ -143,12 +151,16 @@ export async function getUsersItemsInProgress(userId: string) : Promise<ItemInPr
 }
 
 export async function removeUsersItemsInProgress(userId: string) {
+    // deletes all itemInProgress rows with the given userID from the database
     const { error } = await db.itemsInProgress()
         .delete()
         .eq('user_id', userId)
 }
 
 async function addAllSoldItems(userId: string, transactionID: number) {
+    // Retrieves all itemsInProgress for the given userID
+    // For each one, it calls addSoldItem, passing in the given transaction id, and updates the stock of those items
+    // calls removeUsersItemsInProgress to delete those items    
     const { data, error } = await db.itemsInProgress()
         .select()
         .eq('user_id', userId)
@@ -164,6 +176,7 @@ async function addAllSoldItems(userId: string, transactionID: number) {
 }
 
 async function updateStock(item: OrderItem) {
+    // Goes through each part of the OrderItem and reduces the amount of each by 1
     if (typeof item.cone === 'number') {
         stockdb.useOneCone(item.cone)
     }
@@ -189,11 +202,8 @@ async function addSoldItem(transactionID: number, item: OrderItem) {
         .insert(item)
 }
 
-// async function getSoldItems() {
-
-// }
-
 async function addDroneDelivery(transactionID: number, droneID: number) {
+    // adds a new row in DroneDelivery database with given information
     const { data, error } = await db.droneDelivery()
         .insert({
             transaction_id: transactionID,

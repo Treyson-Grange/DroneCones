@@ -11,13 +11,6 @@ export async function getCones(): Promise<Cone[] | null> {
     const { data, error } = await db.cones()
         .select()
         .order('id');
-
-    // let cones : Cone[] = [];
-    // if (data) {
-    //     data?.forEach( (element) => {
-    //         cones.push(element)
-    //     });
-    // }
     return data
 }
 
@@ -63,6 +56,7 @@ export async function addConeAmount(id: number, increment_num: number) {
 }
 
 export async function useOneCone(id: number) {
+    // reduces the amount of the given cone id by 1
     const { error } = await supabase.rpc('add_cone_amount', {
         quote_id: id, increment_num: -1
     })
@@ -81,6 +75,7 @@ export async function updateCone(id: number, cone: Cone) {
 }
 
 async function uploadConeImage(image: any) {
+    // uploads a image to a 'stockImages' storage bucket at path of 'cones/'
     const { data, error } = await supabase
         .storage
         .from('stockImages')
@@ -88,6 +83,13 @@ async function uploadConeImage(image: any) {
             cacheControl: '3600',
             upsert: false
     })
+}
+
+export async function restockCones(items: any) {
+    // makes a restock order for each item in the list
+    for (const item of items) {
+        makeRestockOrder('cone', item)
+    }
 }
 
 
@@ -144,6 +146,7 @@ export async function addIcecreamFlavorAmount(id: number, increment_num: number)
 }
 
 export async function useOneIcecreamFlavor(id: number) {
+    // reduces the amount of the given flavor id by 1
     const { error } = await supabase.rpc('add_flavor_amount', {
         quote_id: id, increment_num: -1
     })
@@ -162,6 +165,7 @@ export async function updateIcecreamFlavor(id: number, flavor: IcecreamFlavor) {
 }
 
 async function uploadIcecreamImage(image: any) {
+    // uploads a image to a 'stockImages' storage bucket at path of 'icecreamFlavors/' 
     const { data, error } = await supabase
         .storage
         .from('stockImages')
@@ -171,6 +175,12 @@ async function uploadIcecreamImage(image: any) {
     })
 }
 
+export async function restockFlavors(items: any) {
+    // makes a restock order for each item in the list
+    for (const item of items) {
+        makeRestockOrder('flavor', item)
+    }
+}
 
 
 
@@ -226,6 +236,7 @@ export async function addToppingAmount(id: number, increment_num: number) {
 }
 
 export async function useOneTopping(id: number) {
+    // reduces the amount of the given topping id by 1
     const { error } = await supabase.rpc('add_topping_amount', {
         quote_id: id, increment_num: -1
     })
@@ -244,6 +255,7 @@ export async function updateTopping(id: number, topping: Topping) {
 }
 
 async function uploadToppingImage(image: any) {
+    // uploads a image to a 'stockImages' storage bucket at path of 'toppings/' 
     const { data, error } = await supabase
         .storage
         .from('stockImages')
@@ -253,19 +265,8 @@ async function uploadToppingImage(image: any) {
     })
 }
 
-export async function restockCones(items: any) {
-    for (const item of items) {
-        makeRestockOrder('cone', item)
-    }
-}
-
-export async function restockFlavors(items: any) {
-    for (const item of items) {
-        makeRestockOrder('flavor', item)
-    }
-}
-
 export async function restockToppings(items: any) {
+    // makes a restock order for each item in the list
     for (const item of items) {
         makeRestockOrder('topping', item)
     }
@@ -273,6 +274,10 @@ export async function restockToppings(items: any) {
 
 
 async function makeRestockOrder(type: string, item: any) {
+    // Makes a restock order for the proper table of type 'cone', 'flavor' or 'topping'
+    // Inserts a row into RestockHistory table
+    // Starts development timer that changes status from 'placed', to 'shipped', then 'completed'
+    // Updates the amount of that item
     let restockOrder: RestockHistory = {
         type: type,
         status: 'placed',
@@ -316,6 +321,7 @@ async function makeRestockOrder(type: string, item: any) {
 }
 
 export async function getRestockHistory() {
+    // Returns a list of all rows in restockHistory table
     const { data, error } = await db.restockHistory()
         .select(`
             id,
