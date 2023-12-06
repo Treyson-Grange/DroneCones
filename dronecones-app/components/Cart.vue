@@ -1,6 +1,6 @@
 <script>
   import { supabase } from '../components/lib/supabaseClient'
-  import { getUsersItemsInProgress, removeItemInProgress, addTransaction } from '../database/transactionDatabase'
+  import { getUsersItemsInProgress, removeItemInProgress, addTransaction, removeUsersItemsInProgress } from '../database/transactionDatabase'
   import { getCones, getIcecreamFlavors, getToppings } from '~/database/stockDatabase'
   import { getDronesForDelivery } from '~/database/droneDatabase';
   // import { Transaction, ItemInProgress } from '../database/databaseTypes'
@@ -88,9 +88,10 @@
         console.log(this.id);
         console.log(ID);
         localStorage.setItem('orderID', ID);
-        for(let i = 0; i < this.orderItems.length; i++) {
-          await removeItemInProgress(this.orderItems[i].id)
-        }
+        // for(let i = 0; i < this.orderItems.length; i++) {
+        //   await removeItemInProgress(this.orderItems[i].id)
+        // }
+        removeUsersItemsInProgress(this.id)
         window.location = '/orderPlaced';
 
       },
