@@ -96,7 +96,7 @@ async function getScoop(){
                 <h3>First Flavor</h3>
                 <p v-if="flavor1 != null">First Flavor is {{ flavor1.name }}</p>
                 <div v-for="(item, index) in Flavors" :key="index">
-                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <p>{{ item.name }} ${{ item.price_per_scoop / 100 }}</p>
                     <button class="order-button" :disabled="item.available !== true" @click="flavor1=item">Add to Order</button>
                 </div>
             </div>
@@ -105,7 +105,7 @@ async function getScoop(){
                 <h3>Second Flavor</h3>
                 <p v-if="flavor2 != null">Second Flavor is {{ flavor2.name }}</p>
                 <div v-for="(item, index) in Flavors" :key="index">
-                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <p>{{ item.name }} ${{ item.price_per_scoop / 100 }}</p>
                     <button class="order-button" :disabled="flavor1==null || item.available !== true" @click="flavor2=item">Add to Order</button>
                 </div>
                 <button class="order-button" :disabled="flavor1==null" style=" margin-top: 60px" @click="flavor2=null;flavor3=null">No Second Scoop</button>
@@ -115,7 +115,7 @@ async function getScoop(){
                 <h3>Third Flavor</h3>
                 <p v-if="flavor3 != null">Third Flavor is {{ flavor3.name }}</p>
                 <div v-for="(item, index) in Flavors" :key="index">
-                    <p>{{ item.name }} ${{ item.price_per_scoop }}</p>
+                    <p>{{ item.name }} ${{ item.price_per_scoop / 100 }}</p>
                     <button class="order-button" :disabled="flavor1==null || flavor2==null || item.available !== true" @click="flavor3=item">Add to Order</button>
                 </div>
                 <button class="order-button" :disabled="flavor1==null || flavor2==null" style=" margin-top: 60px" @click="flavor3=null">No Third Scoop</button>
@@ -134,7 +134,7 @@ async function getScoop(){
         <div style="text-align: center">
             <p v-if="cone != null">Cone is {{ cone.name }}</p>
             <div v-for="(item, index) in Cones" :key="index">
-                <p>{{ item.name }} ${{ item.price}}</p>
+                <p>{{ item.name }} ${{ item.price / 100}}</p>
                 <button class="order-button" :disabled="item.available !== true" @click="cone=item">Add to Order</button>
             </div>
         </div>
@@ -150,7 +150,7 @@ async function getScoop(){
         <div style="text-align: center">
             <p v-if="topping != null">Topping is {{ topping.name }}</p>
             <div v-for="item in Toppings">
-                <p>{{ item.name}} ${{ item.price }}</p>
+                <p>{{ item.name}} ${{ item.price / 100 }}</p>
                 <button  class="order-button" :disabled="item.available !== true" @click="topping=item">Add to Order</button>
             </div>
         </div>

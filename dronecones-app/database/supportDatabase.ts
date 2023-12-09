@@ -40,5 +40,6 @@ export async function getForms(limit: number = 25, includeResolved: Boolean = tr
 }
 
 export async function toggleFormResolved(formID: number) {
+    // toggles the resolved boolean for the support form with given formID
     const { error } = await supabase.rpc('toggle_form_resolved', {quote_id:formID}) 
 }

@@ -1,6 +1,6 @@
 <script>
   import { supabase } from '../components/lib/supabaseClient'
-  import { getUsersItemsInProgress, removeItemInProgress, addTransaction } from '../database/transactionDatabase'
+  import { getUsersItemsInProgress, removeItemInProgress, addTransaction, removeUsersItemsInProgress } from '../database/transactionDatabase'
   import { getCones, getIcecreamFlavors, getToppings } from '~/database/stockDatabase'
   import { getDronesForDelivery } from '~/database/droneDatabase';
   // import { Transaction, ItemInProgress } from '../database/databaseTypes'
@@ -67,12 +67,14 @@
     },
     methods: {
       getTax() {
-        this.tax = parseFloat((this.subtotal * .07).toFixed(2))
+        this.tax = Math.floor(this.subtotal * .07)
       },
       getTotal() {
         this.total = this.subtotal + this.tax
       },
       async placeOrder() {
+        console.log(this.id);
+        
         let drones = []
         await getDronesForDelivery(this.orderItems.length).then(data => {
           if (data != null) drones = data
@@ -82,13 +84,16 @@
         })
         let ID=0;
         console.log(`{completed: ${false}, final_price: ${this.total}, item_count: ${this.orderItems.length}, sales_price: ${this.subtotal}, tax: ${this.tax}, user_id: ${this.id}}, drones: ${drones}`)
-        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones).then(
-          data => ID= data,
-          )
+        await addTransaction({completed: false, final_price: this.total, item_count: this.orderItems.length, sales_price: this.subtotal, tax: this.tax, user_id: this.id}, drones)
         console.log(this.id);
         console.log(ID);
         localStorage.setItem('orderID', ID);
+        // for(let i = 0; i < this.orderItems.length; i++) {
+        //   await removeItemInProgress(this.orderItems[i].id)
+        // }
+        removeUsersItemsInProgress(this.id)
         window.location = '/orderPlaced';
+
       },
       async removeItem(item) {
         let index = this.orderItems.indexOf(item)
@@ -118,7 +123,7 @@
             <p v-if="item.flavor2 != null">Scoop 2: {{ flavors[item.flavor2] }}</p>
             <p v-if="item.flavor3 != null">Scoop 3: {{ flavors[item.flavor3] }}</p>
             <p v-if="item.topping != null">Topping: {{ toppings[item.topping] }}</p>
-            <p v-if="item.price != null">Price: {{ item.price }}</p>
+            <p v-if="item.price != null">Price: {{ item.price / 100}}</p>
           </div>
           <div class="delete-container">
             <div class="delete" v-on:click="removeItem(item)">
@@ -127,10 +132,10 @@
           </div>
         </div>
       </div>
-      <h4 id="subtotal">Subtotal: {{ subtotal }}</h4>
-      <h4 id="tax">Tax: {{ tax }}</h4>
-      <h3 id="total">Your total is ${{ total }}</h3>
-      <form v-on:submit="submitForm">
+      <h4 id="subtotal">Subtotal: {{ (subtotal / 100) }}</h4>
+      <h4 id="tax">Tax: {{ (tax / 100) }}</h4>
+      <h3 id="total">Your total is ${{ (total / 100) }}</h3>
+      <form @submit.prevent="placeOrder()">
         <div class="form-group payment-input">
           <label for="card-name">Name on card</label>
           <input type="text" id="card-name" v-model="formData.cardName" required/>
@@ -172,7 +177,7 @@
           <input type="text" id="zip" v-model="formData.zip" required/>
         </div>
         <div class="form-group centered payment-input">
-          <button class="place-order-button" type="submit" v-on:submit="placeOrder()">Order</button>
+          <button class="place-order-button" type="submit">Order</button>
           <p id="error_message">{{ errorMessage }}</p>
         </div>
       </form>

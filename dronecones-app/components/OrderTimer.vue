@@ -40,7 +40,8 @@
         if(error) {
           console.log(error);
         }
-        //At this point, we need to get the order and set it as delivered
+        //Cart is cleared before we get here lol
+        
       }, 9000);
     },
   };
