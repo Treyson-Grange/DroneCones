@@ -18,10 +18,10 @@
   person whether they are on a computer or phone via Chrome/Safari or other web browser.
 
 ## User Interface ##
-* The user will be greeted with a Login Interface, once logged in the user will be shown the Ordering page
+* The user will be greeted with a Login Interface, once logged in the customers will be shown the ordering page, and drone owners will be shown a list of all their drones.
 * That page and most pages will have a top navigation bar. This bar will be how flow is managed for the user. Everything they will need access to is on this bar, or on one of the pages listed there.
 * Nav bar will include a link to order, a link to the cart, and a link to the support page, and a button to log out
-* If the user is logged in, the top nav changes based on what account they have. For regular customers, it will be an order centric top nav. For drone leasers, there will be a page for them to access their drone information. For managers there will be a manager portal where they can manage stock.
+* If the user is logged in, the top nav changes based on what account they have. For regular customers, it will be an order centric top nav. For drone leasers, there will be a page for them to access a list of theire drones and their account page with revenue information. For managers there will be a manager portal where they can manage stock.
 * The user while ordering should be shown images of what they are ordering. 
 * The user should be notified in the case of any errors or delivery. 
 
@@ -52,7 +52,7 @@ The account page will
 
 For a drone owner  
 The drone management will
-* receive information about drones on account
+* receive information about drones on account, including status and revenue
 * If drone is removed or disabled, it will send that out
 
 For a manager  
