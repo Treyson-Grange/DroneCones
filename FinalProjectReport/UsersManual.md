@@ -131,7 +131,7 @@ The menu bar is dynamic, meaning that the links can be hidden at a point when th
 ![Menu Closed](Navigation/MenuClosed.jpg)
 ![Menu Opened](Navigation/MenuOpened.jpg)
 
-Inside the menue you are presented with the links indicated by the blue circle above as the same links in the image below. To close the circle click on the hamburger button in the top left by the logo, as indicated by the red circle in the image above
+Inside the menu you are presented with the links indicated by the blue circle in the image above as the same links in the image below. To close the menu click on the hamburger button in the top left by the logo, as indicated by the red circle in the image above
 
 ![Menu Opened](Navigation/Navbar.jpg)
 
