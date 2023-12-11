@@ -32,7 +32,7 @@
                     <span v-else>Enabled</span>
                 </div>
                 <div>
-                  <strong>Revenue:</strong> ${{ this.revenues[index] }}
+                  <strong>Revenue:</strong> ${{ this.revenues[index]/100 }}
                 </div>
             </div>
         </div>
