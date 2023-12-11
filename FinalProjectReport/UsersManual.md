@@ -125,6 +125,18 @@ Password: freeuse
 
 To login, simply visit our landing page, and input your email and password or the email and password provided above. After logging in, you will be forwar
 
+## Navigation
+The menu bar is dynamic, meaning that the links can be hidden at a point when the screen is too small, inside the side menu. To access this menu click on the hamburger button in the top left by the logo, as indicated by the red circle in the image below.
+
+![Menu Closed](Navigation/MenuClosed.jpg)
+![Menu Opened](Navigation/MenuOpened.jpg)
+
+Inside the menue you are presented with the links indicated by the blue circle above as the same links in the image below. To close the circle click on the hamburger button in the top left by the logo, as indicated by the red circle in the image above
+
+![Menu Opened](Navigation/Navbar.jpg)
+
+
+
 ## Order Ice cream
 Once you have logged in, you will have access to our ordering page. There are many options in flavors, cones, and toppings!
 First you will see the options for flavors. You are allowed 1-3 scoops of ice cream per scoop. For each scoop, you are allowed 1 of 3 flavors: Chocolate, Vanilla, and Mint. Note that if a option on the ordering screen is pink, that means it is not in stock. 
@@ -155,12 +167,12 @@ Questions? Need help? Visit our support page! Get in touch by leaving a comment 
 ## Adding a Drone
 * On the your homepage click the button on the upper right of the page labeled "+ Drone." This will open up a new menu.
 ![Add Button](DroneOwnerImages/Add.jpg)
-* Once inside the Add New Drone menu, there are a few inputs displayed.
 ![Add Menu](DroneOwnerImages/AddMenu.jpg)
+* Once inside the Add New Drone menu, there are a few inputs displayed.
     1. The name textfield is where the name of the new drone is specified.
     2. There are then three options for the size of the drone, small, medium, and large. Small means the drone can carry one cone, medium the drone carries two cones and large means the drone can carry up to four cones.
-* At the bottom on the menu there are two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
-* One thing to note is that the default status is set to enabled.
+* At the bottom of the menu there are two buttons. The one on the left cancels and returns to the home page. The Add button adds the new drone with the name and size specified to the database and returns to the home page.
+* One thing to note is that the default status is set to enabled, which can be changed by editing it later.
 
 ## Editing a Drone
 * On the homepage click the edit button in the upper right corner of the desired drone to edit. This will open up a new menu.
