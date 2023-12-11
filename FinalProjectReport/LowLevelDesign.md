@@ -65,19 +65,21 @@
       * Add new drone button
          * Once button a form a will open for new drone information. This form contains:
             * Name: identifier for the drone owner in a text field
-            * Size: (small - 1 cone, medium - 4 cones, big - 8 cones) with a drop down menu of the three sizes of drones
-            * Drone radius: how far the drone can fly which will be a text field to be filled out
+            * Size: (small - 1 cone, medium - 2 cones, large - 4 cones) with a drop down menu of the three sizes of drones
             * Upload drone button
       * List of all the drones
-         * Each drone will be have a drop down menu with a enable or disable or delete option to choose from (i.e., there will be a default of enabled for all new drones added to the page)
-         * Save button to save changes of enable or disable or delete option for all drones modified 
+         * Each drone will list their total revenue made, their size, and their status
+         * On each drone there is an edit button that will take the user to a new menu
+            * The menue will have the following options
+              * Change the size of the drone between the three sizes specified
+              * Change the name of the drone
+              * Change the status of the drone between enable, disable and delete
    * Account information page
       * Total revenue in app
-      * Transfer to bank button which has defaults to the last bank information specified. It also has a drop down menu to toggle to a different bank previously specified. If there has never been a bank specified or the user wants to add a bank to transfer to there will be a button to route to bank information form (i.e., which when filled out will take you back to the page and put the bank information in as default)
-         * Bank information form:
-            * Routing number text field
-            * Account number text field
-            * Submit button to save changed
+        * Bank information form:
+          * Routing number text field
+          * Account number text field
+          * Submit button to save changes and begin the transfer
    * Support page
       * Same as the one for the customers
 
