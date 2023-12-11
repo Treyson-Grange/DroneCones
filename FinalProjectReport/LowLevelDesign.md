@@ -27,9 +27,9 @@
          * On the page there will be number of scoop options put as buttons to click to choose an order
          * A list of toppings with an onclick capability to put with order
          * Add to cart button to save order of one ice-cream cone which will submit the order to the shopping cart page and refresh the page
+         * Create new order button that refreshes the options on the page if you want to create another order
    * Shopping Cart page
       * Displays the list of cones about to be ordered by you
-      * Next to each cone there will be an option to specify how many of that order to make (i.e., A plus or minus button will do this)
       * There will also be a remove item from cart button next to each cone order
       * There will be a text box for the address to deliver it to
       * Next to the text box for the address have a button that when clicked saves address for future orders to the costumers account. There will be a default address preprogrammed in if the user has already saved there address to the account that can be overwritten by just simply backspacing and writing a new address.
@@ -47,7 +47,7 @@
       * A list of most recent order status
          * Placed
          * Ready
-         * In transit (have a default timer timer to change it from transit to devlivered after 8 min)
+         * In transit (have a default timer to determine how long it is in transit for this phase)
          * Delivered
    * Account Information Page
       * We see this as redundant so we might delete this page for the customer since the address and payment information can be changed and viewed in the shopping cart page?? Do we need to save credit card info and addresses? Ask Erik? (maybe we’ll just implement it for fun)
@@ -65,21 +65,18 @@
       * Add new drone button
          * Once button a form a will open for new drone information. This form contains:
             * Name: identifier for the drone owner in a text field
-            * Size: (small - 1 cone, medium - 2 cones, large - 4 cones) with a drop down menu of the three sizes of drones
+            * Size: (small - 1 cone, medium - 4 cones, big - 8 cones) with a drop down menu of the three sizes of drones
             * Upload drone button
       * List of all the drones
-         * Each drone will list their total revenue made, their size, and their status
-         * On each drone there is an edit button that will take the user to a new menu
-            * The menue will have the following options
-              * Change the size of the drone between the three sizes specified
-              * Change the name of the drone
-              * Change the status of the drone between enable, disable and delete
+         * Each drone will be have a menu with a enable or disable or delete option to choose from (i.e., there will be a default of enabled for all new drones added to the page)
+         * Save button to save changes of enable or disable or delete option for all drones modified 
    * Account information page
       * Total revenue in app
-        * Bank information form:
-          * Routing number text field
-          * Account number text field
-          * Submit button to save changes and begin the transfer
+      * Transfer to bank button which has defaults to the last bank information specified. If there has never been a bank specified or the user wants to add a bank to transfer to there will be a bank information form 
+         * Bank information form:
+            * Routing number text field
+            * Account number text field
+            * Submit button to save changed
    * Support page
       * Same as the one for the customers
 
@@ -107,14 +104,12 @@
                * Status of orders will be one of the following
                   * Placed
                   * Fulfilled
-               * Next to each list of orders, we need to have a button that says delete to delete it from the history of orders
-               * Next to each list of orders that have only been placed, we need to have a button that says cancel to cancel the order
             * Drones for operation
-               * Maybe we need a way to let the manager know when there is not enough drones for 8 minutes between customer orders? Maybe since it’s a class project, we just need to let the drone owner know when there is no drones. () 
+               * Display a message to let the manager know when there is not enough drones
          * Account page
             * Manger bank information text form 
-               * Bank information text form will be default to the last bank specified which can be undone by just backspacing.
-               * Bank information text form fields:
+               * Bank information text form will be default to the last bank specified.
+               * Bank information text form fields in case you want to change the account:
                   * Routing number
                   * Account number
             * Revenue from app in graph forms
