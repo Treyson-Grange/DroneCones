@@ -52,8 +52,7 @@ Drone owners should be able to do the following things:
 *   Add a new drone to their account
     *   When creating a drone, they will give the following information
         *   Name: identifier for the drone owner
-        *   Size: (small - 1 cone, medium - 4 cones, big - 8 cones)
-        *   Drone radius: how far the drone can fly
+        *   Size: (small - 1 cone, medium - 2 cones, big - 4 cones)
 *   Remove an existing drone from their account
 *   Enable/disable drones for delivery
 *   Access a report of their earnings

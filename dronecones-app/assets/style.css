@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary-color: #560BAD; 
-  --secondary-color: #7209B7;
+  --primary-color: #3A0CA3;
+  --secondary-color: #560BAD;
+  --secondary-color-var: #7209B7;
   --accent-color: #4CC9F0;
   --accent-color-two: #f04cd7;
   --warning-color: #F72585;
@@ -14,6 +15,11 @@
   --body-font-size: 16px;
   --header-font-size: 24px;
   --title-font-size: 32px;
+}
+
+.invert { 
+  filter: invert(100%); 
+  transition: all 0.4s ease;
 }
 
 /* Global styles */
@@ -166,6 +172,22 @@ textarea:focus{
 .item-container {
   flex-grow: 4;
 }
+.history-container {
+  flex-grow: 4;
+}
+.order-history-item {
+  color: var(--font-primary);
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(175px, 33%, 400px);
+  padding: 8px 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 .delete-container {
   align-self: center;
 }
@@ -190,6 +212,7 @@ textarea:focus{
   justify-content: center;
   flex-wrap: wrap;
   background-color: var(--primary-color);
+  padding: 0px;
   margin-top: 16px;
   border-radius: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) inset, 0 3px 6px rgba(0, 0, 0, 0.23) inset;
@@ -203,7 +226,7 @@ textarea:focus{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color-var);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   color: var(--text-secondary);
   height: 48px;
@@ -359,11 +382,14 @@ input[type="checkbox"] {
   border-radius: 16px;
   margin-bottom: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color-var);
   color: var(--font-secondary);
 }
-.drone-item h2{
-  align-self: center;
+.drone-title {
+  width: 100%; 
+  background-color: var(--secondary-color); 
+  border-radius: 16px 16px 0px 0px; 
+  padding: 0px 16px 0px 16px;
 }
 .drone-info {
   width: 100%;

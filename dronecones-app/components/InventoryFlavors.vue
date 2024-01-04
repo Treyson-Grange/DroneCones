@@ -21,7 +21,7 @@
               <td>{{ flavor.amount === null ? 'N/A' : flavor.amount }}</td>
               <td>{{ flavor.available === null ? 'N/A' : availableString(flavor.available) }}</td>
               <td>
-                <img @click="editFlavor(index)" src=".\..\assets\edit.ico" width="20"/>
+                <img @click="editFlavor(index)" src=".\..\assets\edit.png" width="20" class = "invert"/>
               </td>
             </tr>
           </tbody>

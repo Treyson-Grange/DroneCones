@@ -11,11 +11,11 @@
             <slot/>
         </div>
         <div class = 'drone-item' v-for="(drone, index) in drones" :key="index">
-            <div class = 'spacer' style="width: 100%;">
+            <div class = 'drone-title spacer'>
               <button @click="this.$parent.editDrone(this.drones[index])"
-              style="margin: 0px; align-self: center; width:100px;"
+              style="margin: 0px; align-self: center; width:48px; padding: 0px;"
               >
-                Edit
+                <img src = "./../assets/edit.png" class = "invert" width="24" height="24">
               </button>
               <h2>{{drone.name}}</h2>
             </div>
@@ -32,7 +32,7 @@
                     <span v-else>Enabled</span>
                 </div>
                 <div>
-                  <strong>Revenue:</strong> ${{ this.revenues[index] }}
+                  <strong>Revenue:</strong> ${{ this.revenues[index]/100 }}
                 </div>
             </div>
         </div>

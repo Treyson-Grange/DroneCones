@@ -24,6 +24,7 @@
     <div>
         <h2>Bank Information</h2>
         <form>
+            <p style="padding-left: 10pt; padding-right: 10pt; text-align: center;">Current bank account: Dr. Blue's Savings Account</p>
                 <label for="routingNumber">Routing Number:</label>
                 <input type="text" id="routingNumber" name="routingNumber" required><br><br>
 

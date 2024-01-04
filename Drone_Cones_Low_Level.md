@@ -27,9 +27,9 @@
          * On the page there will be number of scoop options put as buttons to click to choose an order
          * A list of toppings with an onclick capability to put with order
          * Add to cart button to save order of one ice-cream cone which will submit the order to the shopping cart page and refresh the page
+         * Create new order button that refreshes the options on the page if you want to create another order
    * Shopping Cart page
       * Displays the list of cones about to be ordered by you
-      * Next to each cone there will be an option to specify how many of that order to make (i.e., A plus or minus button will do this)
       * There will also be a remove item from cart button next to each cone order
       * There will be a text box for the address to deliver it to
       * Next to the text box for the address have a button that when clicked saves address for future orders to the costumers account. There will be a default address preprogrammed in if the user has already saved there address to the account that can be overwritten by just simply backspacing and writing a new address.
@@ -47,7 +47,7 @@
       * A list of most recent order status
          * Placed
          * Ready
-         * In transit (have a default timer timer to change it from transit to devlivered after 8 min)
+         * In transit (have a default timer to determine how long it is in transit for this phase)
          * Delivered
    * Account Information Page
       * We see this as redundant so we might delete this page for the customer since the address and payment information can be changed and viewed in the shopping cart page?? Do we need to save credit card info and addresses? Ask Erik? (maybe we’ll just implement it for fun)
@@ -66,14 +66,13 @@
          * Once button a form a will open for new drone information. This form contains:
             * Name: identifier for the drone owner in a text field
             * Size: (small - 1 cone, medium - 4 cones, big - 8 cones) with a drop down menu of the three sizes of drones
-            * Drone radius: how far the drone can fly which will be a text field to be filled out
             * Upload drone button
       * List of all the drones
-         * Each drone will be have a drop down menu with a enable or disable or delete option to choose from (i.e., there will be a default of enabled for all new drones added to the page)
+         * Each drone will be have a menu with a enable or disable or delete option to choose from (i.e., there will be a default of enabled for all new drones added to the page)
          * Save button to save changes of enable or disable or delete option for all drones modified 
    * Account information page
       * Total revenue in app
-      * Transfer to bank button which has defaults to the last bank information specified. It also has a drop down menu to toggle to a different bank previously specified. If there has never been a bank specified or the user wants to add a bank to transfer to there will be a button to route to bank information form (i.e., which when filled out will take you back to the page and put the bank information in as default)
+      * Transfer to bank button which has defaults to the last bank information specified. If there has never been a bank specified or the user wants to add a bank to transfer to there will be a bank information form 
          * Bank information form:
             * Routing number text field
             * Account number text field
@@ -105,14 +104,12 @@
                * Status of orders will be one of the following
                   * Placed
                   * Fulfilled
-               * Next to each list of orders, we need to have a button that says delete to delete it from the history of orders
-               * Next to each list of orders that have only been placed, we need to have a button that says cancel to cancel the order
             * Drones for operation
-               * Maybe we need a way to let the manager know when there is not enough drones for 8 minutes between customer orders? Maybe since it’s a class project, we just need to let the drone owner know when there is no drones. () 
+               * Display a message to let the manager know when there is not enough drones
          * Account page
             * Manger bank information text form 
-               * Bank information text form will be default to the last bank specified which can be undone by just backspacing.
-               * Bank information text form fields:
+               * Bank information text form will be default to the last bank specified.
+               * Bank information text form fields in case you want to change the account:
                   * Routing number
                   * Account number
             * Revenue from app in graph forms
@@ -290,10 +287,6 @@
 
 ## Database Design
 
-**Differences between documentation and implementation:**
-*   In the documentation, variable / column names are upper camel case, while in implementation, they are lower camel case.
-*   In the documentation, typing definitions are python-esque, while in implementation, they use typescript typing. They are mostly simple changes though.
-
 
 ### Users
 
@@ -306,55 +299,54 @@ UserType:
 | 2      | Manager    |
 
 Users:
-*   UserID (primary)
-*   UserType (0,1,2)
-*   Username
-*   First Name
-*   Last Name
-*   Email
-*   Banned
+*   id (primary) (uuid)
+*   usertype (0,1,2)
+*   username
+*   firstname
+*   lastname
+*   email
+*   banned
 
-| UserID | UserType | Username   | FirstName | LastName | Email                   | Banned |
+| id                                   | usertype | username   | firstname | lastname | email                   | banned |
 | ------ | -------- | ---------  | --------- | -------- | ----------------------- | ------ |
-| 0      | 0        | jbuchanan  | James     | Buchanan | jamesbuchanan@gmail.com | False  |
-| 1      | 2        | erik.falor | Erik      | Falor    | erikfalor@hotmail.com   | False  |
-| 2      | 1        | ambrown    | Amanda    | Brown    | abcdefg@hotmail.com     | False  |
+| d1b045f7-990b-45e6-be1a-b9bc2381ca6d | 0        | jbuchanan  | James     | Buchanan | jamesbuchanan@gmail.com | False  |
+| 2734a4da-0402-42e9-95f7-d4deb621c2a0 | 2        | erik.falor | Erik      | Falor    | erikfalor@hotmail.com   | False  |
+| b821ce8d-2ce4-4625-9d12-dc49dab5e103 | 1        | ambrown    | Amanda    | Brown    | abcdefg@hotmail.com     | False  |
 
 
 
 Addresses:
-*   AddressID
-*   UserID
-*   Country
-*   City
-*   State
-*   Zip Code
-*   Street Address
-*   Apartment Number
+*   id
+*   user_id (uuid)
+*   country
+*   city
+*   state
+*   zipcode
+*   street_address
+*   apt_num
 
-| AddressID | Country | City       | State | ZipCode | StreetAddress | AptNum | userID |
+| id | country | city       | state | zipcode | street_address | apt_num | userID                               |
 | --------- | ------- | ---------- | ----- | ------- | ------------- | ------ | ------ |
-| 0         | U.S.    | Logan      | UT    | 84321   | 123 E 456 N   | 4      | 1      |
-| 1         | U.S.    | Smithfield | UT    | 84335   | 999 S 200 E   | NULL   | 2      |
+| 0  | U.S.    | Logan      | UT    | 84321   | 123 E 456 N    | 4       | d1b045f7-990b-45e6-be1a-b9bc2381ca6d |
+| 1  | U.S.    | Smithfield | UT    | 84335   | 999 S 200 E    | NULL    | b821ce8d-2ce4-4625-9d12-dc49dab5e103 |
 
 
 ### Transactions
 
 Transactions:
-*   TransactionID (primary)
-*   UserID
+*   id (primary)
+*   user_id (uuid)
 *   Price before tax
 *   Tax
 *   Final price
 *   ItemCount
-*   Time of order
-*   Date of order
+*   order time
 *   Completed
 
-| TransactionID | UserID | InitialPrice | Tax  | FinalPrice | ItemCount | OrderTime | OrderDate | Completed |
-| ------------- | ------ | ------------ | ---- | ---------- | --------- | --------- | --------- | --------- | 
-| 0             | 0      | 9.14         | 1.13 | 10.27      | 2         | 23:59.59  | 9-29-2023 | True      |
-| 1             | 0      | 4.56         | 0.33 | 4.89       | 1         | 10:30.00  | 9-30-2023 | True      |
+| id | user_id                              | sales_price | tax  | final_price | item_count | order_time                 | completed |
+| ------------- | ------------------------- | ----------- | ---- | ----------- | ---------- | -------------------------- | --------- | 
+| 0  | b821ce8d-2ce4-4625-9d12-dc49dab5e103 | 9.14        | 1.13 | 10.27       | 2          | 2023-10-13 17:07:35.994024 | True      |
+| 1  | b821ce8d-2ce4-4625-9d12-dc49dab5e103 | 4.56        | 0.33 | 4.89        | 1          | 2023-10-13 17:07:35.994024 | True      |
 
 
 OrderItem:
@@ -366,21 +358,24 @@ OrderItem:
 *   Scoop count
 *   Price
 
-| ID | TransactionID | DroneDelivery | Cone | Flavor | Topping | Scoops | Price |
-| -- | ------------- | ------------- | ---- | ------ | ------- | ------ | ----- |
-| 0  | 0             | 0             | 0    | 1      | 1       | 2      | 5.25  |
-| 1  | 0             | 0             | 1    | 1      | NULL    | 1      | 3.89  |
-| 2  | 1             | 1             | 0    | 0      | 0       | 2      | 4.56  |
+| id | transaction_id | cone | flavor1 | flavor2 | flavor3 | topping | scoops | price |
+| -- | -------------  | ---- | ------- | ------- | ------- | ------- | ------ | ----- |
+| 0  | 0              | 0    | 1       | 1       | 0       | 1       | 2      | 5.25  |
+| 1  | 0              | 1    | 1       | 1       | NULL    | NULL    | 1      | 3.89  |
+| 2  | 1              | 0    | 0       | NULL    | NULL    | 0       | 2      | 4.56  |
+
+ItemsInProgress
+This table is the same as OrderItems except in includes a user_id instead of transaction_id. This is to store items currently in a users cart.
 
 DroneDelivery:
 *   ID (primary)
 *   TransactionID
 *   DroneID
 
-| Id | TransactionID | DroneID |
-| -- | ------------- | ------- |
-| 0  | 0             | 1       |
-| 1  | 1             | 0       |
+| id | transaction_id | drone_id |
+| -- | -------------- | -------- |
+| 0  | 0              | 1        |
+| 1  | 1              | 0        |
 
 ### Stock
 
@@ -390,25 +385,40 @@ Stock (Cones, Flavors, Toppings):
 *   Amount
 *   Available
 *   Price / Price per Scoop
+*   Image URL
 
 Cones:
-| ID | Name   | Amount | Available | Price |
-| -- | ----   | ------ | --------- | ----- |
-| 0  | Sugar  | 25     | True      | 100   |
-| 1  | Waffle | 13     | True      | 100   |
+| id | name   | amount | available | price | image |
+| -- | ------ | ------ | --------- | ----- | ----- |
+| 0  | Sugar  | 25     | True      | 100   | NULL  |
+| 1  | Waffle | 13     | True      | 100   | NULL  |
 
 Flavors:
-| ID | Name       | Amount | Available | PricePerScoop |
-| -- | ---------- | ------ | --------- | ------------- |
-| 0  | Vanilla    | 98     | True      | 400           |
-| 1  | Chocolate  | 56     | True      | 400           |
-| 2  | Strawberry | 0      | False     | 400           |
+| id | name       | amount | available | price_per_scoop | image |
+| -- | ---------- | ------ | --------- | --------------- | ----- |
+| 0  | Vanilla    | 98     | True      | 400             | NULL  |
+| 1  | Chocolate  | 56     | True      | 400             | NULL  |
+| 2  | Strawberry | 0      | False     | 400             | NULL  |
 
 Toppings:
-| ID | Name       | Amount | Available | Price |
-| -- | ----       | ------ | --------- | ----- |
-| 0  | Hot Fudge  | 33     | True      | 100   |
-| 1  | Caramel    | 12     | True      | 100   |
+| id | name       | amount | available | price | image |
+| -- | ----       | ------ | --------- | ----- | ----- |
+| 0  | Hot Fudge  | 33     | True      | 100   | NULL  |
+| 1  | Caramel    | 12     | True      | 100   | NULL  |
+
+RestockHistory
+*   Id
+*   Created at
+*   type
+*   cone
+*   flavor
+*   topping
+*   amount
+*   status
+
+| id | created_at                 | type | cone | flavor | topping | amount | status |
+| -- | -------------------------- | ---- | ---- | ------ | ------- | ------ | ------ |
+| 0  | 2023-10-13 17:07:35.994024 | cone | 1    | NULL   | NULL    | 50     | placed |
 
 
 ### Drones
@@ -417,7 +427,7 @@ DroneSize:
 *   Id
 *   Count
 
-| ID | Count |
+| id | count |
 | -- | ----- | 
 | 0  | 1     | 
 | 1  | 4     | 
@@ -425,29 +435,31 @@ DroneSize:
 
 Drones:
 *   DroneID (primary)
-*   Owners UserID
+*   Owners UserID (uuid)
 *   Name
 *   Size (small, medium, large)
 *   Available
 *   In Use
+*   Last Delivery
 
-| DroneID | Owner | Name         | DroneSize | Available | InUse |
-| ------- | ----- | -----------  | --------- | --------- | ----- |
-| 0       | 2     | MySmallDrone | 0         | True      | False |
-| 1       | 2     | MyLargeDrone | 2         | True      | True  |
+| id | owner_id                             | name         | size | available | in_use | last_delivery       |
+| ------- | ------------------------------- | -----------  | ---- | --------- | -----  | ------------------- |
+| 0  | b821ce8d-2ce4-4625-9d12-dc49dab5e103 | MySmallDrone | 0    | True      | False  | 2023-10-20 15:27:21 |
+| 1  | b821ce8d-2ce4-4625-9d12-dc49dab5e103 | MyLargeDrone | 2    | True      | True   | 2023-10-20 15:27:21 |
 
 
 ### Support forms
 
 Support forms:
 *   formID (primary)
-*   UserID 
+*   UserID  (uuid)
 *   formField
 *   Resolved
+*   Created at
 
-| FormID | UserID | FormField                 | Resolved |
-| ------ | ------ | ------------------------- | -------- |
-| 0      | 0      | The ice cream was late :( | True     |
+| FormID | user_id                              | form_field                | resolved | created_at          |
+| ------ | ------------------------------------ | ------------------------- | -------- | ------------------- |
+| 0      | b821ce8d-2ce4-4625-9d12-dc49dab5e103 | The ice cream was late :( | True     | 2023-10-20 15:27:21 |
 
 
 
@@ -456,19 +468,18 @@ Support forms:
 Here are the function signatures for various functions that will interact with the database system, in order to abstract our use of Supabase as well as standardize our database queries.
 
 ### Users
-addUser(userID: number, userType: number, firstName: str, lastName: str, email: str)
-*   adds a new row to user database
+There is no addUser function. A row is added to the user table simulaneous to the use of Supabase's auth signup function through sql function.
 
-getUser(UserID: Int)
-*   returns the row with given UserID as a user object
+getUser(userID: string)
+*   returns the row with given userID as a user object
 
-updateUser(userID: Int, {UserType: Int = None, FirstName: Str = None, LastName: Str = None, Email: Str = None, Address: Int = None})
-*   updates the row of user database with given UserID, changing the columns of any arguments that aren't None
+updateUser(userID: string, userUpdate: User object)
+*   updates the row of user database with given UserID, changing the columns that are specified in userUpdate
 
-toggleUserBan(UserID: Int)
-*   toggles the banned column of the user with UserID
+toggleUserBan(userID: string)
+*   toggles the banned column of the user with userID
 
-getUsers(UserType: Int = None)
+getUsers(userType: number = None)
 *   returns a list of all user in database as user objects. If a UserType is specified, it only returns those types of users
 
 addAddress(userID: number, Country: Str, City: Str, State: Str, ZipCode: Str, StreetAddress: Str, Apartment: Str = None)
@@ -478,25 +489,46 @@ getUsersAddress(userID: number)
 *   returns the row from address database associated with the given userID, currently only returns the first address
 
 ### Transactions
-addTransaction(UserID: Int, Price: Int, Items: List<??>, dateTime: DateTime, DroneIDs: List<Int>)
-*   creates a new row in Transactions database with given information
-*   creates a new row in SoldItems database for each item in Items, connected to this transaction. Does this by calling addSoldItem()
-*   creates a new row in DroneDeliveries database with each DroneID in DroneIDs, connected to this transaction. Does this by calling addDroneDelivery()
+addTransaction(transaction: Transaction object, droneIDS: number[])
+*   Adds a new row to transaction database with the data in transaciton object,
+*   Adds new rows to drone deliveries database for each droneID in droneIDs
+*   Adds new rows to soldItems database, for each item in the items list
 
 getTransactions()
 *   returns all transactions in database
-*   --Possibly--
-    *   optional argument for number of transactions returned (starting from most recent?)
-    *   optional argument for start / end dates, only returns transactions between those dates
 
-getUserOrderHistory(UserID: Int)
-*   returns all transactions tied to given UserID.
+getUserOrderHistory(UserID: string, limit: number = 3)
+*   returns all transactions tied to given UserID, including all items in the order. 
+*   If limit is specified, it returns that many, otherwise returns three most recent
 
-addSoldItem(TransactionID: Int, Cone: Int, Flavor: Int, Topping: Int, Scoops: Int)
+getTransaction(transactionID)
+*   returns transaction with given transactionID as a transaction object
+
+addItemInProgress(item: ItemInProgress object)
+*   adds the specified item into the itemsInProgress table
+
+getItemInProgress(itemID: number)
+*   returns the itemInProgress with specified itemID from database
+
+removeItemInProgress(itemID: number)
+*   deletes the itemInProgress with specified itemID from the database
+
+getUsersItemsInProgress(userId: string)
+*   returns a list of all itemsInProgress with the given userID
+
+removeUsersItemsInProgress(userID: string)
+*   deletes all itemInProgress rows with the given userID from the database
+
+addAllSoldItems(userId: string, transactionID: number)
+*   Retrieves all itemsInProgress for the given userID
+*   For each one, it calls addSoldItem, passing in the given transaction id, and updates the stock of those items
+*   calls removeUsersItemsInProgress to delete those items
+
+addSoldItem(TransactionID: Int, item: OrderItem object)
 *   adds a new row in Sold Items database with given information
 
-getSoldItems(TransactionID)
-*   returns all soldItems with given TransactionID from database
+updateStock(item: OrderItem)
+*   Goes through each part of the OrderItem and reduces the amount of each by 1
 
 addDroneDelivery(TransactionID: Int, DroneID: Int)
 *   adds a new row in DroneDelivery database with given information
@@ -504,10 +536,10 @@ addDroneDelivery(TransactionID: Int, DroneID: Int)
 
 ### Stock
 getCones()
-*   returns all cones in database as a list, possibly as cone objects?
+*   returns all cones in database as a list of Cone objects
 
 getCone(ID: Int)
-*   return cone with given ID
+*   return cone with given ID as a Cone object
 
 addNewCone(Name: Str, Amount: Int, price: number, Available: Bool = True)
 *   add a new row into cone database with given information
@@ -515,22 +547,40 @@ addNewCone(Name: Str, Amount: Int, price: number, Available: Bool = True)
 addConeAmount(ID: Int, Amount: Int)
 *   adds the amount given to the amount of the cone with given id
 
+useOneCone(id: number)
+*   reduces the amount of the given cone id by 1
+
 toggleConeAvailability(ID: Int)
 *   update the Available column of cone with given ID to opposite boolean value
-
-updateConePrice(ID: int, price: int)
-*   update the price of cone with given id
 
 removeCone(ID: Int)
 *   Remove cone with specified Id from database
 
+updateCone(id: number, cone: Cone object)
+*   Updates the cone with the given id with any information in cone
+
+uploadConeImage(image: any)
+*   uploads a image to a 'stockImages' storage bucket at path of 'cones/' 
+
+restockCones(items: [])
+*  makes a restock order for each item in the list
+
 The above functions will also exist for the Flavors and Toppings database tables.
+
+makeRestockOrder(type: string, item: any)
+*   Makes a restock order for the proper table of type 'cone', 'flavor' or 'topping'
+*   Inserts a row into RestockHistory table
+*   Starts development timer that changes status from 'placed', to 'shipped', then 'completed'
+*   Updates the amount of that item
+
+getRestockHistory()
+*   Returns a list of all rows in restockHistory table
 
 
 ### Drones
 
 getDrone(DroneID: Int)
-*   return drone from database with given DroneID, possibly as drone object
+*   return drone from database with given DroneID as drone object
 
 addDrone(UserID: Int, Name: Str, Size: Int?, Available: Bool = True)
 *   adds a new drone to database
@@ -541,13 +591,21 @@ removeDrone(DroneID: Int)
 toggleDroneAvailability(DroneID: Int)
 *   Set the Available column of drone with DroneID to the opposite boolean value
 
-getDrones(UserID = None)
-*   returns all drones as a list, maybe as drone objects?
-*   If UserID is specified, only returns drones registered by that user
+editDrone(id: number, drone: Drone object)
+*   update the drone with given id, only need to pass information that's changed, but can pass all
+
+getDrones(UserID = None, limit: number = 10)
+*   Returns a list of drone objects with all information about those drones
+*   The limit argument will determine how many drones to return, defaults to 10
+*   If userID is not given, it will return a slist of all drones,
+*   If userID is given, it will only return drones with that user as the owner
 
 getDeliveryDrones(Count: Int)
-*   returns a list of drone objects to fulfill a delivery of 'Count' number of cones
-*   drones will be selected based on size to optimize the number of drones on a delivery
+*   This function will return a list of droneIDs that can carry a delivery of count number of cones
+*   If the function returns null, then there are not enough drones to carry the delivery, and it must be tried again or added to a queue
+
+availableDroneCount()
+*   Returns the number of currently available drones
 
 getDroneDeliveries(TransactionID: Int = None, DroneID: Int = None)
 *   returns drone deliveries from database
@@ -556,12 +614,13 @@ getDroneDeliveries(TransactionID: Int = None, DroneID: Int = None)
 
 
 ### Support Forms
-addForm(UserID: Int, FormField: Str)
+addForm(UserID: string, FormField: Str)
 *   adds a new support form to database
 
-getForms()
-*   returns all forms in database as a list
-*   --Possibly--
-    *   optional argument for number of forms returned (starting from most recent?)
-    *   optional argument for start / end dates, only returns forms between those dates
+getForms(limit: number, includeResolved: Bool)
+*   Return a list of forms, from the database
+*   it argument determines the max number of forms to return
+*   includeResolved argument will determine if forms that have been resolved are returned or not
 
+toggleFormResolved(formID: number)
+*   toggles the resolved boolean for the support form with given formID

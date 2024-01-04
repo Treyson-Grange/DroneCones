@@ -79,7 +79,7 @@
         <div class="form-list">
             <h1>Total Revenue</h1>
             <p>Please allow time to load all of your drone deliveries</p>
-            <p id="rev">Total Revenue: {{ totalRevenues }}</p>
+            <p id="rev">Total Revenue: ${{ totalRevenues/100 }}</p>
         </div>
         <br>
         <div class="form-list">

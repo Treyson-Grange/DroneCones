@@ -21,7 +21,7 @@
           <td>{{ cone.amount === null ? 'N/A' : cone.amount }}</td>
           <td>{{ cone.available === null ? 'N/A' : availableString(cone.available) }}</td>
           <td>
-            <img @click="editCone(index)" src=".\..\assets\edit.ico" width="20"/>
+            <img @click="editCone(index)" src=".\..\assets\edit.png" width="20" class = "invert"/>
           </td>
         </tr>
       </tbody>
